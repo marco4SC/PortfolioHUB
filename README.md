@@ -1,9 +1,12 @@
-# Portfolio de Projetos - Marco Antonio de Souza Carvalho 
- 
-Este repositorio contendo projetos academicos e pessoais. 
- 
->> Estrutura: 
-- `academicos/` - Trabalhos da faculdade (POO, estruturas de dados, etc.) 
-- `projetos/projeto-inicial-web/` - Pagina HTML inicial (vers√Üo 1.0) 
-- `pessoais/` - Estudos independentes 
-- `recursos/documentacao/` - Documenta‚Ä°√Üo adicional 
+# Meu Portfolio de Projetos - Marco Sousa
+
+Bem-vindo ao meu portf¢lio. Este reposit¢rio centraliza meus projetos acadàmicos e pessoais.
+
+## Tecnologias: Java, Python, JavaScript (HTML/CSS), Git
+
+## Como Navegar
+
+* [Projetos Web](projetos/projeto-inicial-web/) - Landing page inicial
+* [Projetos Acadàmicos](academicos/) - Trabalhos da faculdade
+* [Projetos Pessoais](pessoais/) - Estudos e desafios pr¢prios
+

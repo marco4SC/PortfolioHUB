@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - PortfolioHUB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Painel de Controle</h1>
+        <nav>
+            <a href="index.html">Voltar ao site</a>
+            <a href="#" id="logoutLink">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Adicionar novo projeto</h2>
+            <form id="projectForm">
+                <input type="text" id="title" placeholder="Título" required>
+                <textarea id="description" placeholder="Descrição" required></textarea>
+                <input type="url" id="link" placeholder="Link do projeto">
+                <input type="url" id="image" placeholder="URL da imagem">
+                <button type="submit">Adicionar projeto</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Projetos existentes</h2>
+            <ul id="projectList"></ul>
+        </section>
+    </main>
+
+    <script>
+        const API_BASE = 'http://localhost:3000';
+
+        async function checkAuth() {
+            const res = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
+            if (!res.ok) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        async function carregarProjetosAdmin() {
+            const res = await fetch(`${API_BASE}/api/projects`);
+            const projetos = await res.json();
+            const list = document.getElementById('projectList');
+            list.innerHTML = projetos.map(p => `
+                <li>
+                    <strong>${p.title}</strong>: ${p.description}
+                    <button onclick="editarProjeto(${p.id})">Editar</button>
+                    <button onclick="deletarProjeto(${p.id})">Excluir</button>
+                </li>
+            `).join('');
+        }
+
+        document.getElementById('projectForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newProject = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                link: document.getElementById('link').value,
+                image: document.getElementById('image').value,
+            };
+            const res = await fetch(`${API_BASE}/api/projects`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify(newProject)
+            });
+            if (res.ok) {
+                alert('Projeto adicionado!');
+                carregarProjetosAdmin();
+                document.getElementById('projectForm').reset();
+            } else {
+                alert('Erro ao adicionar');
+            }
+        });
+
+        window.deletarProjeto = async (id) => {
+            if (confirm('Remover projeto?')) {
+                await fetch(`${API_BASE}/api/projects/${id}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                });
+                carregarProjetosAdmin();
+            }
+        };
+
+        window.editarProjeto = async (id) => {
+            const novoTitulo = prompt('Novo título:');
+            if (novoTitulo) {
+                await fetch(`${API_BASE}/api/projects/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ title: novoTitulo, description: 'Descrição atualizada', link: '', image: '' })
+                });
+                carregarProjetosAdmin();
+            }
+        };
+
+        document.getElementById('logoutLink').addEventListener('click', () => {
+            window.location.href = `${API_BASE}/auth/logout`;
+        });
+
+        checkAuth();
+        carregarProjetosAdmin();
+    </script>
+</body>
+</html>

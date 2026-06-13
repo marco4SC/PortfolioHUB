@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortfolioHUB | Meu Portfólio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>PortfolioHUB</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="admin.html" id="adminLink">Admin</a>
+            <a href="#" id="loginLogoutLink">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Bem-vindo ao meu portfólio</h2>
+            <p>Projetos incríveis desenvolvidos por mim</p>
+        </section>
+
+        <section id="projetos">
+            <h2>Meus Projetos</h2>
+            <div class="grid-projetos" id="projetosContainer"></div>
+        </section>
+
+        <section id="chat-gemini">
+            <h2>Converse com o Assistente Gemini</h2>
+            <div id="chatMessages"></div>
+            <input type="text" id="chatInput" placeholder="Faça uma pergunta...">
+            <button id="sendChat">Enviar</button>
+        </section>
+    </main>
+
+    <script>
+        const API_BASE = 'http://localhost:3000';  // depois mude para URL do Render
+
+        async function carregarProjetos() {
+            const res = await fetch(`${API_BASE}/api/projects`);
+            const projetos = await res.json();
+            const container = document.getElementById('projetosContainer');
+            container.innerHTML = projetos.map(p => `
+                <div class="card">
+                    ${p.image ? `<img src="${p.image}" alt="${p.title}">` : ''}
+                    <h3>${p.title}</h3>
+                    <p>${p.description}</p>
+                    ${p.link ? `<a href="${p.link}" target="_blank">Ver projeto</a>` : ''}
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('sendChat')?.addEventListener('click', async () => {
+            const input = document.getElementById('chatInput');
+            const prompt = input.value;
+            if (!prompt) return;
+            const messagesDiv = document.getElementById('chatMessages');
+            messagesDiv.innerHTML += `<div><strong>Você:</strong> ${prompt}</div>`;
+            input.value = '';
+
+            const res = await fetch(`${API_BASE}/api/gemini/chat`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt })
+            });
+            const data = await res.json();
+            messagesDiv.innerHTML += `<div><strong>Gemini:</strong> ${data.reply}</div>`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        });
+
+        async function verificarLogin() {
+            try {
+                const res = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
+                if (res.ok) {
+                    document.getElementById('loginLogoutLink').innerText = 'Logout';
+                    document.getElementById('loginLogoutLink').href = `${API_BASE}/auth/logout`;
+                    document.getElementById('adminLink').style.display = 'inline-block';
+                } else {
+                    document.getElementById('loginLogoutLink').innerText = 'Login';
+                    document.getElementById('loginLogoutLink').href = `${API_BASE}/auth/github`;
+                    document.getElementById('adminLink').style.display = 'none';
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        carregarProjetos();
+        verificarLogin();
+    </script>
+</body>
+</html>
