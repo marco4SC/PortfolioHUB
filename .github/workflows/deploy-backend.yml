@@ -1,0 +1,50 @@
+name: Build & Deploy AI Investment Backend
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./pessoais/ai-investment-system
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/ai-investment:latest
+            ghcr.io/${{ github.repository_owner }}/ai-investment:${{ github.sha }}
+
+  optional-deploy-render:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: ${{ secrets.RENDER_API_KEY != '' && secrets.RENDER_SERVICE_ID != '' }}
+    steps:
+      - name: Trigger Render deploy
+        run: |
+          echo "Triggering deploy on Render for service $RENDER_SERVICE_ID"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys"
+
+# Notes:
+# - To automatically deploy to Render, add repository secrets: RENDER_API_KEY and RENDER_SERVICE_ID
+# - The workflow builds and pushes a container image to GitHub Container Registry (GHCR). Use that image on any cloud provider.
