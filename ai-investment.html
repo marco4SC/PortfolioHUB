@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Investment System — Demo UX</title>
   <!-- Tailwind Play CDN for rapid styling (suitable for demos) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,12 +24,12 @@
           <div class="flex gap-4">
             <div class="flex-1">
               <label class="block text-sm text-slate-700">Nome<span class="text-red-500"> *</span></label>
-              <input id="name" name="name" required class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300" placeholder="Seu nome completo" />
+              <input id="name" name="name" type="text" required class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300" placeholder="Seu nome completo">
             </div>
 
-            <div style="width:110px">
+            <div class="w-28">
               <label class="block text-sm text-slate-700">Idade</label>
-              <input id="age" name="age" inputmode="numeric" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="28" />
+              <input id="age" name="age" type="number" inputmode="numeric" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="28">
             </div>
           </div>
 
@@ -55,9 +55,10 @@
           </div>
 
           <fieldset class="flex items-center gap-3">
+            <legend class="sr-only">Opções</legend>
             <input id="useLive" type="checkbox" class="h-4 w-4 text-emerald-600" />
             <label for="useLive" class="text-sm text-slate-700">Usar API real</label>
-            <input id="apiUrl" placeholder="https://api.exemplo.com/analyze" class="ml-auto mt-0 block w-64 rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <input id="apiUrl" type="url" placeholder="https://api.exemplo.com/analyze" class="ml-auto mt-0 block w-64 rounded-lg border border-slate-200 px-3 py-2 text-sm">
           </fieldset>
 
           <div class="flex items-center gap-3">
@@ -85,7 +86,7 @@
         <div id="reportBox" class="mt-4 bg-white border border-slate-100 rounded-lg p-3 text-sm text-slate-700 hidden"></div>
 
         <div class="mt-4 flex gap-2">
-          <button id="downloadDemo" class="ml-auto inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">Baixar relatório (JSON)</button>
+          <button id="downloadDemo" type="button" class="ml-auto inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">Baixar relatório (JSON)</button>
         </div>
       </aside>
     </section>
