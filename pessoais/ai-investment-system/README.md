@@ -81,7 +81,7 @@ ai-investment-system/
 ```bash
 # 1. Clone e entre na pasta
 git clone https://github.com/marco4SC/PortfolioHUB.git
-cd PortfolioHUB/projetos/ai-investment-system
+cd PortfolioHUB/pessoais/ai-investment-system
 
 # 2. Ambiente virtual
 python -m venv venv
@@ -139,10 +139,9 @@ curl -X POST http://localhost:8000/analyze/PETR4
 - **IA/LLM**: Anthropic Claude (claude-sonnet-4)
 - **Dados**: brapi.dev, CoinGecko API, BCB/SGS API, feedparser
 - **Análise**: Pandas, NumPy, Scipy (otimização de portfólio)
-- **Armazenamento**: SQLite (dev) → TimescaleDB (produção)
-- **Cache**: Redis
-- **Alertas**: Telegram Bot API
-- **Deploy**: GitHub Pages (docs) + VPS (API)
+- **Armazenamento**: SQLAlchemy (foundation for a relational database integration)
+- **Alertas**: HTTP-based Telegram notification module
+- **Deployment target**: VPS or cloud API deployment
 
 ---
 
@@ -154,7 +153,7 @@ curl -X POST http://localhost:8000/analyze/PETR4
 - [x] Gestão de risco (stop-loss, VaR, Kelly sizing)
 - [x] Otimização de portfólio (Markowitz + Risk Parity)
 - [x] API REST com FastAPI
-- [x] Alertas via Telegram
+- [x] Alert notification module
 - [ ] Dashboard React com Recharts
 - [ ] Backtesting com dados históricos
 - [ ] Scheduler para análises automáticas diárias
