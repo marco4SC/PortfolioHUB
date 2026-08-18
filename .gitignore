@@ -2,4 +2,3 @@ node_modules/
 .env
 backend/data/projects.json
 .DS_Store
-pessoais/cs.txt
