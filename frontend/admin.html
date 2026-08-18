@@ -49,8 +49,8 @@
             list.innerHTML = projetos.map(p => `
                 <li>
                     <strong>${p.title}</strong>: ${p.description}
-                    <button onclick="editarProjeto(${p.id})">Editar</button>
-                    <button onclick="deletarProjeto(${p.id})">Excluir</button>
+                    <button type="button" onclick="editarProjeto(${p.id})">Editar</button>
+                    <button type="button" onclick="deletarProjeto(${p.id})">Excluir</button>
                 </li>
             `).join('');
         }
