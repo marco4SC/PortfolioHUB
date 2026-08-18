@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Investment System — Demo UX</title>
+  <style>
+    :root{--brand:#1e6f5c;--muted:#6b8790;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Segoe UI, Roboto, Arial, sans-serif;background:#f3f7f9;color:#112;display:flex;align-items:center;justify-content:center;padding:2rem}
+    .wrap{width:100%;max-width:920px;background:linear-gradient(180deg,#ffffff, #fbfdff);border-radius:16px;box-shadow:0 18px 40px rgba(15,30,35,0.08);overflow:hidden}
+    header{padding:1.6rem 1.8rem;background:linear-gradient(135deg,var(--brand),#145244);color:#fff}
+    header h1{margin:0;font-size:1.2rem}
+    header p{margin:6px 0 0;font-size:0.92rem;opacity:0.95}
+    .container{padding:1.6rem}
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:1.2rem}
+    .card{background:var(--card);border-radius:12px;padding:1rem;border:1px solid #e6eef2}
+    .form-row{display:flex;gap:0.6rem;margin-bottom:0.6rem}
+    label{font-size:0.85rem;color:var(--muted);display:block;margin-bottom:6px}
+    input[type=text],input[type=email],select,textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid #d8e6ea}
+    button.primary{background:var(--brand);color:#fff;border:none;padding:0.7rem 1rem;border-radius:10px;cursor:pointer}
+    button.secondary{background:#eef5f4;border:1px solid #dbeee8;color:var(--brand);padding:0.5rem 0.8rem;border-radius:8px;cursor:pointer}
+    .muted{color:var(--muted);font-size:0.9rem}
+    .result{margin-top:0.8rem}
+    .result pre{background:#0f1720;color:#e6fffb;padding:0.8rem;border-radius:8px;overflow:auto}
+    .small{font-size:0.85rem}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>AI Investment System — UX Demo</h1>
+      <p>Interface leve para testar o sistema de investimento. Não exige backend — simula um fluxo de onboarding e execução de um "teste".</p>
+    </header>
+    <div class="container">
+      <div class="grid">
+        <div class="card">
+          <h3>Teste rápido — formulário de usuário</h3>
+          <p class="muted small">Preencha o formulário abaixo para criar uma conta de teste e executar uma simulação de recomendação.</p>
+          <form id="demoForm">
+            <div class="form-row">
+              <div style="flex:1">
+                <label for="name">Nome</label>
+                <input id="name" name="name" type="text" placeholder="Seu nome completo" required>
+              </div>
+              <div style="width:150px">
+                <label for="age">Idade</label>
+                <input id="age" name="age" type="text" inputmode="numeric" placeholder="ex: 28">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div style="flex:1">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="email@exemplo.com" required>
+              </div>
+              <div style="width:170px">
+                <label for="risk">Perfil de risco</label>
+                <select id="risk" name="risk">
+                  <option value="conservative">Conservador</option>
+                  <option value="balanced" selected>Moderado</option>
+                  <option value="aggressive">Agressivo</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:0.6rem">
+              <label for="notes">Observações (opcional)</label>
+              <textarea id="notes" name="notes" rows="3" placeholder="Ex.: foco em dividendos, horizonte 2-5 anos"></textarea>
+            </div>
+
+            <div style="margin-top:0.9rem;display:flex;gap:0.6rem;align-items:center">
+              <button type="submit" class="primary">Iniciar teste</button>
+              <button type="button" id="openSystem" class="secondary">Abrir repositório / docs</button>
+              <span class="muted small">Resultados simulados localmente — sem dados sensíveis</span>
+            </div>
+          </form>
+
+          <div id="feedback" class="result" aria-live="polite"></div>
+        </div>
+
+        <div class="card">
+          <h3>Sobre a demo</h3>
+          <p class="muted small">Esta página é uma interface estática que simula a experiência de onboarding e de execução de uma análise do AI Investment System. Para usar o serviço real, abra o repositório e siga as instruções de implantação.</p>
+          <ul class="small">
+            <li>Link para o código e documentação completa disponível no GitHub.</li>
+            <li>Formulário envia dados apenas localmente (frontend). Nenhuma informação é transmitida.</li>
+            <li>Simulação inclui alocação de portfólio e um gráfico simplificado (texto).</li>
+          </ul>
+
+          <div style="margin-top:0.8rem">
+            <button id="downloadDemo" class="secondary">Baixar relatório demo (JSON)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('demoForm');
+    const feedback = document.getElementById('feedback');
+    const openBtn = document.getElementById('openSystem');
+    const downloadBtn = document.getElementById('downloadDemo');
+
+    openBtn.addEventListener('click', ()=>{
+      window.open('https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system','_blank');
+    });
+
+    form.addEventListener('submit',(ev)=>{
+      ev.preventDefault();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const risk = form.risk.value;
+      if(!name || !email){
+        feedback.innerHTML = '<div style="color:#b33">Por favor preencha nome e e-mail.</div>';
+        return;
+      }
+      feedback.innerHTML = '<div style="padding:0.6rem;background:#eef9f7;border-radius:8px;border:1px solid #d2efe6"><strong>Executando simulação para '+escapeHtml(name)+'…</strong><div style="margin-top:0.6rem">Processando dados de mercado (simulado)…</div></div>';
+
+      // simulate computation
+      setTimeout(()=>{
+        const allocation = simulateAllocation(risk);
+        const report = {
+          user: {name:name,email:email,risk:risk},
+          timestamp: new Date().toISOString(),
+          allocation: allocation,
+          notes: form.notes.value || ''
+        };
+
+        feedback.innerHTML = '<h4>Resultado da simulação</h4>'+
+          '<p class="small muted">Alocação sugerida (simulada):</p>'+
+          '<pre>'+JSON.stringify(report.allocation,null,2)+'</pre>'+
+          '<p class="small">Relatório pronto — use o botão para baixar (JSON).</p>';
+
+        // store lastReport for download
+        window.lastDemoReport = report;
+      },900);
+    });
+
+    downloadBtn.addEventListener('click',()=>{
+      const data = window.lastDemoReport;
+      if(!data){
+        alert('Execute o teste primeiro.');
+        return;
+      }
+      const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'ai-investment-demo-'+(new Date()).toISOString().slice(0,19).replace(/[:T]/g,'-')+'.json';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    function simulateAllocation(risk){
+      if(risk==='conservative') return {cash:0.40,bonds:0.45,stocks:0.12,alts:0.03};
+      if(risk==='aggressive') return {cash:0.03,bonds:0.12,stocks:0.70,alts:0.15};
+      // balanced
+      return {cash:0.08,bonds:0.42,stocks:0.45,alts:0.05};
+    }
+
+    function escapeHtml(str){return str.replace(/[&<>"']/g, (m)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m]));}
+  </script>
+</body>
+</html>
