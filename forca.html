@@ -233,7 +233,7 @@
 
         function lidarTecla(e) {
             if (!jogoAtivo) return;
-            if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+            if (e.key.length === 1 &amp;&amp; /[a-zA-Z]/.test(e.key)) {
                 const letra = e.key.toUpperCase();
                 if (acertadas.has(letra) || erradas.has(letra)) return;
                 if (palavra.includes(letra)) {
@@ -317,10 +317,11 @@
             if (jogoAtivo) removerOuvinteTeclado();
         });
         window.addEventListener('focus', () => {
-            if (jogoAtivo && !listenerTeclado) adicionarOuvinteTeclado();
+            if (jogoAtivo &amp;&amp; !listenerTeclado) adicionarOuvinteTeclado();
         });
     })();
 </script>
 </body>
 </html>
+
 
