@@ -37,25 +37,25 @@
   <div class="content">
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
-        <a href="ai-investment.en.html" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#fff7ed,#ffe8c7);text-decoration:none;color:#4b2e05;box-shadow:0 8px 18px rgba(15,23,42,0.06);">
+        <a href="ai-investment.en.html" data-url="ai-investment.en.html" class="tile-link" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#fff7ed,#ffe8c7);text-decoration:none;color:#4b2e05;box-shadow:0 8px 18px rgba(15,23,42,0.06);">
           <h3 style="margin:0 0 6px;font-size:1.05rem">AI Investment — Interactive Demo</h3>
           <p style="margin:0;font-size:0.92rem;opacity:0.95">Try the demo: simulate allocations or connect to the FastAPI backend for real analysis.</p>
           <div style="margin-top:8px;font-weight:600">Open demo →</div>
         </a>
 
-        <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system" target="_blank" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#eef2ff,#dbeafe);text-decoration:none;color:#0b2e6b;box-shadow:0 8px 18px rgba(2,6,23,0.04);">
+        <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system" data-url="https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system" class="tile-link" target="_blank" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#eef2ff,#dbeafe);text-decoration:none;color:#0b2e6b;box-shadow:0 8px 18px rgba(2,6,23,0.04);">
           <h3 style="margin:0 0 6px;font-size:1.05rem">AI Investment — Source</h3>
           <p style="margin:0;font-size:0.92rem;opacity:0.95">Explore the FastAPI service, orchestrator and agent logic on GitHub.</p>
           <div style="margin-top:8px;font-weight:600">View source →</div>
         </a>
 
-        <a href="projetos.html" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#ecfeff,#cffafe);text-decoration:none;color:#044e4b;box-shadow:0 8px 18px rgba(2,6,23,0.04);">
+        <a href="projetos.html" data-url="projetos.html" class="tile-link" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#ecfeff,#cffafe);text-decoration:none;color:#044e4b;box-shadow:0 8px 18px rgba(2,6,23,0.04);">
           <h3 style="margin:0 0 6px;font-size:1.05rem">Full Portfolio (PT)</h3>
           <p style="margin:0;font-size:0.92rem;opacity:0.95">Curriculum, projects and contact info (Portuguese).</p>
           <div style="margin-top:8px;font-weight:600">Open portfolio →</div>
         </a>
 
-        <a href="forca.html" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#fff1f2,#ffe4e6);text-decoration:none;color:#4b021f;box-shadow:0 8px 18px rgba(15,23,42,0.04);">
+        <a href="forca.html" data-url="forca.html" class="tile-link" style="display:block;padding:18px;border-radius:12px;background:linear-gradient(135deg,#fff1f2,#ffe4e6);text-decoration:none;color:#4b021f;box-shadow:0 8px 18px rgba(15,23,42,0.04);">
           <h3 style="margin:0 0 6px;font-size:1.05rem">Hangman — Web</h3>
           <p style="margin:0;font-size:0.92rem;opacity:0.95">Play the web version of Hangman derived from the Python project.</p>
           <div style="margin-top:8px;font-weight:600">Play →</div>
@@ -67,7 +67,56 @@
         <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system" class="download-btn" style="background:#0b8f6b">Source</a>
       </div>
     </div>
+  <!-- Modal for project preview -->
+  <div id="projModal" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:1200;align-items:center;justify-content:center;padding:24px;">
+    <div id="projOverlay" style="position:absolute;inset:0;background:rgba(2,6,23,0.55);"></div>
+    <div role="dialog" aria-modal="true" style="position:relative;max-width:1100px;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px rgba(2,6,23,0.4);">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#f8fafc;border-bottom:1px solid #e6eef6">
+        <strong id="projTitle">Project preview</strong>
+        <div>
+          <button id="projOpenNew" style="margin-right:8px;padding:8px 10px;border-radius:8px;border:1px solid #e2edf2;background:#fff;">Open in new tab</button>
+          <button id="projClose" aria-label="Close preview" style="padding:8px 10px;border-radius:8px;border:1px solid transparent;background:#0b8f6b;color:#fff;">Close</button>
+        </div>
+      </div>
+      <div style="height:70vh;min-height:360px;">
+        <iframe id="projFrame" src="about:blank" style="width:100%;height:100%;border:0;display:block"></iframe>
+      </div>
+    </div>
+  </div>
+
   <footer style="background:#f4f9fc;text-align:center;padding:1rem;border-top:1px solid #dee9ef">Marco Antonio — Projects</footer>
 </div>
+
+<script>
+  (function(){
+    const modal = document.getElementById('projModal');
+    const overlay = document.getElementById('projOverlay');
+    const frame = document.getElementById('projFrame');
+    const title = document.getElementById('projTitle');
+    const btnClose = document.getElementById('projClose');
+    const btnOpenNew = document.getElementById('projOpenNew');
+    function openModal(url, label){
+      title.textContent = label || url;
+      frame.src = url;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      btnOpenNew.onclick = ()=>window.open(url,'_blank');
+      document.addEventListener('keydown', escHandler);
+    }
+    function closeModal(){ frame.src = 'about:blank'; modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.removeEventListener('keydown', escHandler); }
+    function escHandler(e){ if(e.key==='Escape') closeModal(); }
+    overlay.addEventListener('click', closeModal);
+    btnClose.addEventListener('click', closeModal);
+    // Attach handlers to tiles
+    document.querySelectorAll('.tile-link').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const url = this.dataset.url || this.href;
+        const label = this.querySelector('h3') ? this.querySelector('h3').innerText : url;
+        openModal(url, label);
+      });
+    });
+  })();
+</script>
 </body>
 </html>
