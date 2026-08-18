@@ -91,94 +91,116 @@
     </section>
   </main>
 
-  <!-- Chart.js CDN -->
+  <!-- Chart.js CDN + DataLabels -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script>
-    const form = document.getElementById('demoForm');
-    const feedback = document.getElementById('feedback');
-    const openRepo = document.getElementById('openRepo');
-    const downloadBtn = document.getElementById('downloadDemo');
-    const reportBox = document.getElementById('reportBox');
-    const apiUrlInput = document.getElementById('apiUrl');
-    const useLive = document.getElementById('useLive');
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script>
+      const form = document.getElementById('demoForm');
+      const feedback = document.getElementById('feedback');
+      const openRepo = document.getElementById('openRepo');
+      const downloadBtn = document.getElementById('downloadDemo');
+      const reportBox = document.getElementById('reportBox');
+      const apiUrlInput = document.getElementById('apiUrl');
+      const useLive = document.getElementById('useLive');
 
-    // Chart setup
-    const ctx = document.getElementById('allocChart').getContext('2d');
-    const allocChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: { labels: ['Cash','Bonds','Stocks','Alts'], datasets: [{ data: [25,25,40,10], backgroundColor: ['#94f9c3','#8fd3ff','#ffd68a','#d6b3ff'] }] },
-      options: { plugins:{legend:{position:'bottom'}} }
-    });
-
-    window.lastDemoReport = null;
-
-    openRepo.addEventListener('click', ()=>window.open('https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system','_blank'));
-
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const risk = document.getElementById('risk').value;
-      if(!name || !email){
-        feedback.innerHTML = '<div class="text-sm text-red-600">Preencha nome e e-mail.</div>';
-        return;
-      }
-
-      feedback.innerHTML = '<div class="rounded-lg bg-emerald-50 border border-emerald-100 p-3 text-sm text-emerald-700">Executando simulação…</div>';
-
-      // Prepare payload
-      const payload = { user:{name,email}, risk, notes: document.getElementById('notes').value };
-
-      // If live API requested and URL provided, attempt call
-      if(useLive.checked && apiUrlInput.value.trim()){
-        try{
-          const url = apiUrlInput.value.trim();
-          feedback.innerHTML = '<div class="text-sm text-slate-500">Contactando API: '+escapeHtml(url)+'</div>';
-          const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
-          if(!res.ok) throw new Error('Status '+res.status);
-          const data = await res.json();
-          handleResult(data, true);
-          return;
-        }catch(err){
-          feedback.innerHTML = '<div class="text-sm text-red-600">Falha na chamada à API: '+escapeHtml(err.message)+' — usando simulação local.</div>';
+      // Chart setup
+      const ctx = document.getElementById('allocChart').getContext('2d');
+      // Register datalabels plugin
+      Chart.register(ChartDataLabels);
+      const allocChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Cash','Bonds','Stocks','Alts'],
+          datasets: [{
+            data: [25,25,40,10],
+            backgroundColor: ['#16a34a','#0891b2','#f59e0b','#7c3aed'],
+            hoverOffset: 8,
+            borderRadius: 6,
+            spacing: 4
+          }]
+        },
+        options: {
+          cutout: '56%',
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12 } },
+            tooltip: { callbacks: { label: function(ctx){ const v = ctx.parsed; return ctx.label + ': ' + v + '%'; } } },
+            datalabels: { color: '#fff', formatter: function(value){ return value + '%'; }, font: { weight: '600', size: 12 } }
+          },
+          animation: { animateScale: true, animateRotate: true }
         }
+      });
+
+      window.lastDemoReport = null;
+
+      openRepo.addEventListener('click', ()=>window.open('https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system','_blank'));
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const risk = document.getElementById('risk').value;
+        if(!name || !email){
+          feedback.innerHTML = '<div class="text-sm text-red-600">Preencha nome e e-mail.</div>';
+          return;
       }
 
-      // Local simulation with small delay
-      setTimeout(()=>{
-        const allocation = simulateAllocation(risk);
-        const report = { user:{name,email}, risk, allocation, timestamp:new Date().toISOString(), notes:payload.notes };
-        handleResult(report, false);
-      }, 700);
+        feedback.innerHTML = '<div class="rounded-lg bg-emerald-50 border border-emerald-100 p-3 text-sm text-emerald-700">Executando simulação…</div>';
+
+        // Prepare payload
+        const payload = { user:{name,email}, risk, notes: document.getElementById('notes').value };
+
+        // If live API requested and URL provided, attempt call
+        if(useLive.checked && apiUrlInput.value.trim()){
+          try{
+            const url = apiUrlInput.value.trim();
+            feedback.innerHTML = '<div class="text-sm text-slate-500">Contactando API: '+escapeHtml(url)+'</div>';
+            const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+            if(!res.ok) throw new Error('Status '+res.status);
+            const data = await res.json();
+            handleResult(data, true);
+            return;
+          }catch(err){
+            feedback.innerHTML = '<div class="text-sm text-red-600">Falha na chamada à API: '+escapeHtml(err.message)+' — usando simulação local.</div>';
+          }
+        }
+
+        // Local simulation with small delay
+        setTimeout(()=>{
+          const allocation = simulateAllocation(risk);
+          const report = { user:{name,email}, risk, allocation, timestamp:new Date().toISOString(), notes:payload.notes };
+          handleResult(report, false);
+        }, 700);
     });
 
-    function handleResult(report, fromApi){
-      // Update chart
-      const values = [ (report.allocation.cash||0)*100, (report.allocation.bonds||0)*100, (report.allocation.stocks||0)*100, (report.allocation.alts||0)*100 ];
-      allocChart.data.datasets[0].data = values.map(v=>Math.round(v));
-      allocChart.update();
+      function handleResult(report, fromApi){
+        // Update chart
+        const values = [ (report.allocation.cash||0)*100, (report.allocation.bonds||0)*100, (report.allocation.stocks||0)*100, (report.allocation.alts||0)*100 ];
+        // Ensure percentages are integers that sum to ~100
+        const rounded = values.map(v=>Math.round(v));
+        allocChart.data.datasets[0].data = rounded;
+        allocChart.update();
 
-      // Show report
-      reportBox.classList.remove('hidden');
-      reportBox.innerHTML = '<strong>Relatório '+(fromApi?'<span class="text-emerald-600">(API)</span>':'(Simulado)')+'</strong><pre class="mt-2 text-xs bg-slate-100 p-2 rounded">'+escapeHtml(JSON.stringify(report,null,2))+'</pre>';
+        // Show report
+        reportBox.classList.remove('hidden');
+        reportBox.innerHTML = '<strong>Relatório '+(fromApi?'<span class="text-emerald-600">(API)</span>':'(Simulado)')+'</strong><pre class="mt-2 text-xs bg-slate-100 p-2 rounded">'+escapeHtml(JSON.stringify(report,null,2))+'</pre>';
 
-      window.lastDemoReport = report;
-      feedback.innerHTML = '<div class="text-sm text-emerald-700">Simulação concluída.</div>';
-    }
+        window.lastDemoReport = report;
+        feedback.innerHTML = '<div class="text-sm text-emerald-700">Simulação concluída.</div>';
+      }
 
-    downloadBtn.addEventListener('click', ()=>{
-      if(!window.lastDemoReport){ alert('Execute o teste primeiro.'); return; }
-      const blob = new Blob([JSON.stringify(window.lastDemoReport,null,2)],{type:'application/json'});
-      const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'ai-investment-demo-'+new Date().toISOString()+'.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    });
+      downloadBtn.addEventListener('click', ()=>{
+        if(!window.lastDemoReport){ alert('Execute o teste primeiro.'); return; }
+        const blob = new Blob([JSON.stringify(window.lastDemoReport,null,2)],{type:'application/json'});
+        const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'ai-investment-demo-'+new Date().toISOString()+'.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      });
 
-    function simulateAllocation(risk){
-      if(risk==='conservative') return { cash:0.40, bonds:0.45, stocks:0.12, alts:0.03 };
-      if(risk==='aggressive') return { cash:0.03, bonds:0.12, stocks:0.70, alts:0.15 };
-      return { cash:0.08, bonds:0.42, stocks:0.45, alts:0.05 };
-    }
+      function simulateAllocation(risk){
+        if(risk==='conservative') return { cash:0.40, bonds:0.45, stocks:0.12, alts:0.03 };
+        if(risk==='aggressive') return { cash:0.03, bonds:0.12, stocks:0.70, alts:0.15 };
+        return { cash:0.08, bonds:0.42, stocks:0.45, alts:0.05 };
+      }
 
-    function escapeHtml(str){ return String(str).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
-  </script>
-</body>
-</html>
+      function escapeHtml(str){ return String(str).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
+    </script>
+  </body>
+  </html>
