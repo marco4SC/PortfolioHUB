@@ -151,7 +151,7 @@
         const payload = { user:{name,email}, risk, notes: document.getElementById('notes').value };
 
         // If live API requested and URL provided, attempt call
-        if(useLive.checked && apiUrlInput.value.trim()){
+        if(useLive.checked &amp;&amp; apiUrlInput.value.trim()){
           try{
             const url = apiUrlInput.value.trim();
             feedback.innerHTML = '<div class="text-sm text-slate-500">Contactando API: '+escapeHtml(url)+'</div>';
@@ -201,7 +201,9 @@
         return { cash:0.08, bonds:0.42, stocks:0.45, alts:0.05 };
       }
 
-      function escapeHtml(str){ return String(str).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
+      function escapeHtml(str){ return String(str).replace(/[&amp;<>"']/g, m=>({'&amp;':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
     </script>
   </body>
   </html>
+
+

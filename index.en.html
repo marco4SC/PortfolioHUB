@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Marco Antonio · Computational Engineering Portfolio</title>
-    <meta name="description" content="Marco Antonio - Computational Engineering portfolio. Projects in AI, automation and embedded systems." />
+    <meta name="description" content="Marco Antonio - Computational Engineering portfolio. Projects in AI, automation and embedded systems." >
     <style>
         /* Reuse main site styles for consistency */
         * { margin:0; padding:0; box-sizing:border-box }
@@ -19,6 +19,8 @@
         nav .nav-inner{ max-width:1100px; margin:0 auto; display:flex; gap:1rem; align-items:center; padding:0 1rem }
         nav a{ color:#fff; text-decoration:none }
         .lang-btn{ margin-left:0.6rem; padding:0.3rem 0.6rem; border-radius:12px; background:rgba(255,255,255,0.06); color:#fff }
+        .contact-info{ display:flex; flex-wrap:wrap; gap:1rem; font-size:0.9rem; margin-top:0.6rem }
+        .grid-2col{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.2rem; margin-top:1rem }
     </style>
 </head>
 <body>
@@ -35,19 +37,71 @@
 <div class="container">
   <div class="hero">
     <h1>Marco Antonio de Souza Carvalho</h1>
-    <div style="margin-top:8px; opacity:0.9">Computational Engineering student · Full-stack & AI systems portfolio</div>
-  </div>
-  <div class="content">
-    <div class="card">
-      <h2>About</h2>
-      <p>Computer Engineering student focused on AI systems, backend development, and embedded prototyping. This portfolio hosts demos and project pages.</p>
+    <div style="margin-top:8px; opacity:0.9">Computational Engineering student · Full-stack &amp; AI systems portfolio</div>
+    <div class="contact-info">
+      <span>📍 Brasília/DF, Brazil</span>
+      <span>📞 +55 61 99609-2709</span>
+      <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
+      <span>🔗 <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank">GitHub</a></span>
+      <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">LinkedIn</a></span>
     </div>
+  </div>
 
-    <div style="margin-top:1.2rem; text-align:center">
-      <a class="download-btn" href="projetos.en.html">View Full Projects</a>
-    </div>
+  <div class="content">
+
+    <section class="card section">
+      <h2>Education</h2>
+      <div class="grid-2col">
+        <div>
+          <h3>Computational Engineering</h3>
+          <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>Since Jul/2024 – expected 2028</p>
+        </div>
+        <div>
+          <h3>Exchange Program</h3>
+          <p><strong>University of Aveiro (Portugal)</strong><br>Jul/2022 – Sep/2023</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Technical Skills</h2>
+      <div class="grid-2col">
+        <div>
+          <ul>
+            <li>Python, FastAPI, REST APIs</li>
+            <li>JavaScript, Node.js, Frontend basics</li>
+            <li>Git / GitHub, CI/CD</li>
+            <li>Embedded prototyping, Arduino</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>Data analysis: pandas, NumPy, SciPy</li>
+            <li>Testing with pytest</li>
+            <li>Basic C++ and electronics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Featured Projects</h2>
+      <div class="grid-2col">
+        <div>
+          <h3>AI Investment System</h3>
+          <p>Multi-agent decision-support API: market and macro data ingestion, specialized AI analysis, auditable orchestration, portfolio utilities, and alerts. Built with Python, FastAPI and common data-science tools.</p>
+          <p><a class="download-btn" href="ai-investment.en.html">Open demo</a></p>
+        </div>
+        <div>
+          <h3>Personal Portfolio</h3>
+          <p>Responsive portfolio hosted on GitHub Pages with printable CV and project listings.</p>
+          <p><a class="download-btn" href="projetos.en.html">View projects</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer style="background:#f4f9fc; text-align:center; padding:1.2rem; font-size:0.8rem; border-top:1px solid #dee9ef; margin-top:1.2rem">Site updated Aug/2026</footer>
   </div>
-  <footer style="background:#f4f9fc; text-align:center; padding:1.2rem; font-size:0.8rem; border-top:1px solid #dee9ef">Site updated Aug/2026</footer>
 </div>
 </body>
 </html>

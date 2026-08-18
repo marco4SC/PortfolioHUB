@@ -1,0 +1,18 @@
+
+C:\Users\marcs\Kepler\worktrees\PortfolioHUB-job-6a42a281\academicos\projetos\projeto-inicial-web\index.html
+  2:2  error  <html> is missing required "lang" attribute  element-required-attributes
+
+C:\Users\marcs\Kepler\worktrees\PortfolioHUB-job-6a42a281\index.en.html
+  38:93  error  Raw "&" must be encoded as "&amp;"  no-raw-characters
+
+C:\Users\marcs\Kepler\worktrees\PortfolioHUB-job-6a42a281\index.html
+  282:72  error  Raw "&" must be encoded as "&amp;"  no-raw-characters
+  339:56  error  Raw "&" must be encoded as "&amp;"  no-raw-characters
+  361:55  error  Raw "&" must be encoded as "&amp;"  no-raw-characters
+
+✖ 5 problems (5 errors, 0 warnings)
+
+More information:
+  https://html-validate.org/rules/element-required-attributes.html
+  https://html-validate.org/rules/no-raw-characters.html
+
