@@ -174,3 +174,17 @@ Este sistema é uma **ferramenta de apoio à decisão**, não um consultor de in
 **Marco Antonio de Souza Carvalho**  
 Estudante de Engenharia da Computação — UniCEUB  
 [LinkedIn](https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329) · [Portfólio](https://marco4sc.github.io/PortfolioHUB/)
+---
+## 📦 CI/CD & Deployment
+
+This repository includes a Dockerfile and a GitHub Actions workflow to build and publish the backend container image to GitHub Container Registry (GHCR):
+
+- Image tags: ghcr.io/<your-user>/ai-investment:latest and ghcr.io/<your-user>/ai-investment:<sha>
+
+Optional: automatic Render deploy
+
+- Create a Render service (Web Service) and set the Repo as container or use GHCR image.
+- Add repository secrets: RENDER_API_KEY and RENDER_SERVICE_ID (see Render docs).
+- The workflow will POST to Render to trigger a deploy when those secrets are present.
+
+Security note: restrict CORS origins in api/main.py before deploying to production (replace allow_origins=["*"] with your domain).

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Investment System — Demo UX</title>
+  <meta name="description" content="Interactive demo UX for the AI Investment System. Simulate investment recommendations or connect to a deployed FastAPI endpoint." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:,">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <nav style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
+      <a href="index.en.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
+      <div style="flex:1"></div>
+      <a href="projetos.en.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projects</a>
+      <a href="ai-investment.en.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">AI Investment</a>
+      <a href="index.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">PT</a>
+    </div>
+  </nav>
+  <main class="min-h-screen flex items-center justify-center p-6">
+    <section class="w-full max-w-5xl bg-white rounded-2xl shadow-lg overflow-hidden grid lg:grid-cols-2 gap-6">
+      <div class="p-8">
+        <header class="mb-4">
+          <h1 class="text-2xl font-semibold text-slate-800">AI Investment System — Demo</h1>
+          <p class="text-sm text-slate-500 mt-1">Try the UX with a professional layout. Use the live API (if deployed) or the local simulator.</p>
+        </header>
+        <form id="demoForm" class="space-y-4">
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <label class="block text-sm text-slate-700">Name<span class="text-red-500"> *</span></label>
+              <input id="name" name="name" type="text" required class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Full name">
+            </div>
+            <div class="w-28">
+              <label class="block text-sm text-slate-700">Age</label>
+              <input id="age" name="age" type="number" inputmode="numeric" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="28">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-700">Email<span class="text-red-500"> *</span></label>
+              <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="email@example.com">
+            </div>
+            <div>
+              <label class="block text-sm text-slate-700">Risk profile</label>
+              <select id="risk" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2">
+                <option value="conservative">Conservative</option>
+                <option value="balanced" selected>Balanced</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-slate-700">Notes</label>
+            <textarea id="notes" rows="3" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="E.g., dividend focus, 2-5y horizon"></textarea>
+          </div>
+
+          <fieldset class="flex items-center gap-3"><legend class="sr-only">Options</legend>
+            <input id="useLive" type="checkbox" class="h-4 w-4 text-emerald-600">
+            <label for="useLive" class="text-sm text-slate-700">Use live API</label>
+            <input id="apiUrl" type="url" placeholder="https://api.example.com/analyze/" class="ml-auto mt-0 block w-64 rounded-lg border border-slate-200 px-3 py-2 text-sm">
+          </fieldset>
+
+          <div class="flex items-center gap-3">
+            <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 text-white px-4 py-2">Start test</button>
+            <button type="button" id="openRepo" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm">Open repository</button>
+            <span class="text-sm text-slate-500 ml-auto">Local simulation used if API is not configured.</span>
+          </div>
+        </form>
+
+        <div id="feedback" class="mt-6"></div>
+      </div>
+
+      <aside class="p-6 bg-slate-50 border-l lg:border-l-0 lg:border-slate-100">
+        <h2 class="text-lg font-medium text-slate-800">Result</h2>
+        <p class="text-sm text-slate-500 mt-1">Suggested allocation and simplified report.</p>
+        <div class="mt-4"><canvas id="allocChart" width="400" height="300" aria-label="Allocation chart" role="img"></canvas></div>
+        <div id="reportBox" class="mt-4 bg-white border border-slate-100 rounded-lg p-3 text-sm text-slate-700 hidden"></div>
+        <div class="mt-4 flex gap-2"><button id="downloadDemo" type="button" class="ml-auto inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">Download JSON</button></div>
+      </aside>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <script>
+    // Same JS logic as in Portuguese demo (keeps behavior)
+    const form = document.getElementById('demoForm');
+    const feedback = document.getElementById('feedback');
+    const openRepo = document.getElementById('openRepo');
+    const downloadBtn = document.getElementById('downloadDemo');
+    const reportBox = document.getElementById('reportBox');
+    const apiUrlInput = document.getElementById('apiUrl');
+    const useLive = document.getElementById('useLive');
+    Chart.register(ChartDataLabels);
+    const ctx = document.getElementById('allocChart').getContext('2d');
+    const allocChart = new Chart(ctx,{type:'doughnut',data:{labels:['Cash','Bonds','Stocks','Alts'],datasets:[{data:[25,25,40,10],backgroundColor:['#16a34a','#0891b2','#f59e0b','#7c3aed']}]},options:{cutout:'56%',plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:function(ctx){return ctx.label+': '+ctx.parsed+'%'}}},datalabels:{color:'#fff',formatter:function(v){return v+'%'}},},animation:{animateScale:true,animateRotate:true}});
+    window.lastDemoReport=null; openRepo.addEventListener('click',()=>window.open('https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system','_blank'));
+    form.addEventListener('submit',async(e)=>{e.preventDefault();const name=form.name.value.trim();const email=form.email.value.trim();const risk=document.getElementById('risk').value;if(!name||!email){feedback.innerHTML='<div class="text-sm text-red-600">Please fill name and email.</div>';return;}feedback.innerHTML='<div class="rounded-lg bg-emerald-50 border border-emerald-100 p-3 text-sm text-emerald-700">Running simulation…</div>';const payload={user:{name,email},risk,notes:document.getElementById('notes').value};if(useLive.checked && apiUrlInput.value.trim()){try{const url=apiUrlInput.value.trim();feedback.innerHTML='<div class="text-sm text-slate-500">Contacting API: '+escapeHtml(url)+'</div>';const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(!res.ok) throw new Error('Status '+res.status);const data=await res.json();handleResult(data,true);return;}catch(err){feedback.innerHTML='<div class="text-sm text-red-600">API call failed: '+escapeHtml(err.message)+' — using local simulation.</div>'}}setTimeout(()=>{const allocation=simulateAllocation(risk);const report={user:{name,email},risk,allocation,timestamp:new Date().toISOString(),notes:payload.notes};handleResult(report,false);},700);});
+    function handleResult(report,fromApi){const values=[(report.allocation.cash||0)*100,(report.allocation.bonds||0)*100,(report.allocation.stocks||0)*100,(report.allocation.alts||0)*100];const rounded=values.map(v=>Math.round(v));allocChart.data.datasets[0].data=rounded;allocChart.update();reportBox.classList.remove('hidden');reportBox.innerHTML='<strong>Report '+(fromApi?'<span style="color:#16a34a">(API)</span>':'(Simulated)')+'</strong><pre style="background:#f1f5f9;padding:8px;border-radius:6px;margin-top:8px">'+escapeHtml(JSON.stringify(report,null,2))+'</pre>';window.lastDemoReport=report;feedback.innerHTML='<div class="text-sm text-emerald-700">Simulation finished.</div>'}
+    downloadBtn.addEventListener('click',()=>{if(!window.lastDemoReport){alert('Run the test first.');return}const blob=new Blob([JSON.stringify(window.lastDemoReport,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='ai-investment-demo-'+new Date().toISOString()+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)});
+    function simulateAllocation(risk){if(risk==='conservative')return{cash:0.40,bonds:0.45,stocks:0.12,alts:0.03};if(risk==='aggressive')return{cash:0.03,bonds:0.12,stocks:0.70,alts:0.15};return{cash:0.08,bonds:0.42,stocks:0.45,alts:0.05}}
+    function escapeHtml(str){return String(str).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m]))}
+  </script>
+</body>
+</html>
