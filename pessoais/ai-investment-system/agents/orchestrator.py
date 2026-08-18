@@ -9,7 +9,7 @@ from typing import List
 import anthropic
 
 from agents.base import AgentSignal
-from agents.technical import TechnicalAgent
+from agents.Technical import TechnicalAgent
 from agents.fundamental import FundamentalAgent
 from agents.sentiment import SentimentAgent
 from agents.macro import MacroAgent
