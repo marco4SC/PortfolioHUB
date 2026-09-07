@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Marco Antonio · Portfólio Engenharia Computacional</title>
-    <meta name="description" content="Marco Antonio - Portfólio em Engenharia Computacional. Projetos de IA, automação e sistemas embarcados. Veja o AI Investment System demo." >
-    <meta property="og:title" content="Marco Antonio · Portfólio" >
-    <meta property="og:description" content="Portfólio de Marco Antonio — projetos em AI, Python, e sistemas embarcados. Confira o demo do AI Investment System." >
-    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/" >
-    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/" >
+    <meta name="description" content="Marco Antonio - Portfólio em Engenharia Computacional. Projetos de IA, automação e sistemas embarcados. Veja o AI Investment System demo.">
+    <meta property="og:title" content="Marco Antonio · Portfólio">
+    <meta property="og:description" content="Portfólio de Marco Antonio — projetos em AI, Python, e sistemas embarcados. Confira o demo do AI Investment System.">
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/">
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/">
     <style>
-        /* ========== ESTILOS GERAIS (TELA) ========== */
+        /* ========== RESET & BASE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -23,6 +23,12 @@
             color: #1e2a3e;
             line-height: 1.5;
             padding: 2rem 1rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .container {
@@ -32,12 +38,32 @@
             border-radius: 28px;
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
             overflow: hidden;
+            transition: box-shadow 0.3s ease;
         }
 
+        .container:hover {
+            box-shadow: 0 30px 45px -12px rgba(0,0,0,0.15);
+        }
+
+        /* ========== HERO ========== */
         .hero {
             background: linear-gradient(135deg, #0b2b40, #1a4a5f);
             color: white;
             padding: 2rem 2rem 1.8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .hero h1 {
@@ -45,6 +71,12 @@
             margin-bottom: 0.5rem;
             font-weight: 600;
             letter-spacing: -0.3px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .hero .sub {
@@ -53,6 +85,7 @@
             margin-bottom: 1.2rem;
             border-left: 3px solid #6ab0de;
             padding-left: 1rem;
+            animation: slideDown 0.9s ease-out;
         }
 
         .contact-info {
@@ -64,6 +97,7 @@
             padding: 0.8rem 1rem;
             border-radius: 20px;
             margin-top: 0.5rem;
+            animation: slideDown 1s ease-out;
         }
 
         .contact-info span {
@@ -75,18 +109,29 @@
         .contact-info a {
             color: #ffd966;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         .contact-info a:hover {
+            color: #ffe08a;
             text-decoration: underline;
         }
 
+        /* ========== CONTEÚDO ========== */
         .content {
             padding: 2rem;
         }
 
         .section {
             margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
@@ -110,14 +155,27 @@
             border-radius: 20px;
             padding: 1.2rem 1.4rem;
             border: 1px solid #e2edf2;
-            transition: 0.2s;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardFadeIn 0.6s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes cardFadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .card:hover {
             border-color: #bdd4de;
             background: white;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: translateY(-4px) scale(1.01);
         }
 
         .card h3 {
@@ -139,6 +197,12 @@
             display: inline-block;
             margin-right: 0.4rem;
             margin-bottom: 0.4rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .badge:hover {
+            background: #cde0e9;
+            transform: scale(1.05);
         }
 
         .skill-list {
@@ -155,7 +219,7 @@
             background: #dce9ef;
         }
 
-        /* ========== BOTÃO (TELA) ========== */
+        /* ========== BOTÃO ========== */
         .download-btn-wrapper {
             text-align: center;
             margin: 2rem 0 1rem 0;
@@ -170,7 +234,7 @@
             border-radius: 40px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: background 0.2s;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -178,236 +242,270 @@
 
         .download-btn:hover {
             background: #145244;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
-        /* Rodapé normal */
+        /* ========== RODAPÉ MELHORADO ========== */
         footer {
             background: #f4f9fc;
-            text-align: center;
-            padding: 1.2rem;
-            font-size: 0.75rem;
-            color: #4b6f7e;
+            padding: 1.5rem 1rem;
             border-top: 1px solid #dee9ef;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4b6f7e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        /* ========== ESTILOS DE IMPRESSÃO (PDF NATIVO) ========== */
-        @media print {
-            /* Remove fundo da página e margens padrão */
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .container {
-                box-shadow: none;
-                border-radius: 0;
-                max-width: 100%;
-                margin: 0;
-            }
-
-            /* Força cores no gradiente e evita que fique preto */
-            .hero {
-                background: linear-gradient(135deg, #0b2b40, #1a4a5f) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            /* Esconde elementos que não devem ir para o PDF */
-            .download-btn-wrapper,
-            footer,
-            .content a[href*="github.com"] { /* esconde o link do GitHub na impressão, se quiser */
-                display: none !important;
-            }
-
-            /* Ajustes de fonte e espaçamento para papel */
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .content {
-                padding: 1rem 1.5rem;
-            }
-
-            .section {
-                margin-bottom: 1.2rem;
-                page-break-inside: avoid;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-
-            .card {
-                box-shadow: none;
-                border: 1px solid #ccc;
-                page-break-inside: avoid;
-            }
-
-            .grid-2col {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            /* Evita quebras estranhas */
-            h1, h2, h3, h4 {
-                page-break-after: avoid;
-            }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0.3rem;
         }
 
+        .footer-links a {
+            color: #1e6f5c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .footer-links a:hover {
+            color: #0e4a3d;
+            transform: translateY(-2px);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+
+        .footer-update {
+            font-size: 0.7rem;
+            background: #e8f0f5;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+            color: #2d5a6b;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
         @media (max-width: 700px) {
             .hero h1 { font-size: 1.6rem; }
             .content { padding: 1.5rem; }
             .section-title { font-size: 1.3rem; }
+            .footer-links { gap: 0.8rem; }
+        }
+
+        /* ========== IMPRESSÃO ========== */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; max-width: 100%; margin: 0; }
+            .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .download-btn-wrapper, .footer-links, .footer-update { display: none !important; }
+            .card { box-shadow: none; border: 1px solid #ccc; }
+            .grid-2col { grid-template-columns: 1fr 1fr; }
+            .section { opacity: 1 !important; transform: none !important; }
+            .card { opacity: 1 !important; transform: none !important; animation: none !important; }
         }
     </style>
 </head>
 <body>
-<nav style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0;position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
-    <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
-    <div style="flex:1"></div>
-    <a href="projetos.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projetos</a>
-    <a href="ai-investment.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">AI Investment</a>
-    <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">GitHub</a>
-    <a href="index.en.html" style="color:#fff;text-decoration:none;padding:0.3rem 0.6rem;border-radius:12px;margin-left:0.6rem;background:transparent">EN</a>
-  </div>
-</nav>
-<div class="container">
-    <!-- Conteúdo completo do currículo (visível na tela e no PDF) -->
-    <div id="curriculo">
-        <div class="hero">
-            <h1>Marco Antonio de Souza Carvalho</h1>
-            <div class="sub">Estudante de Engenharia da Computação · Portfólio Full-stack e sistemas de IA</div>
-            <div class="contact-info">
-                <span>📍 SQSW 101, Bloco G, Apto 405 – Brasília/DF</span>
-                <span>📞 (61) 99609-2709</span>
-                <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
-                <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">LinkedIn</a></span>
+    <nav style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0;position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
+        <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
+            <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
+            <div style="flex:1"></div>
+            <a href="projetos.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projetos</a>
+            <a href="ai-investment.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">AI Investment</a>
+            <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">GitHub</a>
+            <a href="index.en.html" style="color:#fff;text-decoration:none;padding:0.3rem 0.6rem;border-radius:12px;margin-left:0.6rem;background:transparent">EN</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="curriculo">
+            <!-- HERO -->
+            <div class="hero">
+                <h1>Marco Antonio de Souza Carvalho</h1>
+                <div class="sub">Estudante de Engenharia da Computação · Portfólio Full-stack e sistemas de IA</div>
+                <div class="contact-info">
+                    <span>📍 SQSW 101, Bloco G, Apto 405 – Brasília/DF</span>
+                    <span>📞 (61) 99609-2709</span>
+                    <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
+                    <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">LinkedIn</a></span>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- FORMAÇÃO -->
+                <div class="section" data-delay="0">
+                    <div class="section-title">🎓 Formação Acadêmica</div>
+                    <div class="grid-2col">
+                        <div class="card">
+                            <h3>📘 Engenharia da Computação</h3>
+                            <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>jul/2024 – previsão 2028 | 4º semestre (cursando)<br>Disciplinas: Eletrônica Básica, Programação, Algoritmos, Circuitos Digitais</p>
+                        </div>
+                        <div class="card">
+                            <h3>🌍 Intercâmbio acadêmico</h3>
+                            <p><strong>Universidade de Aveiro (Portugal)</strong><br>jul/2022 a set/2023 – experiência internacional e vivência acadêmica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HABILIDADES -->
+                <div class="section" data-delay="100">
+                    <div class="section-title">⚙️ Habilidades Técnicas</div>
+                    <div class="card" style="background:#f9fbfd;">
+                        <div class="skill-list">
+                            <span class="badge">Pacote Office (interm.)</span>
+                            <span class="badge">Inglês Fluente</span>
+                            <span class="badge">Git / GitHub</span>
+                            <span class="badge">Python (interm.)</span>
+                            <span class="badge">JavaScript / Node.js</span>
+                            <span class="badge">Express · REST APIs</span>
+                            <span class="badge">FastAPI · LLM APIs</span>
+                            <span class="badge">C++ (básico/interm.)</span>
+                            <span class="badge">Eletrônica básica</span>
+                            <span class="badge">Soldagem / prototipagem</span>
+                            <span class="badge">Multímetro / leitura esquemas</span>
+                            <span class="badge">Cisco Cybersecurity</span>
+                            <span class="badge">Noções de redes e Linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ATIVIDADES -->
+                <div class="section" data-delay="200">
+                    <div class="section-title">🔧 Principais Atividades</div>
+                    <div class="grid-2col">
+                        <div class="card">✔ Suporte na manutenção de equipamentos eletroeletrônicos</div>
+                        <div class="card">✔ Abertura e acompanhamento de chamados técnicos (planilhas, GLPI, Trello)</div>
+                        <div class="card">✔ Documentação de procedimentos usando Git/GitHub</div>
+                        <div class="card">✔ Soldagem e montagem de circuitos de baixa tensão</div>
+                        <div class="card">✔ Leitura de manuais em inglês e tradução técnica</div>
+                    </div>
+                </div>
+
+                <!-- PROJETOS -->
+                <div class="section" data-delay="300">
+                    <div class="section-title">📁 Projetos &amp; Prática</div>
+                    <div class="grid-2col">
+                        <div class="card">
+                            <h3>AI Investment System</h3>
+                            <p>Sistema multi-agente para apoio à decisão: coleta de dados de mercado e macro, análise por agentes especializados, orquestração auditável, utilitários de risco de portfólio e alertas. Construído com Python, FastAPI, APIs de LLM, Pandas, NumPy e SciPy.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🔌 Oficina de Eletrônica</h3>
+                            <p>Protótipos com Arduino – sensores e instrumentação. Montagem de circuitos e medições.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🐍 GitHub pessoal</h3>
+                            <p>Códigos Python para automação e análise. Controle de versão com Git e boas práticas.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🔐 Certificação Cisco</h3>
+                            <p>Introduction to Cybersecurity – fundamentos de segurança e redes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IDIOMAS E COMPLEMENTOS -->
+                <div class="section" data-delay="400">
+                    <div class="section-title">🌎 Idiomas &amp; Complementos</div>
+                    <div class="grid-2col">
+                        <div class="card">
+                            <h3>🗣️ Idiomas</h3>
+                            <p><strong>Inglês:</strong> Fluente (leitura, escrita e conversação – 1 ano no exterior + Brasas)<br>
+                            <strong>Espanhol:</strong> Básico (compreensão)</p>
+                        </div>
+                        <div class="card">
+                            <h3>📄 Informações adicionais</h3>
+                            <p>✔ Disponibilidade: segunda a sexta.<br>
+                            ✔ Início imediato<br>
+                            ✔ Carteira de habilitação (carro)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINK GITHUB -->
+                <div style="text-align: center; margin-top: 1rem;">
+                    <p style="background:#eef2f5; display:inline-block; padding:0.4rem 1.2rem; border-radius:40px; font-size:0.8rem;">
+                        📂 Portfólio versionado no GitHub: <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank">marco4SC/PortfolioHUB</a>
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="content">
-            <div class="section">
-                <div class="section-title">🎓 Formação Acadêmica</div>
-                <div class="grid-2col">
-                    <div class="card">
-                        <h3>📘 Engenharia da Computação</h3>
-                        <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>jul/2024 – previsão 2028 | 4º semestre (cursando)<br>Disciplinas: Eletrônica Básica, Programação, Algoritmos, Circuitos Digitais</p>
-                    </div>
-                    <div class="card">
-                        <h3>🌍 Intercâmbio acadêmico</h3>
-                        <p><strong>Universidade de Aveiro (Portugal)</strong><br>jul/2022 a set/2023 – experiência internacional e vivência acadêmica.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">⚙️ Habilidades Técnicas</div>
-                <div class="card" style="background:#f9fbfd;">
-                    <div class="skill-list">
-                        <span class="badge">Pacote Office (interm.)</span>
-                        <span class="badge">Inglês Fluente</span>
-                        <span class="badge">Git / GitHub</span>
-                        <span class="badge">Python (interm.)</span>
-                        <span class="badge">JavaScript / Node.js</span>
-                        <span class="badge">Express · REST APIs</span>
-                        <span class="badge">FastAPI · LLM APIs</span>
-                        <span class="badge">C++ (básico/interm.)</span>
-                        <span class="badge">Eletrônica básica</span>
-                        <span class="badge">Soldagem / prototipagem</span>
-                        <span class="badge">Multímetro / leitura esquemas</span>
-                        <span class="badge">Cisco Cybersecurity</span>
-                        <span class="badge">Noções de redes e Linux</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">🔧 Principais Atividades</div>
-                <div class="grid-2col">
-                    <div class="card">✔ Suporte na manutenção de equipamentos eletroeletrônicos</div>
-                    <div class="card">✔ Abertura e acompanhamento de chamados técnicos (planilhas, GLPI, Trello)</div>
-                    <div class="card">✔ Documentação de procedimentos usando Git/GitHub</div>
-                    <div class="card">✔ Soldagem e montagem de circuitos de baixa tensão</div>
-                    <div class="card">✔ Leitura de manuais em inglês e tradução técnica</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">📁 Projetos &amp; Prática</div>
-                <div class="grid-2col">
-                    <div class="card">
-                        <h3>AI Investment System</h3>
-                        <p>Sistema multi-agente para apoio à decisão: coleta de dados de mercado e macro, análise por agentes especializados, orquestração auditável, utilitários de risco de portfólio e alertas. Construído com Python, FastAPI, APIs de LLM, Pandas, NumPy e SciPy.</p>
-                    </div>
-                    <div class="card">
-                        <h3>🔌 Oficina de Eletrônica</h3>
-                        <p>Protótipos com Arduino – sensores e instrumentação. Montagem de circuitos e medições.</p>
-                    </div>
-                    <div class="card">
-                        <h3>🐍 GitHub pessoal</h3>
-                        <p>Códigos Python para automação e análise. Controle de versão com Git e boas práticas.</p>
-                    </div>
-                    <div class="card">
-                        <h3>🔐 Certificação Cisco</h3>
-                        <p>Introduction to Cybersecurity – fundamentos de segurança e redes.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">🌎 Idiomas &amp; Complementos</div>
-                <div class="grid-2col">
-                    <div class="card">
-                        <h3>🗣️ Idiomas</h3>
-                        <p><strong>Inglês:</strong> Fluente (leitura, escrita e conversação – 1 ano no exterior + Brasas)<br>
-                        <strong>Espanhol:</strong> Básico (compreensão)</p>
-                    </div>
-                    <div class="card">
-                        <h3>📄 Informações adicionais</h3>
-                        <p>✔ Disponibilidade: segunda a sexta.<br>
-                        ✔ Início imediato<br>
-                        ✔ Carteira de habilitação (carro)</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Link do GitHub (vai ser oculto na impressão) -->
-            <div style="text-align: center; margin-top: 1rem;">
-                <p style="background:#eef2f5; display:inline-block; padding:0.4rem 1.2rem; border-radius:40px; font-size:0.8rem;">
-                📂 Portfólio versionado no GitHub: <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank">marco4SC/PortfolioHUB</a>
-                </p>
-            </div>
+        <!-- BOTÃO DOWNLOAD -->
+        <div class="download-btn-wrapper">
+            <button type="button" class="download-btn" onclick="window.print()">
+                📄 Baixar Currículo em PDF
+            </button>
         </div>
-    </div>
 
-    <!-- Botão de download (não aparece no PDF) -->
-    <div class="download-btn-wrapper">
-        <button type="button" class="download-btn" onclick="window.print()">
-            📄 Baixar Currículo em PDF
-        </button>
-    </div>
+        <div style="text-align: center; margin: 1.5rem 0;">
+            <a href="projetos.html" style="
+                background: #1e6f5c;
+                color: white;
+                padding: 0.6rem 1.8rem;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: 500;
+                display: inline-block;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.06)';">🚀 Ver Projetos Completos</a>
+        </div>
 
-    <div style="text-align: center; margin: 1.5rem 0;">
-    <a href="projetos.html" style="
-        background: #1e6f5c;
-        color: white;
-        padding: 0.6rem 1.8rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-block;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    ">🚀 Ver Projetos Completos</a>
-</div>
-
+        <!-- ========== RODAPÉ MELHORADO ========== -->
         <footer>
-            <p>👨‍💻 Página desenvolvida para estágio em Engenharia Computacional – atualizada em maio/2026</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/marco4SC" target="_blank">🐙 GitHub</a>
+                <a href="mailto:Marc.souz.carvalh@gmail.com">✉️ E-mail</a>
+                <a href="index.en.html">🌐 English version</a>
+            </div>
+            <div class="footer-copy">
+                &copy; <span id="ano-atual"></span> Marco Antonio de Souza Carvalho – Todos os direitos reservados.
+            </div>
+            <div class="footer-update">
+                Última atualização: <span id="data-atualizacao"></span>
+            </div>
         </footer>
-</div>
+    </div>
+
+    <script>
+        // ========== ANIMAÇÃO COM INTERSECTION OBSERVER ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+            sections.forEach(section => observer.observe(section));
+
+            // ========== DATA ATUAL NO RODAPÉ ==========
+            const agora = new Date();
+            const ano = agora.getFullYear();
+            document.getElementById('ano-atual').textContent = ano;
+
+            const dataFormatada = agora.toLocaleDateString('pt-BR', {
+                day: '2-digit', month: 'long', year: 'numeric'
+            });
+            document.getElementById('data-atualizacao').textContent = dataFormatada;
+        });
+    </script>
 </body>
 </html>
-
-
