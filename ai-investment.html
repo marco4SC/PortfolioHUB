@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI Investment System — Demo UX</title>
-  <!-- Tailwind Play CDN for rapid styling (suitable for demos) -->
+  <title>AI Investment System — Decision Intelligence</title>
+  <meta name="description" content="Demonstração de uma plataforma de inteligência para análise de ativos, risco e construção de portfólio.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="data:,"><style>
     /* small accessibility tweaks */
@@ -26,6 +26,13 @@
     .site-footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; margin-bottom:0.7rem; }
     .site-footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #c9dce5; border-radius:999px; color:#1e5f6e; background:#fff; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
     .site-footer-links a:hover { background:#1e6f5c; color:#fff; transform:translateY(-2px); }
+    .product-badge { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .65rem; border-radius:999px; background:#ecfdf5; color:#166534; font-size:.75rem; font-weight:600; }
+    .value-card { border:1px solid #e2e8f0; border-radius:.85rem; padding:.8rem; background:#f8fafc; }
+    .value-card strong { display:block; color:#0f766e; font-size:.9rem; margin-bottom:.2rem; }
+    .disclaimer { border-left:3px solid #f59e0b; background:#fffbeb; color:#92400e; padding:.7rem .85rem; border-radius:.5rem; }
+    .production-grid { max-width:80rem; margin:0 auto; padding:0 1.5rem 3rem; }
+    .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
+    .production-card h3 { font-weight:700; color:#163d4c; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
@@ -39,19 +46,30 @@
       <a class="language" href="ai-investment.en.html">EN</a>
     </div>
   </nav>
-  <main class="min-h-screen flex items-center justify-center p-6">
+  <main class="min-h-screen">
+    <section class="max-w-5xl mx-auto px-6 pt-10 pb-4">
+      <span class="product-badge">● Produto em evolução · foco em decisão auditável</span>
+      <h1 class="mt-3 text-3xl md:text-4xl font-bold text-slate-800">Do dado de mercado à decisão com contexto</h1>
+      <p class="mt-3 max-w-3xl text-slate-600">O AI Investment System organiza sinais técnicos, fundamentos, notícias e cenário macroeconômico para ajudar o investidor a comparar alternativas, entender riscos e registrar uma tese. Ele apoia a decisão; não executa ordens nem promete retorno.</p>
+      <div class="grid md:grid-cols-3 gap-3 mt-6">
+        <div class="value-card"><strong>Pesquisa estruturada</strong><span class="text-xs text-slate-600">Dados e premissas reunidos em um relatório reproduzível.</span></div>
+        <div class="value-card"><strong>Risco antes do retorno</strong><span class="text-xs text-slate-600">Limites de posição, cenários e fatores que podem invalidar a tese.</span></div>
+        <div class="value-card"><strong>Pronto para evoluir</strong><span class="text-xs text-slate-600">Base para paper trading, alertas e integrações com APIs.</span></div>
+      </div>
+    </section>
+    <section class="max-w-5xl mx-auto px-6 pb-8">
     <section class="w-full max-w-5xl bg-white rounded-2xl shadow-lg overflow-hidden grid lg:grid-cols-2 gap-6">
       <div class="p-8">
         <header class="mb-4">
-          <h1 class="text-2xl font-semibold text-slate-800">AI Investment System — Demo</h1>
-          <p class="text-sm text-slate-500 mt-1">Experimente a UX com visual profissional. A página pode usar a API real (configurável) ou uma simulação local.</p>
+          <h2 class="text-2xl font-semibold text-slate-800">Monte um cenário de análise</h2>
+          <p class="text-sm text-slate-500 mt-1">Use dados fictícios para entender o fluxo. Nenhum dado é enviado por padrão.</p>
         </header>
 
         <form id="demoForm" class="space-y-4">
           <div class="flex gap-4">
             <div class="flex-1">
-              <label class="block text-sm text-slate-700">Nome<span class="text-red-500"> *</span></label>
-              <input id="name" name="name" type="text" required class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300" placeholder="Seu nome completo">
+              <label class="block text-sm text-slate-700">Nome (opcional)</label>
+              <input id="name" name="name" type="text" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300" placeholder="Como prefere ser chamado">
             </div>
 
             <div class="w-28">
@@ -62,8 +80,8 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm text-slate-700">E-mail<span class="text-red-500"> *</span></label>
-              <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="email@exemplo.com">
+              <label class="block text-sm text-slate-700">Ativo para analisar</label>
+              <input id="asset" name="asset" type="text" value="PETR4" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Ex.: PETR4, BTC, IVVB11">
             </div>
 
             <div>
@@ -76,6 +94,25 @@
             </div>
           </div>
 
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-700">Objetivo</label>
+              <select id="objective" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2">
+                <option value="preservacao">Preservação de capital</option>
+                <option value="crescimento" selected>Crescimento de longo prazo</option>
+                <option value="renda">Geração de renda</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-700">Horizonte</label>
+              <select id="horizon" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2">
+                <option value="curto">Até 2 anos</option>
+                <option value="medio" selected>2 a 5 anos</option>
+                <option value="longo">Mais de 5 anos</option>
+              </select>
+            </div>
+          </div>
+
           <div>
             <label class="block text-sm text-slate-700">Observações</label>
             <textarea id="notes" rows="3" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Ex.: foco em dividendos, horizonte 2-5 anos"></textarea>
@@ -84,27 +121,27 @@
           <fieldset class="flex items-center gap-3">
             <legend class="sr-only">Opções</legend>
             <input id="useLive" type="checkbox" class="h-4 w-4 text-emerald-600">
-            <label for="useLive" class="text-sm text-slate-700">Usar API real</label>
+            <label for="useLive" class="text-sm text-slate-700">Conectar uma API implantada</label>
             <input id="apiUrl" type="url" placeholder="https://api.exemplo.com/analyze" class="ml-auto mt-0 block w-64 rounded-lg border border-slate-200 px-3 py-2 text-sm">
           </fieldset>
 
           <div class="flex items-center gap-3">
-            <button type="submit" class="site-action primary">Iniciar teste</button>
+            <button type="submit" class="site-action primary">Gerar análise</button>
             <button type="button" id="openRepo" class="site-action secondary">Abrir repositório</button>
-            <span class="text-sm text-slate-500 ml-auto">Resultados simulados localmente se a API não estiver configurada.</span>
+            <span class="text-sm text-slate-500 ml-auto">Modo local por padrão.</span>
           </div>
         </form>
 
         <div id="feedback" class="mt-6"></div>
 
         <div class="mt-6 text-sm text-slate-500">
-          <strong>Nota:</strong> a demo é segura — nenhum dado sensível é enviado por padrão. Ative "Usar API real" com o endpoint correto e garanta que seu backend esteja implantado com CORS habilitado.
+          <div class="disclaimer"><strong>Transparência:</strong> esta experiência usa dados simulados quando a API não está conectada. Não é recomendação financeira e não envia ordens para corretoras.</div>
         </div>
       </div>
 
       <aside class="p-6 bg-slate-50 border-l lg:border-l-0 lg:border-slate-100">
-        <h2 class="text-lg font-medium text-slate-800">Resultado</h2>
-        <p class="text-sm text-slate-500 mt-1">Visualização da alocação sugerida e relatório simplificado.</p>
+        <h2 class="text-lg font-medium text-slate-800">Painel de decisão</h2>
+        <p class="text-sm text-slate-500 mt-1">Distribuição ilustrativa, nível de risco e tese para revisão humana.</p>
 
         <div class="mt-4">
           <canvas id="allocChart" width="400" height="300" aria-label="Alocação sugerida" role="img"></canvas>
@@ -116,6 +153,15 @@
           <button id="downloadDemo" type="button" class="site-action secondary ml-auto">Baixar relatório (JSON)</button>
         </div>
       </aside>
+    </section>
+    </section>
+    <section class="production-grid">
+      <div class="grid md:grid-cols-3 gap-4">
+        <article class="production-card"><h3>Aplicação real 01 · Research</h3><p class="mt-2 text-sm text-slate-600">Reduzir o tempo de leitura de ativos e manter uma trilha de evidências para cada tese antes do comitê de investimentos.</p></article>
+        <article class="production-card"><h3>Aplicação real 02 · Risco</h3><p class="mt-2 text-sm text-slate-600">Monitorar concentração, drawdown e mudanças macroeconômicas com alertas explicáveis, sem operar automaticamente.</p></article>
+        <article class="production-card"><h3>Aplicação real 03 · Simulação</h3><p class="mt-2 text-sm text-slate-600">Validar estratégias em paper trading e backtests versionados antes de considerar qualquer integração com uma corretora.</p></article>
+      </div>
+      <p class="mt-5 text-center text-xs text-slate-500">Próximas entregas: dados históricos + backtesting · paper trading · alertas · autenticação · observabilidade · controles de conformidade.</p>
     </section>
   </main>
   <footer class="site-footer">
@@ -174,18 +220,20 @@
 
       form.addEventListener('submit', async (e)=>{
         e.preventDefault();
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
+        const name = form.name.value.trim() || 'Investidor demonstrativo';
+        const asset = form.asset.value.trim().toUpperCase() || 'PETR4';
         const risk = document.getElementById('risk').value;
-        if(!name || !email){
-          feedback.innerHTML = '<div class="text-sm text-red-600">Preencha nome e e-mail.</div>';
+        if(!asset){
+          feedback.innerHTML = '<div class="text-sm text-red-600">Informe um ativo para analisar.</div>';
           return;
-      }
+        }
 
         feedback.innerHTML = '<div class="rounded-lg bg-emerald-50 border border-emerald-100 p-3 text-sm text-emerald-700">Executando simulação…</div>';
 
         // Prepare payload
-        const payload = { user:{name,email}, risk, notes: document.getElementById('notes').value };
+        const objective = document.getElementById('objective').value;
+        const horizon = document.getElementById('horizon').value;
+        const payload = { user:{name}, asset, risk, objective, horizon, notes: document.getElementById('notes').value };
 
         // If live API requested and URL provided, attempt call
         if(useLive.checked &amp;&amp; apiUrlInput.value.trim()){
@@ -205,7 +253,7 @@
         // Local simulation with small delay
         setTimeout(()=>{
           const allocation = simulateAllocation(risk);
-          const report = { user:{name,email}, risk, allocation, timestamp:new Date().toISOString(), notes:payload.notes };
+          const report = buildLocalReport({name, asset, risk, objective, horizon, allocation, notes:payload.notes});
           handleResult(report, false);
         }, 700);
     });
@@ -223,7 +271,7 @@
         reportBox.innerHTML = '<strong>Relatório '+(fromApi?'<span class="text-emerald-600">(API)</span>':'(Simulado)')+'</strong><pre class="mt-2 text-xs bg-slate-100 p-2 rounded">'+escapeHtml(JSON.stringify(report,null,2))+'</pre>';
 
         window.lastDemoReport = report;
-        feedback.innerHTML = '<div class="text-sm text-emerald-700">Simulação concluída.</div>';
+        feedback.innerHTML = '<div class="text-sm text-emerald-700">Análise gerada. Revise as premissas antes de tomar qualquer decisão.</div>';
       }
 
       downloadBtn.addEventListener('click', ()=>{
@@ -231,6 +279,23 @@
         const blob = new Blob([JSON.stringify(window.lastDemoReport,null,2)],{type:'application/json'});
         const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'ai-investment-demo-'+new Date().toISOString()+'.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
       });
+
+      function buildLocalReport(input){
+        const riskLabel = {conservative:'Conservador',balanced:'Moderado',aggressive:'Agressivo'}[input.risk];
+        const confidence = input.risk === 'aggressive' ? 0.61 : input.risk === 'conservative' ? 0.78 : 0.71;
+        return {
+          user:{name:input.name},
+          asset:input.asset,
+          scenario:{risk_profile:riskLabel, objective:input.objective, horizon:input.horizon},
+          allocation:input.allocation,
+          decision:{signal:'REVIEW', confidence, position_limit_pct:input.risk === 'aggressive' ? 8 : 12},
+          risk_checks:['Diversificação por classe', 'Limite de concentração', 'Revisão humana obrigatória'],
+          thesis:'Cenário ilustrativo para organizar hipóteses, riscos e próximos passos. Não representa uma recomendação personalizada.',
+          next_steps:['Validar dados e fontes', 'Executar backtest', 'Acompanhar em paper trading'],
+          timestamp:new Date().toISOString(),
+          notes:input.notes
+        };
+      }
 
       function simulateAllocation(risk){
         if(risk==='conservative') return { cash:0.40, bonds:0.45, stocks:0.12, alts:0.03 };

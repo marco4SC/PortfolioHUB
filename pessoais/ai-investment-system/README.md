@@ -145,21 +145,31 @@ curl -X POST http://localhost:8000/analyze/PETR4
 
 ---
 
-## 🗺️ Roadmap
+## 🎯 Produto e aplicações reais
 
-- [x] Data pipeline com APIs gratuitas (brapi, CoinGecko, BCB)
-- [x] 4 agentes especializados com Claude API
-- [x] Orquestrador com tese de investimento auditável
-- [x] Gestão de risco (stop-loss, VaR, Kelly sizing)
-- [x] Otimização de portfólio (Markowitz + Risk Parity)
-- [x] API REST com FastAPI
-- [x] Alert notification module
-- [ ] Dashboard React com Recharts
-- [ ] Backtesting com dados históricos
-- [ ] Scheduler para análises automáticas diárias
-- [ ] Paper trading automatizado
-- [ ] Integração com corretora (XP/Clear API)
-- [ ] Deploy em VPS com CI/CD
+O objetivo do projeto é evoluir de um estudo de agentes para uma camada de **inteligência de investimentos com revisão humana**. O primeiro valor entregue não é “prever o mercado”, mas reduzir trabalho repetitivo, tornar as premissas comparáveis e registrar por que uma decisão foi tomada.
+
+Aplicações priorizadas:
+
+1. **Research assistido**: gerar um dossiê reproduzível de um ativo com fontes, sinais, riscos e perguntas para revisão.
+2. **Monitoramento de risco**: acompanhar concentração, drawdown, mudanças macro e quebra de premissas com alertas explicáveis.
+3. **Paper trading**: testar teses com dados históricos e carteira virtual antes de envolver capital real.
+4. **Operação auditável**: manter versões de prompts, dados, decisões e aprovações para facilitar revisão e conformidade.
+
+O sistema não promete rentabilidade, não substitui um profissional habilitado e não deve executar ordens automaticamente sem validação jurídica, controles de risco e aprovação explícita.
+
+## 🗺️ Roadmap de crescimento
+
+- [x] Fundação de API REST, fontes de dados e agentes especializados
+- [x] Primeiros controles de risco e orquestração de sinais
+- [x] Demo pública com modo simulado e exportação de relatório
+- [ ] Normalizar fontes, timestamps e qualidade dos dados
+- [ ] Backtesting com dados históricos e métricas de benchmark
+- [ ] Paper trading com ledger imutável e reconciliação
+- [ ] Scheduler, alertas e observabilidade
+- [ ] Autenticação, segregação de dados e trilha de auditoria
+- [ ] Dashboard operacional para revisão humana
+- [ ] Integração com corretora somente após validação de segurança e compliance
 
 ---
 
