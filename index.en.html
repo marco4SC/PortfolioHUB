@@ -152,6 +152,14 @@
             .card { box-shadow: none; border-color: #ccc; }
             h1, h2, h3, h4 { page-break-after: avoid; }
         }
+            @media (prefers-reduced-motion: reduce) {
+                *, *::before, *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    scroll-behavior: auto !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
         @media (max-width: 700px) {
             body { padding: 1rem 0.5rem; }
             .hero h1 { font-size: 1.6rem; }
@@ -175,16 +183,28 @@
     <div id="resume">
         <div class="hero">
             <h1>Marco Antonio de Souza Carvalho</h1>
-            <div class="sub">Computational Engineering student · Full-stack portfolio and AI systems</div>
+            <div class="sub">Computational Engineering student · Backend, APIs and AI systems</div>
+            <p style="max-width:760px;margin:1rem 0 1.25rem;font-size:1.05rem">I build practical projects with Python, JavaScript/Node.js, REST APIs and service integrations. I am currently directing my training toward Java backend development and Spring Boot, with a focus on quality, security and continuous improvement.</p>
             <div class="contact-info">
                 <span>📍 Brasilia, DF, Brazil</span>
-                <span>📞 +55 (61) 99609-2709</span>
                 <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
                 <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
             </div>
         </div>
 
         <div class="content">
+            <section class="section">
+                <div class="section-title">👋 Professional profile</div>
+                <div class="card">
+                    <p>I am seeking an internship or junior role in backend, data engineering, AI or cloud. My focus is combining Computer Engineering fundamentals with published projects, documentation and hands-on integration of APIs, data and external services.</p>
+                    <ul style="padding-left:1.2rem;margin-top:0.8rem">
+                        <li>Portfolio published on GitHub Pages with open-source code.</li>
+                        <li>Projects using REST APIs, FastAPI, Node.js, Python, Java/OOP and service integrations.</li>
+                        <li>International experience and fluent English for documentation and collaboration.</li>
+                    </ul>
+                </div>
+            </section>
+
             <section class="section">
                 <div class="section-title">🎓 Education</div>
                 <div class="grid-2col">

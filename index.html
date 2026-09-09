@@ -124,9 +124,14 @@
 
         .section {
             margin-bottom: 2rem;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .js-enabled .section {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .section.visible {
@@ -176,6 +181,42 @@
             background: white;
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
             transform: translateY(-4px) scale(1.01);
+        }
+
+        .hero-summary {
+            max-width: 760px;
+            margin: 1rem 0 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        .hero-action {
+            display: inline-block;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .hero-action.primary {
+            background: #1e6f5c;
+            border-color: #1e6f5c;
+        }
+
+        .evidence-list {
+            padding-left: 1.2rem;
+        }
+
+        .evidence-list li {
+            margin-bottom: 0.45rem;
         }
 
         .card h3 {
@@ -351,6 +392,20 @@
             .footer-links { gap: 0.8rem; }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .section, .js-enabled .section, .card {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
         /* ========== IMPRESSÃO ========== */
         @media print {
             body { background: white; padding: 0; }
@@ -380,10 +435,15 @@
             <!-- HERO -->
             <div class="hero">
                 <h1>Marco Antonio de Souza Carvalho</h1>
-                <div class="sub">Estudante de Engenharia da Computação · Portfólio Full-stack e sistemas de IA</div>
-                <div class="contact-info">
-                    <span>📍 SQSW 101, Bloco G, Apto 405 – Brasília/DF</span>
-                    <span>📞 (61) 99609-2709</span>
+                <div class="sub">Estudante de Engenharia da Computação · Backend, APIs e sistemas de IA</div>
+                <p class="hero-summary">Construo projetos práticos com Python, JavaScript/Node.js, APIs REST e integração de serviços. Atualmente direciono minha formação para backend Java e Spring Boot, com foco em qualidade, segurança e evolução contínua.</p>
+                <div class="hero-actions">
+                    <a class="hero-action primary" href="projetos.html">Ver projetos</a>
+                    <a class="hero-action" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">Conectar no LinkedIn</a>
+                    <a class="hero-action" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">Ver código no GitHub</a>
+                    </div>
+                    <div class="contact-info">
+                    <span>📍 Brasília/DF, Brasil</span>
                     <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
                     <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">LinkedIn</a></span>
                 </div>
@@ -391,6 +451,18 @@
 
             <div class="content">
                 <!-- FORMAÇÃO -->
+                <div class="section" data-delay="0">
+                    <div class="section-title">👋 Perfil profissional</div>
+                    <div class="card">
+                        <p>Busco estágio ou posição júnior em backend, engenharia de dados, IA ou cloud. Meu diferencial é combinar fundamentos de Engenharia da Computação com projetos publicados, documentação e prática de integração entre APIs, dados e serviços externos.</p>
+                        <ul class="evidence-list" style="margin-top:0.8rem">
+                            <li>Portfolio publicado em GitHub Pages e código aberto no GitHub.</li>
+                            <li>Projetos com APIs REST, FastAPI, Node.js, Python, Java/POO e integração de serviços.</li>
+                            <li>Experiência internacional e inglês fluente para documentação e colaboração.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="section" data-delay="0">
                     <div class="section-title">🎓 Formação Acadêmica</div>
                     <div class="grid-2col">
@@ -529,6 +601,7 @@
 </div>
 <script>
     (() => {
+        document.documentElement.classList.add('js-enabled');
         const downloadPdfButton = document.getElementById('downloadPdf');
 
         if (!downloadPdfButton) {
