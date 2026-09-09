@@ -81,7 +81,14 @@
         }
         .contact-info a { color: #ffd966; }
         .content { padding: 2rem; }
-        .section { margin-bottom: 2rem; }
+        .section {
+            margin-bottom: 2rem;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .js-enabled .section { opacity: 0; transform: translateY(30px); }
+        .section.visible { opacity: 1; transform: translateY(0); }
         .section-title {
             font-size: 1.5rem;
             font-weight: 600;
@@ -140,6 +147,44 @@
             font-size: 0.75rem;
             color: #4b6f7e;
             border-top: 1px solid #dee9ef;
+            width: 100%;
+            min-height: 116px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.85rem;
+            border: 1px solid #c9dce5;
+            border-radius: 999px;
+            color: #1e5f6e;
+            background: #fff;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .footer-links a:hover {
+            background: #1e6f5c;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .footer-copy,
+        .footer-update { font-size: 0.75rem; }
+        .card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
         }
         @media print {
             @page { size: A4; margin: 12mm; }
@@ -160,6 +205,10 @@
                     animation-iteration-count: 1 !important;
                     scroll-behavior: auto !important;
                     transition-duration: 0.01ms !important;
+                }
+                .section, .js-enabled .section, .card {
+                    opacity: 1 !important;
+                    transform: none !important;
                 }
             }
         @media (max-width: 700px) {
@@ -325,12 +374,20 @@
     </div>
 
     <footer>
-        <p>👨‍💻 Portfolio for Computational Engineering opportunities · updated Sep/2026</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+            <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+            <a href="mailto:Marc.souz.carvalh@gmail.com">✉️ Email</a>
+            <a href="index.html">🌐 Portuguese version</a>
+        </div>
+        <div class="footer-copy">© <span id="current-year"></span> Marco Antonio de Souza Carvalho</div>
+        <div class="footer-update">Last updated: <span id="last-updated"></span></div>
     </footer>
 </div>
 
 <script>
     (() => {
+        document.documentElement.classList.add('js-enabled');
         const downloadPdfButton = document.getElementById('downloadPdf');
         if (!downloadPdfButton) return;
 
@@ -342,6 +399,37 @@
                 downloadPdfButton.disabled = false;
                 downloadPdfButton.textContent = '📄 Save resume as PDF';
             }, 100);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const showSection = (section) => section.classList.add('visible');
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, currentObserver) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            showSection(entry.target);
+                            currentObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+                sections.forEach((section) => observer.observe(section));
+            } else {
+                sections.forEach(showSection);
+            }
+
+            const currentYear = document.getElementById('current-year');
+            const lastUpdated = document.getElementById('last-updated');
+            const now = new Date();
+
+            if (currentYear) currentYear.textContent = String(now.getFullYear());
+            if (lastUpdated) lastUpdated.textContent = now.toLocaleDateString('en-US', {
+                month: 'long',
+                day: '2-digit',
+                year: 'numeric'
+            });
         });
     })();
 </script>
