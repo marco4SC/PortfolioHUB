@@ -44,9 +44,15 @@
         }
         nav a { color: #fff; text-decoration: none; }
         .nav-link {
-            padding: 0.4rem 0.8rem;
-            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 0 0.85rem;
+            border-radius: 999px;
             background: rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
         }
         .lang-link {
             color: #1e2a3e;
@@ -57,6 +63,18 @@
         }
         .nav-link.active,
         .nav-link:hover { background: #1e6f5c; }
+
+        .nav-link.linkedin {
+            color: #1e6f5c;
+            background: #f4f9fc;
+            border: 1px solid #c9dce5;
+            font-weight: 600;
+        }
+
+        .nav-link.linkedin:hover {
+            color: #fff;
+            background: #1e6f5c;
+        }
         .hero {
             background: linear-gradient(135deg, #0b2b40, #1a4a5f);
             color: white;
@@ -224,7 +242,7 @@
         <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
         <div style="flex:1"></div>
         <a class="nav-link" href="projetos.en.html">Projects</a>
-        <a class="nav-link active" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="lang-link" href="index.html">PT</a>
     </div>

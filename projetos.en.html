@@ -16,10 +16,12 @@
         nav { background: linear-gradient(135deg,#0b2b40,#1a4a5f); padding: 0.6rem 0; position: sticky; top: 0; z-index: 40; }
         .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; padding: 0 1rem; }
         nav a { color: #fff; text-decoration: none; }
-        .nav-link { padding: 0.4rem 0.8rem; border-radius: 14px; background: rgba(255,255,255,0.06); }
+        .nav-link { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:0 0.85rem; border-radius:999px; background:rgba(255,255,255,0.06); font-size:0.85rem; transition:background 0.2s, color 0.2s, transform 0.2s; }
         .lang-link { color: #1e2a3e; background: #f4f9fc; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 12px; }
         .nav-link.active,
         .nav-link:hover { background: #1e6f5c; }
+        .nav-link.linkedin { color:#1e6f5c; background:#f4f9fc; border:1px solid #c9dce5; font-weight:600; }
+        .nav-link.linkedin:hover { color:#fff; background:#1e6f5c; }
         .hero { background: linear-gradient(135deg,#0b2b40,#1a4a5f); color: #fff; padding: 2rem; text-align: center; }
         .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
         .hero .sub { opacity: 0.85; }
@@ -30,7 +32,10 @@
         .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.7rem 0; }
         .tech-stack span { background: #e8f0f4; color: #1e5f6e; font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 20px; }
         .project-links a { background: #1e6f5c; color: #fff; padding: 0.4rem 1.2rem; border-radius: 20px; text-decoration: none; font-size: 0.8rem; display: inline-block; margin: 0.5rem 0.5rem 0 0; }
-        footer { background: #f4f9fc; text-align: center; padding: 1.2rem; font-size: 0.75rem; color: #4b6f7e; border-top: 1px solid #dee9ef; }
+        footer { background:#f4f9fc; text-align:center; padding:1.2rem; font-size:0.75rem; color:#4b6f7e; border-top:1px solid #dee9ef; }
+        .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; margin-bottom:0.7rem; }
+        .footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #c9dce5; border-radius:999px; color:#1e5f6e; background:#fff; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
+        .footer-links a:hover { background:#1e6f5c; color:#fff; transform:translateY(-2px); }
         @media (max-width: 700px) { body { padding: 1rem 0.5rem; } .hero h1 { font-size: 1.6rem; } .content { padding: 1.5rem; } }
     </style>
 </head>
@@ -40,7 +45,7 @@
         <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
         <div style="flex:1"></div>
         <a class="nav-link" href="projetos.en.html">Projects</a>
-        <a class="nav-link" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="lang-link" href="projetos.html">PT</a>
     </div>
@@ -114,7 +119,14 @@
             </div>
         </div>
     </div>
-    <footer>👨‍💻 Projects by Marco Antonio de Souza Carvalho · updated Sep/2026</footer>
+    <footer>
+        <div class="footer-links">
+            <a href="index.en.html">Back to resume</a>
+            <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <p>👨‍💻 Projects by Marco Antonio de Souza Carvalho · updated Sep/2026</p>
+    </footer>
 </div>
 </body>
 </html>
