@@ -7,6 +7,15 @@
   <meta name="description" content="Interactive demo UX for the AI Investment System. Simulate investment recommendations or connect to a deployed FastAPI endpoint." >
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="data:,">
+  <style>
+    .site-nav a:hover, .site-nav a.active { background:#1e6f5c !important; }
+    .site-nav .language { color:#1e2a3e !important; background:#f4f9fc !important; font-weight:600; }
+    .site-action { display:inline-flex; align-items:center; gap:0.5rem; border-radius:0.75rem; padding:0.55rem 1rem; font-size:0.875rem; border:1px solid transparent; cursor:pointer; }
+    .site-action.primary { background:#1e6f5c; color:#fff; }
+    .site-action.primary:hover { background:#145244; }
+    .site-action.secondary { background:#fff; color:#334155; border-color:#e2e8f0; }
+    .site-action.secondary:hover { background:#f8fafc; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
   <nav style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0">
@@ -14,8 +23,9 @@
       <a href="index.en.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
       <div style="flex:1"></div>
       <a href="projetos.en.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projects</a>
-      <a href="ai-investment.en.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">AI Investment</a>
-      <a href="index.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">PT</a>
+      <a href="ai-investment.en.html" class="active" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">AI Investment</a>
+      <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">LinkedIn</a>
+      <a href="index.html" class="language" style="color:#1e2a3e;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">PT</a>
     </div>
   </nav>
   <main class="min-h-screen flex items-center justify-center p-6">
@@ -65,8 +75,8 @@
           </fieldset>
 
           <div class="flex items-center gap-3">
-            <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 text-white px-4 py-2">Start test</button>
-            <button type="button" id="openRepo" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm">Open repository</button>
+            <button type="submit" class="site-action primary">Start test</button>
+            <button type="button" id="openRepo" class="site-action secondary">Open repository</button>
             <span class="text-sm text-slate-500 ml-auto">Local simulation used if API is not configured.</span>
           </div>
         </form>
@@ -79,7 +89,7 @@
         <p class="text-sm text-slate-500 mt-1">Suggested allocation and simplified report.</p>
         <div class="mt-4"><canvas id="allocChart" width="400" height="300" aria-label="Allocation chart" role="img"></canvas></div>
         <div id="reportBox" class="mt-4 bg-white border border-slate-100 rounded-lg p-3 text-sm text-slate-700 hidden"></div>
-        <div class="mt-4 flex gap-2"><button id="downloadDemo" type="button" class="ml-auto inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">Download JSON</button></div>
+        <div class="mt-4 flex gap-2"><button id="downloadDemo" type="button" class="site-action secondary ml-auto">Download JSON</button></div>
       </aside>
     </section>
   </main>
@@ -106,4 +116,3 @@
   </script>
 </body>
 </html>
-

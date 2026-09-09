@@ -211,6 +211,26 @@
             border-color: #1e6f5c;
         }
 
+        .site-nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.06);
+            margin-left: 0.2rem;
+        }
+
+        .site-nav-link.active,
+        .site-nav-link:hover {
+            background: #1e6f5c;
+        }
+
+        .site-nav-link.language {
+            color: #1e2a3e;
+            background: #f4f9fc;
+            font-weight: 600;
+        }
+
         .evidence-list {
             padding-left: 1.2rem;
         }
@@ -424,10 +444,10 @@
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
     <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
     <div style="flex:1"></div>
-    <a href="projetos.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projetos</a>
-    <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">LinkedIn</a>
-    <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">GitHub</a>
-    <a href="index.en.html" style="color:#1e2a3e;text-decoration:none;padding:0.3rem 0.6rem;border-radius:12px;margin-left:0.6rem;background:#f4f9fc;font-weight:600">EN</a>
+    <a class="site-nav-link" href="projetos.html">Projetos</a>
+    <a class="site-nav-link active" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="site-nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="site-nav-link language" href="index.en.html">EN</a>
   </div>
 </nav>
     <div class="container">
@@ -569,21 +589,7 @@
         <p class="print-help">Na janela de impressão, escolha “Salvar como PDF” como destino.</p>
     </div>
 
-        <div style="text-align: center; margin: 1.5rem 0;">
-            <a href="projetos.html" style="
-                background: #1e6f5c;
-                color: white;
-                padding: 0.6rem 1.8rem;
-                border-radius: 30px;
-                text-decoration: none;
-                font-weight: 500;
-                display: inline-block;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-                transition: all 0.3s ease;
-            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.06)';">🚀 Ver Projetos Completos</a>
-        </div>
-
-        <!-- ========== RODAPÉ MELHORADO ========== -->
+            <!-- ========== RODAPÉ MELHORADO ========== -->
         <footer>
             <div class="footer-links">
                 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">🔗 LinkedIn</a>

@@ -9,9 +9,30 @@
   <link rel="icon" href="data:,"><style>
     /* small accessibility tweaks */
     .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0 }
+    .site-nav { background:linear-gradient(135deg,#0b2b40,#1a4a5f); padding:0.6rem 1rem; }
+    .site-nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:1rem; }
+    .site-nav a { color:#fff; text-decoration:none; padding:0.4rem 0.8rem; border-radius:14px; background:rgba(255,255,255,0.06); }
+    .site-nav a:first-child { background:transparent; padding-left:0; font-weight:600; }
+    .site-nav a:hover, .site-nav a.active { background:#1e6f5c; }
+    .site-nav .language { color:#1e2a3e; background:#f4f9fc; font-weight:600; }
+    .site-action { display:inline-flex; align-items:center; gap:0.5rem; border-radius:0.75rem; padding:0.55rem 1rem; font-size:0.875rem; border:1px solid transparent; cursor:pointer; }
+    .site-action.primary { background:#1e6f5c; color:#fff; }
+    .site-action.primary:hover { background:#145244; }
+    .site-action.secondary { background:#fff; color:#334155; border-color:#e2e8f0; }
+    .site-action.secondary:hover { background:#f8fafc; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html">Marco Antonio</a>
+      <span class="flex-1"></span>
+      <a href="projetos.html">Projetos</a>
+      <a class="active" href="ai-investment.html">AI Investment</a>
+      <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="language" href="ai-investment.en.html">EN</a>
+    </div>
+  </nav>
   <main class="min-h-screen flex items-center justify-center p-6">
     <section class="w-full max-w-5xl bg-white rounded-2xl shadow-lg overflow-hidden grid lg:grid-cols-2 gap-6">
       <div class="p-8">
@@ -62,8 +83,8 @@
           </fieldset>
 
           <div class="flex items-center gap-3">
-            <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 text-white px-4 py-2 hover:bg-emerald-700">Iniciar teste</button>
-            <button type="button" id="openRepo" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm">Abrir repositório</button>
+            <button type="submit" class="site-action primary">Iniciar teste</button>
+            <button type="button" id="openRepo" class="site-action secondary">Abrir repositório</button>
             <span class="text-sm text-slate-500 ml-auto">Resultados simulados localmente se a API não estiver configurada.</span>
           </div>
         </form>
@@ -86,7 +107,7 @@
         <div id="reportBox" class="mt-4 bg-white border border-slate-100 rounded-lg p-3 text-sm text-slate-700 hidden"></div>
 
         <div class="mt-4 flex gap-2">
-          <button id="downloadDemo" type="button" class="ml-auto inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">Baixar relatório (JSON)</button>
+          <button id="downloadDemo" type="button" class="site-action secondary ml-auto">Baixar relatório (JSON)</button>
         </div>
       </aside>
     </section>
@@ -205,5 +226,3 @@
     </script>
   </body>
   </html>
-
-
