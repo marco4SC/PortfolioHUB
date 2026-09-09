@@ -2,160 +2,326 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Antonio · Computational Engineering Portfolio</title>
-    <meta name="description" content="Marco Antonio - Computational Engineering portfolio. Projects in AI, automation and embedded systems." >
+    <meta name="description" content="Marco Antonio's portfolio featuring backend, AI, Python, Java, REST APIs, data and engineering projects.">
+    <meta property="og:title" content="Marco Antonio · Portfolio">
+    <meta property="og:description" content="Portfolio featuring backend, AI, Python, Java, REST APIs and engineering projects.">
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/index.en.html">
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/index.en.html">
     <style>
-        /* Reuse main site styles for consistency */
-        * { margin:0; padding:0; box-sizing:border-box }
-        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background:#eef2f5; color:#1e2a3e; line-height:1.5; padding:2rem 1rem }
-        .container{ max-width:1100px; margin:0 auto; background:white; border-radius:28px; box-shadow:0 20px 35px -12px rgba(0,0,0,0.1); overflow:hidden }
-        .hero{ background:linear-gradient(135deg,#0b2b40,#1a4a5f); color:white; padding:2rem }
-        .hero h1{ font-size:2.2rem }
-        .content{ padding:2rem }
-        .card{ background:#f9fbfd; border-radius:20px; padding:1.2rem; border:1px solid #e2edf2 }
-        .download-btn{ background:#1e6f5c; color:white; padding:0.8rem 2rem; border-radius:40px; text-decoration:none; display:inline-block }
-        nav{ background:linear-gradient(135deg,#0b2b40,#1a4a5f); padding:0.6rem 0 }
-        nav .nav-inner{ max-width:1100px; margin:0 auto; display:flex; gap:1rem; align-items:center; padding:0 1rem }
-        nav a{ color:#fff; text-decoration:none }
-        .lang-btn{ margin-left:0.6rem; padding:0.3rem 0.6rem; border-radius:12px; background:rgba(255,255,255,0.06); color:#fff }
-        .contact-info{ display:flex; flex-wrap:wrap; gap:1rem; font-size:0.9rem; margin-top:0.6rem }
-        .grid-2col{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.2rem; margin-top:1rem }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef2f5;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        nav {
+            background: linear-gradient(135deg,#0b2b40,#1a4a5f);
+            padding: 0.6rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+        nav a { color: #fff; text-decoration: none; }
+        .nav-link {
+            padding: 0.4rem 0.8rem;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.06);
+        }
+        .lang-link {
+            color: #1e2a3e;
+            background: #f4f9fc;
+            font-weight: 600;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            color: white;
+            padding: 2rem;
+        }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .hero .sub {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #6ab0de;
+            padding-left: 1rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.08);
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+        }
+        .contact-info a { color: #ffd966; }
+        .content { padding: 2rem; }
+        .section { margin-bottom: 2rem; }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-left: 5px solid #1e6f5c;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            color: #0e3b4b;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #f9fbfd;
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e2edf2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .card h3 { color: #1c6d62; margin-bottom: 0.5rem; }
+        .badge {
+            background: #e0eef4;
+            color: #1e5f6e;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0 0.4rem 0.4rem 0;
+        }
+        .download-btn {
+            background: #1e6f5c;
+            color: white;
+            border: 0;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .download-btn:hover { background: #145244; }
+        .download-btn:focus-visible {
+            outline: 3px solid #ffd966;
+            outline-offset: 3px;
+        }
+        .download-btn-wrapper { text-align: center; margin: 2rem 0 1rem; }
+        .print-help { color: #4b6f7e; font-size: 0.8rem; margin-top: 0.6rem; }
+        footer {
+            background: #f4f9fc;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.75rem;
+            color: #4b6f7e;
+            border-top: 1px solid #dee9ef;
+        }
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            body { background: white; padding: 0; margin: 0; print-color-adjust: exact; }
+            nav, .download-btn-wrapper, footer, .content a[href*="github.com"] {
+                display: none !important;
+            }
+            .container { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .hero { print-color-adjust: exact; }
+            .content { padding: 1rem 1.5rem; }
+            .section, .card { page-break-inside: avoid; }
+            .card { box-shadow: none; border-color: #ccc; }
+            h1, h2, h3, h4 { page-break-after: avoid; }
+        }
+        @media (max-width: 700px) {
+            body { padding: 1rem 0.5rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 <nav>
-  <div class="nav-inner">
-    <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
-    <div style="flex:1"></div>
-    <a href="projetos.en.html" class="lang-btn">Projects</a>
-    <a href="ai-investment.en.html" class="lang-btn" style="background:#1e6f5c">AI Investment</a>
-    <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" class="lang-btn">GitHub</a>
-    <a href="index.html" class="lang-btn" style="background:transparent">PT</a>
-  </div>
+    <div class="nav-inner">
+        <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
+        <div style="flex:1"></div>
+        <a class="nav-link" href="projetos.en.html">Projects</a>
+        <a class="nav-link" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="lang-link" href="index.html">PT</a>
+    </div>
 </nav>
+
 <div class="container">
-  <div class="hero" style="padding:3.2rem 2rem; text-align:center">
-    <h1 style="font-size:2.6rem; margin-bottom:6px">Marco Antonio — Projects &amp; Demos</h1>
-    <div style="margin-top:8px; opacity:0.95; font-size:1.05rem">A compact hub of interactive demos, tools and engineering projects — inspired by playful, clear project hubs (see neal.fun)</div>
-    <div style="margin-top:14px">
-      <a class="download-btn tile-link" href="projetos.en.html" data-url="projetos.en.html" style="padding:0.8rem 1.6rem; font-weight:600">Explore Projects</a>
-      <a class="download-btn tile-link" href="ai-investment.en.html" data-url="ai-investment.en.html" style="margin-left:12px; background:#0b8f6b">Try AI Demo</a>
+    <div id="resume">
+        <div class="hero">
+            <h1>Marco Antonio de Souza Carvalho</h1>
+            <div class="sub">Computational Engineering student · Full-stack portfolio and AI systems</div>
+            <div class="contact-info">
+                <span>📍 Brasilia, DF, Brazil</span>
+                <span>📞 +55 (61) 99609-2709</span>
+                <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+            </div>
+        </div>
+
+        <div class="content">
+            <section class="section">
+                <div class="section-title">🎓 Education</div>
+                <div class="grid-2col">
+                    <div class="card">
+                        <h3>📘 Computational Engineering</h3>
+                        <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>Jul/2024 – expected 2028 | Currently in the 4th semester<br>Courses: Basic Electronics, Programming, Algorithms and Digital Circuits</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌍 Academic exchange</h3>
+                        <p><strong>University of Aveiro, Portugal</strong><br>Jul/2022 – Sep/2023 · international academic and cultural experience.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">⚙️ Technical Skills</div>
+                <div class="card">
+                    <span class="badge">Fluent English</span>
+                    <span class="badge">Git / GitHub</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">JavaScript / Node.js</span>
+                    <span class="badge">Express · REST APIs</span>
+                    <span class="badge">FastAPI · LLM APIs</span>
+                    <span class="badge">Java / OOP</span>
+                    <span class="badge">SQL</span>
+                    <span class="badge">C++</span>
+                    <span class="badge">Basic electronics</span>
+                    <span class="badge">Cisco Cybersecurity</span>
+                    <span class="badge">Linux and networking fundamentals</span>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🎯 Professional focus — Java backend</div>
+                <div class="card">
+                    <p>I am directing my training toward backend development, connecting my current experience with APIs, service integration, databases and Git to my studies in <strong>Java, Spring Boot, microservices and Apache Kafka</strong>.</p>
+                    <p style="margin-top:0.7rem">Spring Boot, Kafka and microservices are clearly marked as current studies rather than completed professional experience.</p>
+                    <div style="margin-top:0.8rem">
+                        <span class="badge">Spring Boot · currently studying</span>
+                        <span class="badge">Kafka · currently studying</span>
+                        <span class="badge">Microservices · currently studying</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🔧 Practical Activities</div>
+                <div class="grid-2col">
+                    <div class="card">✔ Maintenance support for electronic equipment</div>
+                    <div class="card">✔ Technical tickets and task tracking with spreadsheets, GLPI and Trello</div>
+                    <div class="card">✔ Procedure documentation using Git/GitHub</div>
+                    <div class="card">✔ Soldering and low-voltage circuit assembly</div>
+                    <div class="card">✔ Reading and translating technical documentation in English</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">📁 Projects and practice</div>
+                <div class="grid-2col">
+                    <div class="card">
+                        <h3>AI Investment System</h3>
+                        <p>Multi-agent decision-support system with market and macroeconomic data collection, specialized analysis, auditable orchestration, portfolio risk utilities and alerts. Built with Python, FastAPI, LLM APIs, Pandas, NumPy and SciPy.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎫 Ticket Booking System — Java / OOP</h3>
+                        <p>Academic event-ticket reservation application demonstrating domain modeling, inheritance, polymorphism, exception handling and file persistence.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌐 Personal Portfolio</h3>
+                        <p>Responsive GitHub Pages site with bilingual resume, project pages, interactive demos and a native print-to-PDF flow.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔌 Electronics workshop</h3>
+                        <p>Arduino prototypes with sensors and instrumentation, including circuit assembly and measurements.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🐍 Personal GitHub</h3>
+                        <p>Python automation and analysis code maintained with Git, documentation and version control practices.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔐 Cisco certification</h3>
+                        <p>Introduction to Cybersecurity — fundamentals of security and networking.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🌎 Languages and additional information</div>
+                <div class="grid-2col">
+                    <div class="card">
+                        <h3>🗣️ Languages</h3>
+                        <p><strong>English:</strong> Fluent in reading, writing and conversation<br><strong>Spanish:</strong> Basic comprehension</p>
+                    </div>
+                    <div class="card">
+                        <h3>📄 Availability</h3>
+                        <p>✔ Monday to Friday availability<br>✔ Immediate start<br>✔ Driver's license and car</p>
+                    </div>
+                </div>
+            </section>
+
+            <div style="text-align:center;margin-top:1rem">
+                <p style="background:#eef2f5;display:inline-block;padding:0.4rem 1.2rem;border-radius:40px;font-size:0.8rem">
+                    📂 Versioned portfolio: <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">marco4SC/PortfolioHUB</a>
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="content">
-
-    <section class="card section">
-      <h2>Education</h2>
-      <div class="grid-2col">
-        <div>
-          <h3>Computational Engineering</h3>
-          <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>Since Jul/2024 – expected 2028</p>
-        </div>
-        <div>
-          <h3>Exchange Program</h3>
-          <p><strong>University of Aveiro (Portugal)</strong><br>Jul/2022 – Sep/2023</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card section">
-      <h2>Technical Skills</h2>
-      <div class="grid-2col">
-        <div>
-          <ul>
-            <li>Python, FastAPI, REST APIs</li>
-            <li>JavaScript, Node.js, Frontend basics</li>
-            <li>Git / GitHub, CI/CD</li>
-            <li>Embedded prototyping, Arduino</li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            <li>Data analysis: pandas, NumPy, SciPy</li>
-            <li>Testing with pytest</li>
-            <li>Basic C++ and electronics</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="card section">
-      <h2>Featured Projects</h2>
-      <div class="grid-2col">
-        <div>
-          <h3>AI Investment System</h3>
-          <p>AI Investment System — Multi-agent decision-support API with modules for market &amp; macro ingestion, specialized AI analysis, and auditable orchestration. Endpoints: /health, /market/quotes, /macro/snapshot, /analyze/{asset}, and /portfolio/summary. Built with Python, FastAPI, Pandas, and NumPy.</p>
-          <p><a class="download-btn" href="ai-investment.en.html">Open demo</a></p>
-        </div>
-        <div>
-          <h3>Personal Portfolio</h3>
-          <p>Responsive portfolio published on GitHub Pages with printable CV and project listings. Source and history in the repository.</p>
-          <p><a class="download-btn" href="projetos.en.html">View projects</a></p>
-        </div>
-        <div>
-          <h3>Ticket Booking System — Java (OOP)</h3>
-          <p>Academic project: event ticket reservation system demonstrating OOP, exception handling, and file persistence.</p>
-        </div>
-        <div>
-          <h3>Tourist Attractions Finder — Python + APIs</h3>
-          <p>Tool integrating Geoapify and Restcountries APIs to list points of interest and local currency, with processing via pandas.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer style="background:#f4f9fc; text-align:center; padding:1.2rem; font-size:0.8rem; border-top:1px solid #dee9ef; margin-top:1.2rem">Site updated Aug/2026</footer>
-  </div>
-</div>
-
-<!-- modal (reused for quick previews) -->
-<div id="projModal" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:1200;align-items:center;justify-content:center;padding:24px;">
-  <div id="projOverlay" style="position:absolute;inset:0;background:rgba(2,6,23,0.55);"></div>
-  <div role="dialog" aria-modal="true" style="position:relative;max-width:1100px;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px rgba(2,6,23,0.4);">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#f8fafc;border-bottom:1px solid #e6eef6">
-      <strong id="projTitle">Preview</strong>
-      <div>
-        <button id="projOpenNew" type="button" style="margin-right:8px;padding:8px 10px;border-radius:8px;border:1px solid #e2edf2;background:#fff;">Open in new tab</button>
-        <button id="projClose" type="button" aria-label="Close preview" style="padding:8px 10px;border-radius:8px;border:1px solid transparent;background:#0b8f6b;color:#fff;">Close</button>
-      </div>
+    <div class="download-btn-wrapper">
+        <button id="downloadPdf" type="button" class="download-btn" aria-label="Open print dialog to save the resume as a PDF">📄 Save resume as PDF</button>
+        <p class="print-help">In the print dialog, choose “Save as PDF” as the destination.</p>
     </div>
-    <div style="height:70vh;min-height:360px;">
-    <iframe id="projFrame" title="Project preview" src="about:blank" style="width:100%;height:100%;border:0;display:block"></iframe>
+
+    <div style="text-align:center;margin:1.5rem 0">
+        <a class="download-btn" href="projetos.en.html">🚀 View all projects</a>
     </div>
-  </div>
+
+    <footer>
+        <p>👨‍💻 Portfolio for Computational Engineering opportunities · updated Sep/2026</p>
+    </footer>
 </div>
 
 <script>
-  (function(){
-    const modal = document.getElementById('projModal');
-    const overlay = document.getElementById('projOverlay');
-    const frame = document.getElementById('projFrame');
-    const title = document.getElementById('projTitle');
-    const btnClose = document.getElementById('projClose');
-    const btnOpenNew = document.getElementById('projOpenNew');
-    function openModal(url, label){
-      title.textContent = label || url;
-      frame.src = url;
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
-      btnOpenNew.onclick = ()=>window.open(url,'_blank');
-      document.addEventListener('keydown', escHandler);
-    }
-    function closeModal(){ frame.src = 'about:blank'; modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.removeEventListener('keydown', escHandler); }
-    function escHandler(e){ if(e.key==='Escape') closeModal(); }
-    overlay.addEventListener('click', closeModal);
-    btnClose.addEventListener('click', closeModal);
-    // Attach handlers to tiles
-    document.querySelectorAll('.tile-link').forEach(a=>{
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const url = this.dataset.url || this.href;
-        const label = this.querySelector('h1,h2,h3') ? (this.querySelector('h1,h2,h3').innerText) : url;
-        openModal(url, label);
-      });
-    });
-  })();
+    (() => {
+        const downloadPdfButton = document.getElementById('downloadPdf');
+        if (!downloadPdfButton) return;
+
+        downloadPdfButton.addEventListener('click', () => {
+            downloadPdfButton.disabled = true;
+            downloadPdfButton.textContent = '🖨️ Opening print dialog...';
+            window.setTimeout(() => {
+                window.print();
+                downloadPdfButton.disabled = false;
+                downloadPdfButton.textContent = '📄 Save resume as PDF';
+            }, 100);
+        });
+    })();
 </script>
 </body>
 </html>

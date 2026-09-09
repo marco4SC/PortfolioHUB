@@ -180,6 +180,17 @@
             background: #145244;
         }
 
+        .download-btn:focus-visible {
+            outline: 3px solid #ffd966;
+            outline-offset: 3px;
+        }
+
+        .print-help {
+            color: #4b6f7e;
+            font-size: 0.8rem;
+            margin-top: 0.6rem;
+        }
+
         /* Rodapé normal */
         footer {
             background: #f4f9fc;
@@ -192,6 +203,11 @@
 
         /* ========== ESTILOS DE IMPRESSÃO (PDF NATIVO) ========== */
         @media print {
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+
             /* Remove fundo da página e margens padrão */
             body {
                 background: white;
@@ -218,6 +234,7 @@
             /* Esconde elementos que não devem ir para o PDF */
             .download-btn-wrapper,
             footer,
+            nav,
             .content a[href*="github.com"] { /* esconde o link do GitHub na impressão, se quiser */
                 display: none !important;
             }
@@ -269,9 +286,9 @@
     <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
     <div style="flex:1"></div>
     <a href="projetos.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projetos</a>
-    <a href="ai-investment.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">AI Investment</a>
+    <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:#1e6f5c;margin-left:0.6rem">LinkedIn</a>
     <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;margin-left:0.6rem">GitHub</a>
-    <a href="index.en.html" style="color:#fff;text-decoration:none;padding:0.3rem 0.6rem;border-radius:12px;margin-left:0.6rem;background:transparent">EN</a>
+    <a href="index.en.html" style="color:#1e2a3e;text-decoration:none;padding:0.3rem 0.6rem;border-radius:12px;margin-left:0.6rem;background:#f4f9fc;font-weight:600">EN</a>
   </div>
 </nav>
 <div class="container">
@@ -385,9 +402,10 @@
 
     <!-- Botão de download (não aparece no PDF) -->
     <div class="download-btn-wrapper">
-        <button type="button" class="download-btn" onclick="window.print()">
-            📄 Baixar Currículo em PDF
+        <button id="downloadPdf" type="button" class="download-btn" aria-label="Abrir impressão para salvar o currículo em PDF">
+            📄 Salvar currículo em PDF
         </button>
+        <p class="print-help">Na janela de impressão, escolha “Salvar como PDF” como destino.</p>
     </div>
 
     <div style="text-align: center; margin: 1.5rem 0;">
@@ -407,7 +425,25 @@
             <p>👨‍💻 Página desenvolvida para estágio em Engenharia Computacional – atualizada em maio/2026</p>
         </footer>
 </div>
+<script>
+    (() => {
+        const downloadPdfButton = document.getElementById('downloadPdf');
+
+        if (!downloadPdfButton) {
+            return;
+        }
+
+        downloadPdfButton.addEventListener('click', () => {
+            downloadPdfButton.disabled = true;
+            downloadPdfButton.textContent = '🖨️ Abrindo impressão...';
+
+            window.setTimeout(() => {
+                window.print();
+                downloadPdfButton.disabled = false;
+                downloadPdfButton.textContent = '📄 Salvar currículo em PDF';
+            }, 100);
+        });
+    })();
+</script>
 </body>
 </html>
-
-
