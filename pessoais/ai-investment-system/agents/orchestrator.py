@@ -15,6 +15,8 @@ from agents.sentiment import SentimentAgent
 from agents.macro import MacroAgent
 from config import config
 from llm_pipeline import InvestmentLLMPipeline, ResearchBrief
+from data.sources.macro import get_macro_snapshot
+from research_context import build_influence_map, normalize_news
 
 SYSTEM_PROMPT = """Você é o Chief Investment Officer (CIO) de um fundo quantitativo-fundamentalista.
 Receberá os sinais de 4 analistas e deve tomar a DECISÃO FINAL.
@@ -57,6 +59,7 @@ class InvestmentDecision:
     consensus_score: float
     analysis_mode: str = "llm"
     validation_warnings: list = None
+    research_context: dict = None
 
 class Orchestrator:
     def __init__(self):
@@ -96,6 +99,7 @@ class Orchestrator:
                 "signal": sig.signal,
                 "confidence": sig.confidence,
                 "reasoning": sig.reasoning[:500],
+                "data_points": sig.data_points,
             }
             for name, sig in signals.items()
         }
@@ -115,6 +119,8 @@ class Orchestrator:
             risk_profile=data.get("risk_profile", "balanced"),
             data_sources=data.get("data_sources", []),
             evidence={"current_price": current_price, "signals": signals_summary},
+            news=normalize_news(signals.get("sentiment").data_points.get("news", [])),
+            influence_map=build_influence_map(asset, get_macro_snapshot()),
         )
         result = self.pipeline.run(brief, signals_summary)
 
@@ -133,4 +139,9 @@ class Orchestrator:
             consensus_score=result.consensus_score,
             analysis_mode=result.mode,
             validation_warnings=result.validation_warnings,
+            research_context={
+                "news": brief.news,
+                "influence_map": brief.influence_map,
+                "generated_at": brief.generated_at,
+            },
         )

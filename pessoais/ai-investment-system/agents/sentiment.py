@@ -49,6 +49,8 @@ def fetch_news(query: str, max_items: int = 15) -> list:
                         "title": title,
                         "summary": summary[:300],
                         "published": entry.get("published", ""),
+                        "source": feed_url,
+                        "link": entry.get("link", ""),
                     })
                     if len(news) >= max_items:
                         break
@@ -90,6 +92,7 @@ class SentimentAgent(BaseAgent):
                 reasoning=result["reasoning"],
                 data_points={
                     "news_count": len(news),
+                    "news": news,
                     "overall_sentiment": result.get("overall_sentiment"),
                     "sentiment_score": result.get("sentiment_score"),
                     "key_events": result.get("key_events", []),

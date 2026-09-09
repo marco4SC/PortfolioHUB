@@ -81,6 +81,7 @@ def analyze_asset(asset: str, background_tasks: BackgroundTasks):
             "analysis_mode": decision.analysis_mode,
             "review_required": True,
             "validation_warnings": decision.validation_warnings or [],
+            "research_context": decision.research_context or {},
             "agent_signals": [
                 {
                     "agent": s.agent_name,

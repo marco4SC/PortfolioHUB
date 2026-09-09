@@ -53,6 +53,8 @@ class ResearchBrief:
     risk_profile: str = "balanced"
     data_sources: list[str] = field(default_factory=list)
     evidence: dict[str, Any] = field(default_factory=dict)
+    news: list[dict[str, Any]] = field(default_factory=list)
+    influence_map: dict[str, Any] = field(default_factory=dict)
     generated_at: str = field(default_factory=utc_now)
 
 
@@ -156,7 +158,12 @@ class InvestmentLLMPipeline:
             "price_target, stop_loss, time_horizon, investment_thesis, "
             "key_risks, catalysts, consensus_score.\n\n"
             f"RESEARCH BRIEF:\n{json.dumps(asdict(brief), ensure_ascii=False, indent=2)}\n\n"
-            f"AGENT SIGNALS:\n{json.dumps(signals, ensure_ascii=False, indent=2, default=str)}"
+            f"AGENT SIGNALS:\n{json.dumps(signals, ensure_ascii=False, indent=2, default=str)}\n\n"
+            "NEWS AND GLOBAL INFLUENCE:\n"
+            "Treat headlines as time-bound evidence, distinguish fact from "
+            "interpretation, and explain transmission channels before assigning "
+            "material impact.\n"
+            f"{json.dumps({'news': brief.news, 'influence_map': brief.influence_map}, ensure_ascii=False, indent=2, default=str)}"
         )
 
     def run(self, brief: ResearchBrief, signals: Mapping[str, Any]) -> DecisionReview:
