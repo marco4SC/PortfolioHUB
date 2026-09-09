@@ -66,6 +66,9 @@ def analyze_asset(asset: str, background_tasks: BackgroundTasks):
             "key_risks": decision.key_risks,
             "catalysts": decision.catalysts,
             "consensus_score": decision.consensus_score,
+            "analysis_mode": decision.analysis_mode,
+            "review_required": True,
+            "validation_warnings": decision.validation_warnings or [],
             "agent_signals": [
                 {
                     "agent": s.agent_name,

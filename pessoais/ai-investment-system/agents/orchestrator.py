@@ -14,6 +14,7 @@ from agents.fundamental import FundamentalAgent
 from agents.sentiment import SentimentAgent
 from agents.macro import MacroAgent
 from config import config
+from llm_pipeline import InvestmentLLMPipeline, ResearchBrief
 
 SYSTEM_PROMPT = """Você é o Chief Investment Officer (CIO) de um fundo quantitativo-fundamentalista.
 Receberá os sinais de 4 analistas e deve tomar a DECISÃO FINAL.
@@ -54,6 +55,8 @@ class InvestmentDecision:
     catalysts: list
     agent_signals: list
     consensus_score: float
+    analysis_mode: str = "llm"
+    validation_warnings: list = None
 
 class Orchestrator:
     def __init__(self):
@@ -62,6 +65,19 @@ class Orchestrator:
         self.sentiment = SentimentAgent()
         self.macro = MacroAgent()
         self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
+        self.pipeline = InvestmentLLMPipeline(
+            llm_call=self._call_consolidation_llm,
+            max_position_pct=config.max_position_pct * 100,
+        )
+
+    def _call_consolidation_llm(self, prompt: str) -> str:
+        response = self.client.messages.create(
+            model=config.llm_model,
+            max_tokens=1500,
+            system="You are a careful investment research review engine.",
+            messages=[{"role": "user", "content": prompt}],
+        )
+        return response.content[0].text
 
     def analyze(self, asset: str, data: dict = None) -> InvestmentDecision:
         data = data or {}
@@ -92,49 +108,29 @@ class Orchestrator:
         except:
             current_price = 0.0
 
-        prompt = f"""Tome a decisão de portfólio para {asset} (preço atual: R$ {current_price:.2f}):
-
-Sinais dos analistas:
-{json.dumps(signals_summary, indent=2, ensure_ascii=False)}
-
-Gere a decisão consolidada com tese, preço-alvo, stop-loss e sizing.
-Retorne o JSON."""
-
-        try:
-            response = self.client.messages.create(
-                model=config.llm_model,
-                max_tokens=1500,
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            raw = response.content[0].text
-            clean = raw.strip().strip("```json").strip("```").strip()
-            result = json.loads(clean)
-        except Exception as e:
-            result = {
-                "final_signal": "HOLD",
-                "consolidated_confidence": 0.0,
-                "position_size_pct": 0.0,
-                "price_target": current_price,
-                "stop_loss": current_price * 0.92,
-                "time_horizon": "medium",
-                "investment_thesis": f"Erro na orquestração: {e}",
-                "key_risks": [],
-                "catalysts": [],
-                "consensus_score": 0.0,
-            }
+        brief = ResearchBrief(
+            asset=asset,
+            objective=data.get("objective", "growth"),
+            horizon=data.get("horizon", "medium"),
+            risk_profile=data.get("risk_profile", "balanced"),
+            data_sources=data.get("data_sources", []),
+            evidence={"current_price": current_price, "signals": signals_summary},
+        )
+        result = self.pipeline.run(brief, signals_summary)
 
         return InvestmentDecision(
             asset=asset,
-            final_signal=result["final_signal"],
-            consolidated_confidence=result["consolidated_confidence"],
-            position_size_pct=min(result.get("position_size_pct", 0), config.max_position_pct),
-            price_target=result.get("price_target", 0),
-            stop_loss=result.get("stop_loss", 0),
-            time_horizon=result.get("time_horizon", "medium"),
-            investment_thesis=result.get("investment_thesis", ""),
-            key_risks=result.get("key_risks", []),
-            catalysts=result.get("catalysts", []),
+            final_signal=result.final_signal,
+            consolidated_confidence=result.consolidated_confidence,
+            position_size_pct=min(result.position_size_pct / 100, config.max_position_pct),
+            price_target=result.price_target,
+            stop_loss=result.stop_loss,
+            time_horizon=result.time_horizon,
+            investment_thesis=result.investment_thesis,
+            key_risks=result.key_risks,
+            catalysts=result.catalysts,
             agent_signals=list(signals.values()),
-            consensus_score=result.get("consensus_score", 0.0),
+            consensus_score=result.consensus_score,
+            analysis_mode=result.mode,
+            validation_warnings=result.validation_warnings,
         )

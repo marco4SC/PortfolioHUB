@@ -158,6 +158,18 @@ Aplicações priorizadas:
 
 O sistema não promete rentabilidade, não substitui um profissional habilitado e não deve executar ordens automaticamente sem validação jurídica, controles de risco e aprovação explícita.
 
+## 🧠 Pipeline de LLM
+
+O fluxo de análise é dividido em etapas:
+
+1. **Brief de pesquisa**: normaliza ativo, objetivo, horizonte, perfil de risco, fontes e evidências.
+2. **Agentes especializados**: técnico, fundamentalista, sentimento e macro produzem sinais com confiança e justificativa.
+3. **Consolidação**: o LLM recebe somente o brief e os sinais resumidos; deve responder em JSON estruturado.
+4. **Validação**: sinais, confiança, sizing, riscos e catalisadores são normalizados e limitados antes de chegar à API.
+5. **Revisão humana**: toda saída mantém `review_required=true`. Se o LLM falhar, o resultado vira `REVIEW` em modo `fallback`, sem recomendação silenciosa.
+
+O módulo `llm_pipeline.py` não depende diretamente de um provedor específico. O chamador LLM é injetado, o que permite testar respostas sem rede e trocar Anthropic por outro provedor no futuro. A API expõe `analysis_mode` e `validation_warnings` para manter a rastreabilidade.
+
 ## 🗺️ Roadmap de crescimento
 
 - [x] Fundação de API REST, fontes de dados e agentes especializados
