@@ -15,6 +15,10 @@
     .site-action.primary:hover { background:#145244; }
     .site-action.secondary { background:#fff; color:#334155; border-color:#e2e8f0; }
     .site-action.secondary:hover { background:#f8fafc; }
+    .site-footer { background:#f4f9fc; border-top:1px solid #dee9ef; color:#4b6f7e; padding:1.2rem; text-align:center; }
+    .site-footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; margin-bottom:0.7rem; }
+    .site-footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #c9dce5; border-radius:999px; color:#1e5f6e; background:#fff; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
+    .site-footer-links a:hover { background:#1e6f5c; color:#fff; transform:translateY(-2px); }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
@@ -93,6 +97,16 @@
       </aside>
     </section>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer-links">
+      <a href="index.en.html">Portfolio</a>
+      <a href="projetos.en.html">Projects</a>
+      <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="ai-investment.html">Português</a>
+    </div>
+    <div>AI Investment System · Demo</div>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
   <script>
