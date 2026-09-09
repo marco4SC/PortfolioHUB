@@ -109,6 +109,7 @@ curl -X POST http://localhost:8000/analyze/PETR4
 |---|---|---|
 | `GET` | `/health` | Status do sistema |
 | `GET` | `/market/quotes?tickers=PETR4,VALE3` | Cotações em tempo real |
+| `GET` | `/market/scan?tickers=PETR4,VALE3` | Varredura limitada da watchlist, sem ordens |
 | `GET` | `/macro/snapshot` | Selic, IPCA, câmbio atuais |
 | `POST` | `/analyze/{ticker}` | Análise completa com todos os agentes |
 | `GET` | `/portfolio/summary` | Resumo do portfólio |
@@ -169,6 +170,16 @@ O fluxo de análise é dividido em etapas:
 5. **Revisão humana**: toda saída mantém `review_required=true`. Se o LLM falhar, o resultado vira `REVIEW` em modo `fallback`, sem recomendação silenciosa.
 
 O módulo `llm_pipeline.py` não depende diretamente de um provedor específico. O chamador LLM é injetado, o que permite testar respostas sem rede e trocar Anthropic por outro provedor no futuro. A API expõe `analysis_mode` e `validation_warnings` para manter a rastreabilidade.
+
+## 🧪 Rodada de testes de mercado
+
+`GET /market/scan` usa a API pública `brapi.dev` para consultar uma watchlist de até 20 ações. A resposta informa fonte, horário, ativos bem-sucedidos, falhas individuais e confirma que nenhuma ordem foi enviada. O endpoint não representa conexão de negociação com a B3 e não deve ser usado como fonte única para decisões financeiras.
+
+Para analisar uma watchlist específica:
+
+```bash
+curl "http://localhost:8000/market/scan?tickers=PETR4,VALE3,ITUB4"
+```
 
 ## 🗺️ Roadmap de crescimento
 

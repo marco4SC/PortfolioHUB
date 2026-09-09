@@ -9,6 +9,7 @@ from agents.orchestrator import Orchestrator
 from data.sources.market import MarketDataSource
 from data.sources.macro import get_macro_snapshot
 from config import config
+from market_scan import scan_watchlist
  
 app = FastAPI(
     title="AI Investment System",
@@ -37,6 +38,17 @@ def get_quotes(tickers: str = "PETR4,VALE3,ITUB4"):
         return market.get_multiple_quotes(ticker_list)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/market/scan")
+def market_scan(tickers: str = ""):
+    """Scan a bounded watchlist using public quotes; never places orders."""
+    requested = tickers or ",".join(config.stocks_br)
+    try:
+        return scan_watchlist(market, requested.split(","))
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=502, detail=f"Market data provider error: {error}") from error
  
 @app.get("/macro/snapshot")
 def macro_snapshot():
