@@ -546,6 +546,41 @@
             }, 100);
         });
     })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.section');
+        const showSection = (section) => section.classList.add('visible');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        showSection(entry.target);
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+            sections.forEach((section) => observer.observe(section));
+        } else {
+            sections.forEach(showSection);
+        }
+
+        const currentYear = document.getElementById('ano-atual');
+        const lastUpdated = document.getElementById('data-atualizacao');
+
+        if (currentYear) {
+            currentYear.textContent = String(new Date().getFullYear());
+        }
+
+        if (lastUpdated) {
+            lastUpdated.textContent = new Date().toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+    });
 </script>
 </body>
 </html>
