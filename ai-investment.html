@@ -34,9 +34,11 @@
     .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
     .production-card h3 { font-weight:700; color:#163d4c; }
     .theme-toggle { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:0 .85rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.85rem; }
-    body.dark-theme { background:#081b2a; color:#dbeafe; }
+    body.dark-theme, body.dark-theme.bg-slate-50 { background:#081b2a !important; color:#dbeafe !important; }
     body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045) !important; }
     body.dark-theme main h1, body.dark-theme main h2 { color:#dbeafe !important; }
+    body.dark-theme .bg-slate-50 { background:#0d2a3d !important; }
+    body.dark-theme .bg-white { background:#102536 !important; }
     body.dark-theme .value-card, body.dark-theme .production-card, body.dark-theme section > section.w-full { background:#102536 !important; border-color:#28516a !important; color:#dbeafe; }
     body.dark-theme .value-card strong, body.dark-theme .production-card h3 { color:#71d6a8; }
     body.dark-theme .text-slate-600, body.dark-theme .text-slate-700, body.dark-theme .text-slate-500 { color:#a8c4d2 !important; }
@@ -75,11 +77,11 @@
   <nav class="site-nav">
     <div class="site-nav-inner">
       <a href="index.html">Marco Antonio</a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro">☾</button>
       <span class="flex-1"></span>
       <a href="projetos.html">Projetos</a>
       <a class="active" href="ai-investment.html">AI Investment</a>
       <a class="linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro">☾</button>
       <a class="language" href="ai-investment.en.html">EN</a>
     </div>
   </nav>

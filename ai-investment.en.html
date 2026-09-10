@@ -27,9 +27,11 @@
     .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
     .production-card h3 { font-weight:700; color:#163d4c; }
     .theme-toggle { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:0 .85rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.85rem; }
-    body.dark-theme { background:#081b2a; color:#dbeafe; }
+    body.dark-theme, body.dark-theme.bg-slate-50 { background:#081b2a !important; color:#dbeafe !important; }
     body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045) !important; }
     body.dark-theme main h1, body.dark-theme main h2 { color:#dbeafe !important; }
+    body.dark-theme .bg-slate-50 { background:#0d2a3d !important; }
+    body.dark-theme .bg-white { background:#102536 !important; }
     body.dark-theme .value-card, body.dark-theme .production-card, body.dark-theme section > section.w-full { background:#102536 !important; border-color:#28516a !important; color:#dbeafe; }
     body.dark-theme .value-card strong, body.dark-theme .production-card h3 { color:#71d6a8; }
     body.dark-theme .text-slate-600, body.dark-theme .text-slate-700, body.dark-theme .text-slate-500 { color:#a8c4d2 !important; }
@@ -67,11 +69,11 @@
   <nav style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0">
     <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
       <a href="index.en.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Enable dark theme">☾</button>
       <div style="flex:1"></div>
       <a href="projetos.en.html" style="color:#fff;text-decoration:none;padding:0.4rem 0.8rem;border-radius:14px;background:rgba(255,255,255,0.06)">Projects</a>
       <a href="ai-investment.en.html" class="active" style="color:#fff;text-decoration:none;padding:0 0.85rem;min-height:34px;display:inline-flex;align-items:center;border-radius:999px;background:#1e6f5c;margin-left:0.2rem;font-size:0.85rem">AI Investment</a>
       <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" class="linkedin" target="_blank" rel="noopener noreferrer" style="color:#1e6f5c;text-decoration:none;padding:0 0.85rem;min-height:34px;display:inline-flex;align-items:center;border-radius:999px;background:#f4f9fc;border:1px solid #c9dce5;margin-left:0.2rem;font-size:0.85rem;font-weight:600">LinkedIn</a>
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Enable dark theme">☾</button>
       <a href="index.html" class="language" style="color:#1e2a3e;text-decoration:none;padding:0 0.85rem;min-height:34px;display:inline-flex;align-items:center;border-radius:999px;margin-left:0.2rem;font-size:0.85rem">PT</a>
     </div>
   </nav>
