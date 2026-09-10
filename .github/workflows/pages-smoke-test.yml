@@ -18,3 +18,4 @@ jobs:
           curl --fail --silent --show-error --location https://marco4sc.github.io/PortfolioHUB/docs/demo/index.html | grep -q "AI Job Apply"
           curl --fail --silent --show-error --location https://marco4sc.github.io/PortfolioHUB/docs/demo/privacy.html | grep -q "Privacidade"
           curl --fail --silent --show-error --location https://marco4sc.github.io/PortfolioHUB/docs/demo/dashboard.html | grep -q "revisão humana"
+          curl --fail --silent --show-error --location https://marco4sc.github.io/PortfolioHUB/docs/demo/applications.html | grep -q "RNP"
