@@ -316,12 +316,12 @@
 
         /* Rodapé normal */
         footer {
-            background: #f4f9fc;
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
             padding: 1.5rem 1rem;
-            border-top: 1px solid #dee9ef;
+            border-top: 1px solid #2b647e;
             text-align: center;
             font-size: 0.8rem;
-            color: #4b6f7e;
+            color: #d5edf5;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -341,17 +341,17 @@
             display: inline-flex;
             align-items: center;
             padding: 0.45rem 0.85rem;
-            border: 1px solid #c9dce5;
+            border: 1px solid #4b9b87;
             border-radius: 999px;
-            color: #1e5f6e;
-            background: #fff;
+            color: #e5fff2;
+            background: #1e6f5c;
             text-decoration: none;
             transition: background 0.2s, color 0.2s, transform 0.2s;
         }
 
         .footer-links a:hover {
-            background: #1e6f5c;
-            color: #fff;
+            background: #38a47f;
+            color: #06251d;
             transform: translateY(-2px);
         }
 
@@ -382,14 +382,14 @@
         body.dark-theme { background: #081b2a; color: #dbeafe; }
         body.dark-theme nav { background: linear-gradient(135deg, #06131f, #0d3045) !important; }
         body.dark-theme .container, body.dark-theme .content { background: #102536; }
-        body.dark-theme .card { background: #153247; border-color: #28516a; color: #dbeafe; }
+        body.dark-theme .card, body.dark-theme .content .card[style] { background: #153247 !important; border-color: #28516a; color: #dbeafe; }
         body.dark-theme .section-title, body.dark-theme .card h3 { color: #71d6a8; }
-        body.dark-theme .badge { background: #173f58; color: #a8d8f0; }
+        body.dark-theme .badge { background: #0c6870 !important; color: #d8fff0 !important; border: 1px solid #49b894; }
         body.dark-theme .versioned-github { background: #173f58 !important; color: #a8e6c4; border: 1px solid #34728a; }
         body.dark-theme .versioned-github a { color: #9ee7bf; }
         body.dark-theme .theme-toggle { background: #12354a; color: #9ee7bf; border-color: #34728a; }
-        body.dark-theme footer { background: #0b2030; border-color: #28516a; color: #a8c4d2; }
-        body.dark-theme .footer-links a { background: #12354a; color: #a8e6c4; border-color: #34728a; }
+        body.dark-theme footer { background: linear-gradient(135deg, #06131f, #0d3045); border-color: #28516a; color: #d5edf5; }
+        body.dark-theme .footer-links a { background: #1e6f5c; color: #e5fff2; border-color: #49b894; }
 
         /* ========== ESTILOS DE IMPRESSÃO (PDF NATIVO) ========== */
         @media print {
