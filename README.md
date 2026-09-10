@@ -21,3 +21,5 @@ Regras do MVP:
 * o currículo personalizado deve usar apenas fatos fornecidos pelo candidato;
 * toda candidatura exige revisão e aprovação humana;
 * logs e consentimentos devem ser mantidos em armazenamento privado.
+
+O backend possui OAuth do GitHub com validação de `state`, regeneração de sessão e endpoints autenticados para registrar, consultar e revogar consentimentos em `/api/consents`. Configure `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `SESSION_SECRET` e `FRONTEND_URL` somente no ambiente privado; nunca publique esses valores no Pages.
