@@ -2,12 +2,19 @@ name: AI Job Apply demo pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      approved:
+        description: "Human approval for the non-delivery sender preview"
+        required: true
+        default: false
+        type: boolean
   push:
     paths:
       - "scripts/job-apply-pipeline.mjs"
       - "scripts/ingest-jobs.mjs"
       - "scripts/select-job.mjs"
       - "scripts/render-job-apply-pdf.mjs"
+      - "scripts/send-application.mjs"
       - "templates/job-apply/**"
       - "data/job-apply-demo/**"
       - ".github/workflows/ai-job-apply-demo.yml"
@@ -33,6 +40,9 @@ jobs:
         run: node scripts/job-apply-pipeline.mjs data/job-apply-demo/test_profile.json artifacts/job-apply-demo/selected_job.json artifacts/job-apply-demo resume.html
       - name: Render tailored resume PDF
         run: node scripts/render-job-apply-pdf.mjs artifacts/job-apply-demo/resume.html artifacts/job-apply-demo/resume.pdf
+      - name: Record approved delivery preview
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.approved == true }}
+        run: node scripts/send-application.mjs artifacts/job-apply-demo/metadata.json dry-run true artifacts/job-apply-demo/delivery.json
       - name: Upload private workflow artifact
         uses: actions/upload-artifact@v4
         with:
