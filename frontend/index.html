@@ -36,7 +36,7 @@
     </main>
 
     <script>
-        const API_BASE = 'http://localhost:3000';  // depois mude para URL do Render
+        const API_BASE = window.PORTFOLIOHUB_API_BASE || 'http://localhost:3000';
 
         async function carregarProjetos() {
             const res = await fetch(`${API_BASE}/api/projects`);

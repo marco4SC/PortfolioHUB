@@ -15,7 +15,7 @@ const app = express();
 app.get('/health', (req, res) => res.json({ status: 'ok', service: 'portfoliohub-backend' }));
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_URL || 'http://localhost:5500',
   credentials: true
 }));
 

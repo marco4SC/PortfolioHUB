@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --check server.js && node --check routes/auth.js && node --check routes/consent.js && node --check routes/jobApply.js"
   },
   "keywords": [],
   "author": "",

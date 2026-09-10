@@ -33,7 +33,7 @@
     </main>
 
     <script>
-        const API_BASE = 'http://localhost:3000';
+        const API_BASE = window.PORTFOLIOHUB_API_BASE || 'http://localhost:3000';
 
         async function checkAuth() {
             const res = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
