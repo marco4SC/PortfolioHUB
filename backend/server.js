@@ -11,6 +11,7 @@ const geminiRoutes = require('./routes/gemini');
 const consentRoutes = require('./routes/consent');
 
 const app = express();
+app.get('/health', (req, res) => res.json({ status: 'ok', service: 'portfoliohub-backend' }));
 
 app.use(cors({
   origin: process.env.FRONTEND_URL,

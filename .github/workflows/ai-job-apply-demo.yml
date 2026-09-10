@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   generate-preview:
@@ -51,3 +52,17 @@ jobs:
           name: ai-job-apply-demo-${{ github.run_number }}
           path: artifacts/job-apply-demo/
           retention-days: 7
+
+  monitor:
+    needs: generate-preview
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report pipeline status
+        run: |
+          if [ "${{ needs.generate-preview.result }}" = "success" ]; then
+            echo "AI Job Apply demo pipeline completed successfully."
+          else
+            echo "AI Job Apply demo pipeline failed: ${{ needs.generate-preview.result }}"
+            exit 1
+          fi

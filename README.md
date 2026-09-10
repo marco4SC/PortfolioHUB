@@ -23,3 +23,5 @@ Regras do MVP:
 * logs e consentimentos devem ser mantidos em armazenamento privado.
 
 O backend possui OAuth do GitHub com validação de `state`, regeneração de sessão e endpoints autenticados para registrar, consultar e revogar consentimentos em `/api/consents`. Configure `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `SESSION_SECRET` e `FRONTEND_URL` somente no ambiente privado; nunca publique esses valores no Pages.
+
+O workflow `ai-job-apply-demo.yml` usa `workflow_dispatch` como aprovação operacional: a entrada `approved` precisa ser marcada manualmente, mas ainda produz somente um `dry-run`. O workflow `pages-smoke-test.yml` verifica periodicamente as páginas públicas da demo; o endpoint `/health` permite monitorar o backend quando ele estiver hospedado.
