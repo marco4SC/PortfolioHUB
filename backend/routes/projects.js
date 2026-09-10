@@ -7,6 +7,7 @@ const projectsFile = path.join(__dirname, '../data/projects.json');
 
 // Garante que o arquivo existe e é um array
 function initFile() {
+    fs.mkdirSync(path.dirname(projectsFile), { recursive: true });
     if (!fs.existsSync(projectsFile)) {
         fs.writeFileSync(projectsFile, '[]', 'utf-8');
     } else {

@@ -9,6 +9,7 @@ const authRoutes = require('./routes/auth');
 const projectsRoutes = require('./routes/projects');
 const geminiRoutes = require('./routes/gemini');
 const consentRoutes = require('./routes/consent');
+const jobApplyRoutes = require('./routes/jobApply');
 
 const app = express();
 app.get('/health', (req, res) => res.json({ status: 'ok', service: 'portfoliohub-backend' }));
@@ -39,6 +40,7 @@ app.use('/auth', authRoutes);
 app.use('/api/projects', projectsRoutes);
 app.use('/api/gemini', geminiRoutes);
 app.use('/api/consents', consentRoutes);
+app.use('/api/job-apply', jobApplyRoutes);
 
 app.get('/api/user', (req, res) => {
   if (req.session.user) {

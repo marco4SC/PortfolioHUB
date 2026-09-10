@@ -25,3 +25,13 @@ Regras do MVP:
 O backend possui OAuth do GitHub com validação de `state`, regeneração de sessão e endpoints autenticados para registrar, consultar e revogar consentimentos em `/api/consents`. Configure `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `SESSION_SECRET` e `FRONTEND_URL` somente no ambiente privado; nunca publique esses valores no Pages.
 
 O workflow `ai-job-apply-demo.yml` usa `workflow_dispatch` como aprovação operacional: a entrada `approved` precisa ser marcada manualmente, mas ainda produz somente um `dry-run`. O workflow `pages-smoke-test.yml` verifica periodicamente as páginas públicas da demo; o endpoint `/health` permite monitorar o backend quando ele estiver hospedado.
+
+## API real do AI Job Apply
+
+Com OAuth do GitHub e consentimento ativo `job_application_processing`, o backend oferece:
+
+* `POST /api/job-apply/match` para criar uma revisão com score, habilidades encontradas e ausentes;
+* `GET /api/job-apply/:id` para consultar a revisão do próprio usuário;
+* `POST /api/job-apply/:id/approve` para aprovar a preparação em `dry-run`.
+
+A aprovação não envia e-mail, não acessa LinkedIn e não submete formulários. O registro permanece privado no backend e pode ser revogado pelo endpoint de consentimento.
