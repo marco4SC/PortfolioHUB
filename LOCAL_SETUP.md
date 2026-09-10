@@ -51,7 +51,8 @@ Endereços locais principais:
 - Projetos: `http://localhost:5500/projetos.html`
 - AI Job Apply: `http://localhost:5500/docs/demo/index.html`
 - Dashboard da demo: `http://localhost:5500/docs/demo/dashboard.html`
-- Aplicação legada/admin: `http://localhost:5500/frontend/index.html`
+- O caminho `http://localhost:5500/frontend/index.html` agora redireciona para o currículo principal.
+- O assistente Gemini permanece disponível no código legado do backend, mas não é a página inicial do PortfolioHUB.
 
 ## 3. GitHub OAuth local
 
