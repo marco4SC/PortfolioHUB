@@ -36,7 +36,20 @@
         .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; margin-bottom:0.7rem; }
         .footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #c9dce5; border-radius:999px; color:#1e5f6e; background:#fff; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
         .footer-links a:hover { background:#1e6f5c; color:#fff; transform:translateY(-2px); }
-        @media (max-width: 700px) { body { padding: 1rem 0.5rem; } .hero h1 { font-size: 1.6rem; } .content { padding: 1.5rem; } }
+        @media (max-width: 700px) {
+            body { padding: 0.5rem; }
+            .container { border-radius: 16px; }
+            .nav-inner { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+            .nav-inner > a:first-child { width: 100%; text-align: center; }
+            .nav-inner > div { display: none; }
+            .nav-inner .nav-link, .nav-inner .lang-link { flex: 1 1 auto; min-width: 0; text-align: center; }
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .project-card { padding: 1rem; border-radius: 14px; }
+            .project-card h3 { font-size: 1.05rem; }
+            .footer-links a { min-height: 36px; }
+        }
     </style>
 </head>
 <body>

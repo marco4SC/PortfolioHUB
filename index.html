@@ -434,9 +434,22 @@
 
         /* ========== RESPONSIVIDADE ========== */
         @media (max-width: 700px) {
+            body { padding: 0.5rem; }
+            .container { border-radius: 16px; }
+            body > nav > div { flex-wrap: wrap; gap: 0.5rem !important; justify-content: center; }
+            body > nav > div > a:first-child { width: 100%; text-align: center; }
+            body > nav > div > div { display: none; }
+            body > nav > div > .site-nav-link { flex: 1 1 auto; margin-left: 0; min-width: 0; }
             .hero h1 { font-size: 1.6rem; }
+            .hero { padding: 1.5rem 1rem; }
+            .hero .sub { padding-left: 0.75rem; font-size: 0.92rem; }
+            .hero-summary { font-size: 0.95rem; }
+            .contact-info { gap: 0.55rem; padding: 0.7rem; font-size: 0.78rem; }
             .content { padding: 1.5rem; }
             .section-title { font-size: 1.3rem; }
+            .grid-2col { grid-template-columns: 1fr; gap: 1rem; }
+            .card { padding: 1rem; border-radius: 14px; }
+            .footer-links a { min-height: 36px; }
             .footer-links { gap: 0.8rem; }
         }
 

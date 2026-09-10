@@ -33,6 +33,30 @@
     .production-grid { max-width:80rem; margin:0 auto; padding:0 1.5rem 3rem; }
     .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
     .production-card h3 { font-weight:700; color:#163d4c; }
+    @media (max-width: 700px) {
+      .site-nav { padding: .55rem .75rem; }
+      .site-nav-inner { flex-wrap: wrap; gap: .5rem; justify-content: center; }
+      .site-nav-inner > a:first-child { width: 100%; text-align: center; }
+      .site-nav-inner > .flex-1 { display: none; }
+      .site-nav-inner > a:not(:first-child) { flex: 1 1 auto; min-width: 0; }
+      main > section { padding-left: 1rem; padding-right: 1rem; }
+      main > section:first-child { padding-top: 2rem; }
+      main > section:first-child h1 { font-size: 1.8rem; line-height: 1.15; }
+      .grid.lg\:grid-cols-2 { display: block; }
+      .grid.md\:grid-cols-3 { grid-template-columns: 1fr; }
+      section > section.w-full { border-radius: 1rem; }
+      section > section.w-full > div,
+      section > section.w-full > aside { padding: 1.1rem; }
+      form .flex.gap-4, form .grid.grid-cols-2 { display: flex; flex-direction: column; gap: .75rem; }
+      form .w-28 { width: 100%; }
+      #apiUrl { width: 100%; margin-left: 0; }
+      form > .flex.items-center { flex-wrap: wrap; }
+      form > .flex.items-center > span { margin-left: 0; width: 100%; }
+      section > section.w-full > aside { border-left: 0; border-top: 1px solid #e2e8f0; }
+      #allocChart { display: block; max-width: 100%; height: auto !important; }
+      .site-action { min-height: 40px; }
+      .site-footer-links a { min-height: 36px; }
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
