@@ -367,6 +367,31 @@
                 margin: 12mm;
             }
 
+            .theme-toggle {
+                min-height: 34px;
+                padding: 0 0.85rem;
+                border: 1px solid #c9dce5;
+                border-radius: 999px;
+                background: #f4f9fc;
+                color: #1e5f6e;
+                cursor: pointer;
+                font: inherit;
+                font-size: 0.85rem;
+            }
+            body.dark-theme { background: #081b2a; color: #dbeafe; }
+            body.dark-theme nav { background: linear-gradient(135deg, #06131f, #0d3045) !important; }
+            body.dark-theme .container { background: #102536; box-shadow: 0 20px 35px -12px rgba(0,0,0,.45); }
+            body.dark-theme .content { background: #102536; }
+            body.dark-theme .card { background: #153247; border-color: #28516a; color: #dbeafe; }
+            body.dark-theme .card:hover { background: #193d53; border-color: #3d7890; }
+            body.dark-theme .section-title, body.dark-theme .card h3 { color: #71d6a8; }
+            body.dark-theme .badge { background: #173f58; color: #a8d8f0; }
+            body.dark-theme .theme-toggle { background: #12354a; color: #9ee7bf; border-color: #34728a; }
+            body.dark-theme footer { background: #0b2030; border-color: #28516a; color: #a8c4d2; }
+            body.dark-theme .footer-links a { background: #12354a; color: #a8e6c4; border-color: #34728a; }
+            body.dark-theme .footer-links a:hover { background: #1e6f5c; color: #fff; }
+            body.dark-theme input, body.dark-theme textarea, body.dark-theme select { background: #102b3d; color: #dbeafe; border-color: #38627a; }
+
             /* Remove fundo da página e margens padrão */
             body {
                 background: white;
@@ -488,6 +513,7 @@
     <a class="site-nav-link" href="projetos.html">Projetos</a>
     <a class="site-nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a class="site-nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro">☾</button>
     <a class="site-nav-link language" href="index.en.html">EN</a>
   </div>
 </nav>
@@ -696,6 +722,9 @@
             });
         }
     });
+</script>
+<script>
+(() => { const toggle = document.querySelector('[data-theme-toggle]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { toggle.textContent = document.body.classList.contains('dark-theme') ? '☀' : '☾'; toggle.setAttribute('aria-label', document.body.classList.contains('dark-theme') ? 'Ativar tema claro' : 'Ativar tema escuro'); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
 </script>
 </body>
 </html>

@@ -33,6 +33,18 @@
     .production-grid { max-width:80rem; margin:0 auto; padding:0 1.5rem 3rem; }
     .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
     .production-card h3 { font-weight:700; color:#163d4c; }
+    .theme-toggle { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:0 .85rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.85rem; }
+    body.dark-theme { background:#081b2a; color:#dbeafe; }
+    body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045) !important; }
+    body.dark-theme main h1, body.dark-theme main h2 { color:#dbeafe !important; }
+    body.dark-theme .value-card, body.dark-theme .production-card, body.dark-theme section > section.w-full { background:#102536 !important; border-color:#28516a !important; color:#dbeafe; }
+    body.dark-theme .value-card strong, body.dark-theme .production-card h3 { color:#71d6a8; }
+    body.dark-theme .text-slate-600, body.dark-theme .text-slate-700, body.dark-theme .text-slate-500 { color:#a8c4d2 !important; }
+    body.dark-theme input, body.dark-theme textarea, body.dark-theme select { background:#153247 !important; color:#dbeafe !important; border-color:#38627a !important; }
+    body.dark-theme aside { background:#0d2a3d !important; border-color:#28516a !important; }
+    body.dark-theme .site-action.secondary { background:#12354a; color:#a8e6c4; border-color:#34728a; }
+    body.dark-theme .site-footer { background:#0b2030; border-color:#28516a; color:#a8c4d2; }
+    body.dark-theme .site-footer-links a { background:#12354a; color:#a8e6c4; border-color:#34728a; }
     @media (max-width: 700px) {
       .site-nav { padding: .55rem .75rem; }
       .site-nav-inner { flex-wrap: wrap; gap: .5rem; justify-content: center; }
@@ -67,6 +79,7 @@
       <a href="projetos.html">Projetos</a>
       <a class="active" href="ai-investment.html">AI Investment</a>
       <a class="linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro">☾</button>
       <a class="language" href="ai-investment.en.html">EN</a>
     </div>
   </nav>
@@ -203,6 +216,11 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script>
+      const themeToggle = document.querySelector('[data-theme-toggle]');
+      if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme');
+      const updateThemeToggle = () => { themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀' : '☾'; themeToggle.setAttribute('aria-label', document.body.classList.contains('dark-theme') ? 'Ativar tema claro' : 'Ativar tema escuro'); };
+      updateThemeToggle();
+      themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); updateThemeToggle(); });
       const form = document.getElementById('demoForm');
       const feedback = document.getElementById('feedback');
       const openRepo = document.getElementById('openRepo');
