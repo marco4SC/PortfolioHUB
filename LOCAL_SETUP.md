@@ -1,8 +1,24 @@
 # Configuração local do PortfolioHUB
 
+## 0. Abra a raiz correta do projeto
+
+No PowerShell, use o caminho completo do worktree:
+
+```powershell
+Set-Location "C:\Users\marcs\Kepler\worktrees\PortfolioHUB-ai-job_aplly-6a42a281"
+```
+
+Confirme que está no diretório certo:
+
+```powershell
+Test-Path .\backend\package.json
+```
+
+O resultado deve ser `True`.
+
 ## 1. Backend
 
-No PowerShell, dentro de `backend`:
+No PowerShell, a partir da raiz do projeto:
 
 ```powershell
 Copy-Item .env.example .env
@@ -15,9 +31,10 @@ O backend ficará disponível em `http://localhost:3000`.
 
 ## 2. Frontend
 
-Em outro terminal, na raiz do repositório:
+Em outro PowerShell, entre novamente na raiz do projeto:
 
 ```powershell
+Set-Location "C:\Users\marcs\Kepler\worktrees\PortfolioHUB-ai-job_aplly-6a42a281"
 python -m http.server 5500 --directory frontend
 ```
 
