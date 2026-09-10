@@ -1,0 +1,35 @@
+name: AI Job Apply demo pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/job-apply-pipeline.mjs"
+      - "scripts/render-job-apply-pdf.mjs"
+      - "templates/job-apply/**"
+      - "data/job-apply-demo/**"
+      - ".github/workflows/ai-job-apply-demo.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  generate-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install PDF renderer
+        run: npm install --no-save puppeteer
+      - name: Match demo profile to demo job
+        run: node scripts/job-apply-pipeline.mjs data/job-apply-demo/test_profile.json data/job-apply-demo/test_job.json artifacts/job-apply-demo
+      - name: Render tailored resume PDF
+        run: node scripts/render-job-apply-pdf.mjs artifacts/job-apply-demo/resume.html artifacts/job-apply-demo/resume.pdf
+      - name: Upload private workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-job-apply-demo-${{ github.run_number }}
+          path: artifacts/job-apply-demo/
+          retention-days: 7

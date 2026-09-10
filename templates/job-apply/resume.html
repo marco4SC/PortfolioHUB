@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}} — Demo resume</title>
+  <style>
+    @page { size: A4; margin: 16mm; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:#173247; font:11pt/1.45 Arial,sans-serif; }
+    h1 { margin:0; color:#0b2b40; font-size:25pt; }
+    h2 { margin:1.2rem 0 .35rem; color:#116b70; font-size:14pt; border-bottom:1px solid #c9e1ea; padding-bottom:.2rem; }
+    .subtitle { color:#116b70; font-weight:700; margin:.25rem 0 1rem; }
+    .notice { background:#eef7fb; border-left:4px solid #27a879; padding:.65rem .8rem; margin-bottom:1rem; }
+    ul { margin:.35rem 0; padding-left:1.25rem; } li { margin:.18rem 0; }
+    .muted { color:#557080; font-size:9pt; }
+  </style>
+</head>
+<body>
+  <h1>{{HEADLINE}}</h1>
+  <p class="subtitle">Tailored for {{JOB_TITLE}} at {{COMPANY}}</p>
+  <div class="notice">{{SUMMARY}}</div>
+  <h2>Matched skills</h2>
+  <p>{{MATCHED_SKILLS}}</p>
+  <h2>Relevant projects</h2>
+  <ul>{{PROJECTS}}</ul>
+  <h2>Application notes</h2>
+  <p>This is a generated preview. Claims are limited to the supplied profile and require candidate review before use.</p>
+  <p class="muted">Source role: {{JOB_URL}} · Match score: {{SCORE}}%</p>
+</body>
+</html>
