@@ -9,9 +9,18 @@ if (!profilePath || !jobPath) {
 const readJson = async (file) => JSON.parse(await fs.readFile(file, "utf8"));
 const profile = await readJson(profilePath);
 const job = await readJson(jobPath);
-const profileSkills = new Set(profile.skills.map((skill) => skill.toLowerCase()));
-const matchedSkills = job.requirements.filter((skill) => profileSkills.has(skill.toLowerCase()));
-const score = Math.round((matchedSkills.length / job.requirements.length) * 100);
+const normalizeSkill = (skill) => String(skill)
+  .toLowerCase()
+  .replaceAll(/[^a-z0-9+#]+/g, " ")
+  .trim();
+const profileSkills = new Map(profile.skills.map((skill) => [normalizeSkill(skill), skill]));
+const matchedSkills = job.requirements
+  .filter((skill) => profileSkills.has(normalizeSkill(skill)))
+  .map((skill) => profileSkills.get(normalizeSkill(skill)));
+const unmatchedSkills = job.requirements.filter((skill) => !profileSkills.has(normalizeSkill(skill)));
+const score = job.requirements.length === 0
+  ? 0
+  : Math.round((matchedSkills.length / job.requirements.length) * 100);
 const output = path.resolve(outputDir);
 await fs.mkdir(output, { recursive: true });
 
@@ -36,9 +45,11 @@ const manifest = {
   job_id: job.id,
   profile_id: profile.id,
   matched_skills: matchedSkills,
+  unmatched_skills: unmatchedSkills,
   score,
   review_required: true,
   application_sent: false,
+  review_reason: score < 70 ? "Match is below the demo review threshold" : "Human review is required before any use",
   template: templateName,
   generated_at: new Date().toISOString()
 };
