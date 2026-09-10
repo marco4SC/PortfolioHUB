@@ -42,7 +42,7 @@
             .nav-inner { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
             .nav-inner > a:first-child { width: 100%; text-align: center; }
             .nav-inner > div { display: none; }
-            .nav-inner .nav-link, .nav-inner .lang-link { flex: 1 1 auto; min-width: 0; text-align: center; }
+            .nav-inner .nav-link, .nav-inner .lang-link, .nav-inner .theme-toggle { flex: 1 1 auto; min-width: 0; text-align: center; }
             .hero { padding: 1.5rem 1rem; }
             .hero h1 { font-size: 1.6rem; }
             .content { padding: 1.5rem; }
@@ -50,7 +50,8 @@
             .project-card h3 { font-size: 1.05rem; }
             .footer-links a { min-height: 36px; }
         }
-        .theme-toggle { min-height:34px; padding:0 .85rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.85rem; }
+        .theme-toggle { display:inline-flex; align-items:center; gap:.4rem; min-height:34px; padding:0 .8rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.8rem; font-weight:600; white-space:nowrap; }
+        .theme-toggle:hover { background:#e5f3ef; color:#145244; }
         body.dark-theme { background:#081b2a; color:#dbeafe; }
         body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045); }
         body.dark-theme .container { background:#102536; }
@@ -67,12 +68,12 @@
 <nav>
     <div class="nav-inner">
         <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Enable dark theme">☾</button>
         <div style="flex:1"></div>
         <a class="nav-link" href="projetos.en.html">Projects</a>
         <a class="nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="lang-link" href="projetos.html">PT</a>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Enable dark theme" aria-pressed="false"><span data-theme-icon>☾</span><span>Theme</span></button>
     </div>
 </nav>
 
@@ -154,7 +155,7 @@
     </footer>
 </div>
 <script>
-(() => { const toggle = document.querySelector('[data-theme-toggle]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { toggle.textContent = document.body.classList.contains('dark-theme') ? '☀' : '☾'; toggle.setAttribute('aria-label', document.body.classList.contains('dark-theme') ? 'Enable light theme' : 'Enable dark theme'); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
+(() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Enable light theme' : 'Enable dark theme'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
 </script>
 </body>
 </html>

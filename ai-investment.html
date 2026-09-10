@@ -33,7 +33,8 @@
     .production-grid { max-width:80rem; margin:0 auto; padding:0 1.5rem 3rem; }
     .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
     .production-card h3 { font-weight:700; color:#163d4c; }
-    .theme-toggle { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:0 .85rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.85rem; }
+    .theme-toggle { display:inline-flex; align-items:center; justify-content:center; gap:.4rem; min-height:34px; padding:0 .8rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.8rem; font-weight:600; white-space:nowrap; }
+    .theme-toggle:hover { background:#e5f3ef; color:#145244; }
     body.dark-theme, body.dark-theme.bg-slate-50 { background:#081b2a !important; color:#dbeafe !important; }
     body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045) !important; }
     body.dark-theme main h1, body.dark-theme main h2 { color:#dbeafe !important; }
@@ -52,7 +53,7 @@
       .site-nav-inner { flex-wrap: wrap; gap: .5rem; justify-content: center; }
       .site-nav-inner > a:first-child { width: 100%; text-align: center; }
       .site-nav-inner > .flex-1 { display: none; }
-      .site-nav-inner > a:not(:first-child) { flex: 1 1 auto; min-width: 0; }
+      .site-nav-inner > a:not(:first-child), .site-nav-inner > .theme-toggle { flex: 1 1 auto; min-width: 0; }
       main > section { padding-left: 1rem; padding-right: 1rem; }
       main > section:first-child { padding-top: 2rem; }
       main > section:first-child h1 { font-size: 1.8rem; line-height: 1.15; }
@@ -77,12 +78,12 @@
   <nav class="site-nav">
     <div class="site-nav-inner">
       <a href="index.html">Marco Antonio</a>
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro">☾</button>
       <span class="flex-1"></span>
       <a href="projetos.html">Projetos</a>
       <a class="active" href="ai-investment.html">AI Investment</a>
       <a class="linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a class="language" href="ai-investment.en.html">EN</a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro" aria-pressed="false"><span data-theme-icon>☾</span><span>Tema</span></button>
     </div>
   </nav>
   <main class="min-h-screen">
@@ -219,8 +220,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script>
       const themeToggle = document.querySelector('[data-theme-toggle]');
+      const themeIcon = themeToggle.querySelector('[data-theme-icon]');
       if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme');
-      const updateThemeToggle = () => { themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀' : '☾'; themeToggle.setAttribute('aria-label', document.body.classList.contains('dark-theme') ? 'Ativar tema claro' : 'Ativar tema escuro'); };
+      const updateThemeToggle = () => { const dark = document.body.classList.contains('dark-theme'); themeIcon.textContent = dark ? '☀' : '☾'; themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); themeToggle.setAttribute('aria-pressed', String(dark)); };
       updateThemeToggle();
       themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); updateThemeToggle(); });
       const form = document.getElementById('demoForm');
