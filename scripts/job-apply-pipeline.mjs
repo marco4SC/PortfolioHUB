@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const [, , profilePath, jobPath, outputDir = "artifacts/job-apply-demo"] = process.argv;
+const [, , profilePath, jobPath, outputDir = "artifacts/job-apply-demo", templateName = "resume.html"] = process.argv;
 if (!profilePath || !jobPath) {
   throw new Error("Usage: node scripts/job-apply-pipeline.mjs <profile.json> <job.json> [output-dir]");
 }
@@ -18,7 +18,9 @@ await fs.mkdir(output, { recursive: true });
 const escapeHtml = (value) => String(value)
   .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
   .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
-const template = await fs.readFile("templates/job-apply/resume.html", "utf8");
+const allowedTemplates = new Set(["resume.html", "compact.html"]);
+if (!allowedTemplates.has(templateName)) throw new Error(`Unsupported template: ${templateName}`);
+const template = await fs.readFile(path.join("templates/job-apply", templateName), "utf8");
 const resume = template
   .replaceAll("{{TITLE}}", escapeHtml(job.title))
   .replaceAll("{{HEADLINE}}", escapeHtml(profile.headline))
@@ -37,6 +39,7 @@ const manifest = {
   score,
   review_required: true,
   application_sent: false,
+  template: templateName,
   generated_at: new Date().toISOString()
 };
 await fs.writeFile(path.join(output, "resume.html"), resume);

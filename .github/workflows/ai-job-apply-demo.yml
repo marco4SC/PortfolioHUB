@@ -5,6 +5,8 @@ on:
   push:
     paths:
       - "scripts/job-apply-pipeline.mjs"
+      - "scripts/ingest-jobs.mjs"
+      - "scripts/select-job.mjs"
       - "scripts/render-job-apply-pdf.mjs"
       - "templates/job-apply/**"
       - "data/job-apply-demo/**"
@@ -23,8 +25,12 @@ jobs:
           node-version: "20"
       - name: Install PDF renderer
         run: npm install --no-save puppeteer
-      - name: Match demo profile to demo job
-        run: node scripts/job-apply-pipeline.mjs data/job-apply-demo/test_profile.json data/job-apply-demo/test_job.json artifacts/job-apply-demo
+      - name: Ingest authorized demo source
+        run: node scripts/ingest-jobs.mjs data/job-apply-demo/source_jobs.json artifacts/job-apply-demo/jobs.json
+      - name: Select first normalized demo job
+        run: node scripts/select-job.mjs artifacts/job-apply-demo/jobs.json artifacts/job-apply-demo/selected_job.json
+      - name: Match demo profile to top demo job
+        run: node scripts/job-apply-pipeline.mjs data/job-apply-demo/test_profile.json artifacts/job-apply-demo/selected_job.json artifacts/job-apply-demo resume.html
       - name: Render tailored resume PDF
         run: node scripts/render-job-apply-pdf.mjs artifacts/job-apply-demo/resume.html artifacts/job-apply-demo/resume.pdf
       - name: Upload private workflow artifact

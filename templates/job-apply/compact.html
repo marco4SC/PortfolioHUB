@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{TITLE}} — Compact demo resume</title>
+  <style>
+    @page { size: A4; margin: 13mm; }
+    body { margin:0; font:10pt/1.35 Arial,sans-serif; color:#173247; }
+    h1 { color:#0b2b40; margin:0; font-size:22pt; } h2 { color:#116b70; font-size:12pt; margin:1rem 0 .25rem; }
+    .subtitle { color:#116b70; font-weight:bold; } .skills { color:#075b50; font-weight:bold; }
+    li { margin:.15rem 0; } .muted { color:#557080; font-size:8pt; }
+  </style>
+</head>
+<body>
+  <h1>{{HEADLINE}}</h1>
+  <p class="subtitle">{{JOB_TITLE}} · {{COMPANY}}</p>
+  <p>{{SUMMARY}}</p>
+  <h2>Matched skills</h2>
+  <p class="skills">{{MATCHED_SKILLS}}</p>
+  <h2>Relevant projects</h2>
+  <ul>{{PROJECTS}}</ul>
+  <p class="muted">Demo preview · review required · {{SCORE}}% match · {{JOB_URL}}</p>
+</body>
+</html>
