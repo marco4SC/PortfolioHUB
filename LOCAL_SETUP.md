@@ -31,16 +31,27 @@ O backend ficará disponível em `http://localhost:3000`.
 
 ## 2. Frontend
 
-Em outro PowerShell, entre novamente na raiz do projeto:
+Em outro PowerShell, entre novamente na raiz do projeto e sirva a raiz do repositório:
 
 ```powershell
 Set-Location "C:\Users\marcs\Kepler\worktrees\PortfolioHUB-ai-job_aplly-6a42a281"
-python -m http.server 5500 --directory frontend
+python -m http.server 5500
 ```
 
 Abra `http://localhost:5500`.
 
 Não abra os HTMLs diretamente com `file://`: o navegador bloqueará chamadas de sessão e API.
+
+> `python -m http.server 5500 --directory frontend` abre a aplicação legada em `frontend/index.html`.
+> Para testar o currículo e o AI Job Apply integrados ao PortfolioHUB, use a raiz do repositório.
+
+Endereços locais principais:
+
+- Currículo: `http://localhost:5500/index.html`
+- Projetos: `http://localhost:5500/projetos.html`
+- AI Job Apply: `http://localhost:5500/docs/demo/index.html`
+- Dashboard da demo: `http://localhost:5500/docs/demo/dashboard.html`
+- Aplicação legada/admin: `http://localhost:5500/frontend/index.html`
 
 ## 3. GitHub OAuth local
 
