@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos · Marco Antonio</title>
     <meta name="description" content="Projetos de Marco Antonio em backend, Java, APIs REST, Python e cloud. Acesse demos e códigos no GitHub." >
+    <meta name="theme-color" content="#0b2b40">
+    <meta name="color-scheme" content="light dark">
     <meta property="og:title" content="Projetos · Marco Antonio" >
     <meta property="og:description" content="Lista de projetos em destaque: AI, automação e ferramentas acadêmicas. Abra o demo do AI Investment System." >
     <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/projetos.html" >
+    <meta property="og:type" content="website" >
+    <meta name="twitter:card" content="summary" >
     <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/projetos.html" >
+    <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/projetos.en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
+    <link rel="alternate" hreflang="x-default" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -26,6 +33,10 @@
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
             overflow: hidden;
         }
+        .skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 100; background: #ffd966; color: #0b2b40; padding: .65rem 1rem; border-radius: 0 0 10px 10px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { top: 0; }
+        :focus-visible { outline: 3px solid #ffd966; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
         .hero {
             background: linear-gradient(135deg, #0b2b40, #1a4a5f);
             color: white;
@@ -165,7 +176,8 @@
     </style>
 </head>
 <body>
-<nav style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0;position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
+<a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+<nav aria-label="Navegação principal" style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0;position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
     <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
     <div style="flex:1"></div>
@@ -176,7 +188,7 @@
     <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro" aria-pressed="false"><span data-theme-icon>☾</span><span>Tema</span></button>
   </div>
 </nav>
-<div class="container">
+<main id="main-content" class="container" tabindex="-1">
     <div class="hero">
         <h1>🚀 Meus Projetos</h1>
         <div class="sub">Backend, APIs, Java, dados e projetos em evolução</div>
@@ -296,7 +308,7 @@
         </div>
         <p>👨‍💻 Projetos de Marco Antonio de Souza Carvalho</p>
     </footer>
-</div>
+</main>
 <script>
 (() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
 </script>

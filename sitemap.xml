@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://marco4sc.github.io/PortfolioHUB/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://marco4sc.github.io/PortfolioHUB/projetos.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://marco4sc.github.io/PortfolioHUB/ai-investment.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://marco4sc.github.io/PortfolioHUB/index.en.html</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://marco4sc.github.io/PortfolioHUB/projetos.en.html</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://marco4sc.github.io/PortfolioHUB/docs/demo/index.html</loc>
+    <lastmod>2026-09-11</lastmod>
   </url>
 </urlset>
