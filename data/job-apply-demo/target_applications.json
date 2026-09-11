@@ -1,0 +1,86 @@
+{
+  "profile_id": "demo-profile",
+  "status": "NEEDS_OFFICIAL_JOB_DESCRIPTIONS",
+  "applications": [
+    {
+      "priority": 1,
+      "company": "RNP",
+      "title": "Estagiário de Engenharia de IA",
+      "channel": "candidatura",
+      "positioning": "Python, APIs, LLMs, dados e projeto AI Investment System",
+      "evidence": ["FastAPI", "LLM APIs", "Python", "AI Investment System"],
+      "requirements_to_confirm": ["Python", "machine learning", "cloud", "dados", "inglês"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 2,
+      "company": "Quality Digital",
+      "title": "Desenvolvedor Júnior",
+      "channel": "candidatura",
+      "positioning": "Backend, APIs REST, JavaScript/Node.js, SQL e Git",
+      "evidence": ["Node.js", "REST APIs", "SQL", "Git", "Java/OOP"],
+      "requirements_to_confirm": ["stack principal", "senioridade", "testes", "cloud"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 3,
+      "company": "Instituto de Pesquisas Eldorado",
+      "title": "Banco de Talentos Estágio Brasília 2026",
+      "channel": "candidatura",
+      "positioning": "Engenharia da Computação, software, IA, redes e segurança",
+      "evidence": ["formação UniCeub", "Python", "Java", "C++", "redes", "Cisco Cybersecurity"],
+      "requirements_to_confirm": ["trilha do banco", "localidade", "área de interesse"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 4,
+      "company": "ProgramaThor / CodeLeap",
+      "title": "Cadastro para candidatura à vaga da CodeLeap",
+      "channel": "cadastro",
+      "positioning": "Desenvolvimento backend e projetos práticos publicados",
+      "evidence": ["Python", "JavaScript/Node.js", "REST APIs", "GitHub Pages"],
+      "requirements_to_confirm": ["stack da CodeLeap", "formato do processo", "etapas técnicas"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 5,
+      "company": "SiDi",
+      "title": "Estágio em Desenvolvimento de Software (Cloud)",
+      "channel": "candidatura",
+      "positioning": "APIs, Python/JavaScript, Git e fundamentos de cloud em desenvolvimento",
+      "evidence": ["FastAPI", "Node.js", "REST APIs", "Git", "Engenharia da Computação"],
+      "requirements_to_confirm": ["AWS/Azure/GCP", "Linux", "containers", "inglês"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 6,
+      "company": "Sistema Indústria",
+      "title": "Estágio em Suporte a Operações de TI",
+      "channel": "candidatura",
+      "positioning": "Suporte técnico, documentação, chamados, redes e segurança",
+      "evidence": ["GLPI", "Trello", "documentação", "redes", "Cisco Cybersecurity"],
+      "requirements_to_confirm": ["ferramentas de service desk", "escala", "Windows/Linux"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 7,
+      "company": "ISA Saúde",
+      "title": "Desenvolvedor Júnior",
+      "channel": "candidatura",
+      "positioning": "Desenvolvimento de APIs, integração de serviços e qualidade de software",
+      "evidence": ["Python", "Node.js", "FastAPI", "SQL", "Git"],
+      "requirements_to_confirm": ["stack principal", "domínio de saúde", "testes", "bancos"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    },
+    {
+      "priority": 8,
+      "company": "Globalweb",
+      "title": "Operador de Service Desk JR",
+      "channel": "candidatura",
+      "positioning": "Atendimento técnico, registro de chamados, documentação e troubleshooting",
+      "evidence": ["GLPI", "Trello", "manuais em inglês", "redes", "Linux"],
+      "requirements_to_confirm": ["ITIL", "escala", "nível de atendimento", "ferramentas"],
+      "missing_input": "URL ou descrição oficial da vaga"
+    }
+  ]
+}

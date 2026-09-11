@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Job Apply — Demo segura</title>
+  <meta name="description" content="Demonstração estática de uma pipeline de matching de vagas com revisão humana.">
+  <style>
+    :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; background:#eef7fb; color:#123044; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:1rem; }
+    main { width:min(760px,100%); background:#fff; border:1px solid #c9e1ea; border-radius:20px; padding:clamp(1.4rem,4vw,3rem); box-shadow:0 18px 50px rgba(13,48,69,.12); }
+    h1 { color:#0b2b40; margin-top:0; } h2 { color:#116b70; margin-bottom:.45rem; }
+    .status { display:inline-block; padding:.4rem .7rem; border-radius:999px; background:#d8fff0; color:#075b50; font-weight:700; }
+    .flow { display:grid; grid-template-columns:repeat(2,1fr); gap:.75rem; padding:0; list-style:none; }
+    .flow li { background:#f1f8fa; border-left:4px solid #27a879; padding:.8rem; border-radius:10px; }
+    a { color:#0b6870; font-weight:700; } .notice { background:#fff7df; border:1px solid #e7c967; padding:1rem; border-radius:12px; }
+    @media (max-width:560px) { .flow { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="status">MVP em preparação</span>
+    <h1>AI Job Apply</h1>
+    <p>Projeto do PortfolioHUB para comparar requisitos de vagas com um perfil profissional, sugerir adequações no currículo e preparar uma candidatura para revisão.</p>
+    <h2>Fluxo planejado</h2>
+    <ol class="flow">
+      <li><strong>1. Ingestão:</strong> fontes autorizadas e APIs oficiais.</li>
+      <li><strong>2. Matching:</strong> habilidades, senioridade e preferências.</li>
+      <li><strong>3. Personalização:</strong> currículo e carta sem inventar experiências.</li>
+      <li><strong>4. Aprovação:</strong> o candidato revisa antes de qualquer envio.</li>
+    </ol>
+    <div class="notice">
+      <strong>Privacidade:</strong> esta página não coleta currículo, contato ou credenciais. Nenhuma candidatura é enviada automaticamente. Consulte a <a href="privacy.html">política de privacidade e consentimento</a>.
+    </div>
+    <p><a href="applications.html">Ver lote de candidaturas</a> · <a href="dashboard.html">Abrir dashboard de revisão</a> · <a href="../../projetos.html">Voltar aos projetos</a> · <a href="../../index.html">Voltar ao currículo</a> · <a href="https://github.com/marco4SC/PortfolioHUB" rel="noopener noreferrer">Ver código no GitHub</a></p>
+  </main>
+</body>
+</html>

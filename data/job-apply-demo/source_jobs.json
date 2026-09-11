@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "id": "demo-backend-role",
+      "title": "Junior Backend Engineer",
+      "company": "Example Technologies",
+      "location": "Remote",
+      "description": "Support backend services and integrations. Work with Python, REST APIs, SQL, Git and automated tests.",
+      "requirements": ["Python", "REST APIs", "SQL", "Git", "Automated testing", "JavaScript"],
+      "url": "https://example.com/jobs/demo-backend-role"
+    },
+    {
+      "id": "demo-data-role",
+      "title": "Junior Data Platform Engineer",
+      "company": "Example Data Co.",
+      "location": "Hybrid",
+      "description": "Help maintain data services and internal APIs.",
+      "requirements": ["Python", "SQL", "Git", "APIs"],
+      "url": "https://example.com/jobs/demo-data-role"
+    }
+  ]
+}

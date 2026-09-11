@@ -1,0 +1,7 @@
+node_modules/
+.env
+backend/data/projects.json
+backend/data/consents.json
+backend/data/job-applications.json
+.DS_Store
+/pessoais/cs.txt

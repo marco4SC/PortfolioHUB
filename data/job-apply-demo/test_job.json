@@ -1,0 +1,16 @@
+{
+  "id": "demo-backend-role",
+  "title": "Junior Backend Engineer",
+  "company": "Example Technologies",
+  "location": "Remote",
+  "description": "Support backend services and integrations. Work with Python, REST APIs, SQL, Git and automated tests. Familiarity with JavaScript and cloud services is useful.",
+  "requirements": [
+    "Python",
+    "REST APIs",
+    "SQL",
+    "Git",
+    "Automated testing",
+    "JavaScript"
+  ],
+  "url": "https://example.com/jobs/demo-backend-role"
+}

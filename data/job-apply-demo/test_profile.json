@@ -1,0 +1,25 @@
+{
+  "id": "demo-profile",
+  "headline": "Backend and AI engineering candidate",
+  "summary": "Engineering student building practical backend, API and AI projects.",
+  "skills": [
+    "Python",
+    "JavaScript",
+    "Node.js",
+    "FastAPI",
+    "REST APIs",
+    "SQL",
+    "Git",
+    "GitHub",
+    "Java",
+    "Object-Oriented Programming"
+  ],
+  "projects": [
+    "AI Investment System with FastAPI and structured LLM analysis",
+    "Bilingual responsive portfolio published with GitHub Pages"
+  ],
+  "preferences": {
+    "work_mode": ["remote", "hybrid"],
+    "role_types": ["backend", "software engineering", "AI engineering"]
+  }
+}

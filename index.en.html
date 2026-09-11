@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Antonio · Computational Engineering Portfolio</title>
+    <meta name="description" content="Marco Antonio's portfolio featuring backend, AI, Python, Java, REST APIs, data and engineering projects.">
+    <meta name="theme-color" content="#0b2b40">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:title" content="Marco Antonio · Portfolio">
+    <meta property="og:description" content="Portfolio featuring backend, AI, Python, Java, REST APIs and engineering projects.">
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/index.en.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/index.en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/">
+    <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/index.en.html">
+    <link rel="alternate" hreflang="x-default" href="https://marco4sc.github.io/PortfolioHUB/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Marco Antonio de Souza Carvalho",
+      "url": "https://marco4sc.github.io/PortfolioHUB/index.en.html",
+      "jobTitle": "Computer Engineering Student",
+      "email": "mailto:Marc.souz.carvalh@gmail.com",
+      "sameAs": [
+        "https://github.com/marco4SC",
+        "https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329"
+      ],
+      "knowsAbout": ["Python", "JavaScript", "Node.js", "Java", "REST APIs", "Artificial Intelligence"]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef2f5;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 100; background: #ffd966; color: #0b2b40; padding: .65rem 1rem; border-radius: 0 0 10px 10px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { top: 0; }
+        :focus-visible { outline: 3px solid #ffd966; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+        nav {
+            background: linear-gradient(135deg,#0b2b40,#1a4a5f);
+            padding: 0.6rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+        nav a { color: #fff; text-decoration: none; }
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 0 0.85rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .lang-link {
+            color: #1e2a3e;
+            background: #f4f9fc;
+            font-weight: 600;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+        }
+        .nav-link.active,
+        .nav-link:hover { background: #1e6f5c; }
+
+        .nav-link.linkedin {
+            color: #1e6f5c;
+            background: #f4f9fc;
+            border: 1px solid #c9dce5;
+            font-weight: 600;
+        }
+
+        .nav-link.linkedin:hover {
+            color: #fff;
+            background: #1e6f5c;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            color: white;
+            padding: 2rem;
+        }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .hero .sub {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #6ab0de;
+            padding-left: 1rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.08);
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+        }
+        .contact-info a { color: #ffd966; }
+        .content { padding: 2rem; }
+        .section {
+            margin-bottom: 2rem;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .js-enabled .section { opacity: 0; transform: translateY(30px); }
+        .section.visible { opacity: 1; transform: translateY(0); }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-left: 5px solid #1e6f5c;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            color: #0e3b4b;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #f9fbfd;
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e2edf2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .card h3 { color: #1c6d62; margin-bottom: 0.5rem; }
+        .badge {
+            background: #e0eef4;
+            color: #1e5f6e;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0 0.4rem 0.4rem 0;
+        }
+        .download-btn {
+            background: #1e6f5c;
+            color: white;
+            border: 0;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .download-btn:hover { background: #145244; }
+        .download-btn:focus-visible {
+            outline: 3px solid #ffd966;
+            outline-offset: 3px;
+        }
+        .download-btn-wrapper { text-align: center; margin: 2rem 0 1rem; }
+        .print-help { color: #4b6f7e; font-size: 0.8rem; margin-top: 0.6rem; }
+        footer {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.75rem;
+            color: #d5edf5;
+            border-top: 1px solid #2b647e;
+            width: 100%;
+            min-height: 116px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.85rem;
+            border: 1px solid #4b9b87;
+            border-radius: 999px;
+            color: #e5fff2;
+            background: #1e6f5c;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .footer-links a:hover {
+            background: #38a47f;
+            color: #06251d;
+            transform: translateY(-2px);
+        }
+        .footer-copy,
+        .footer-update { font-size: 0.75rem; }
+        .card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            body { background: white; padding: 0; margin: 0; print-color-adjust: exact; }
+            nav, .download-btn-wrapper, footer, .content a[href*="github.com"] {
+                display: none !important;
+            }
+            .container { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .hero { print-color-adjust: exact; }
+            .content { padding: 1rem 1.5rem; }
+            .section, .card { page-break-inside: avoid; }
+            .card { box-shadow: none; border-color: #ccc; }
+            h1, h2, h3, h4 { page-break-after: avoid; }
+        }
+            @media (prefers-reduced-motion: reduce) {
+                *, *::before, *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    scroll-behavior: auto !important;
+                    transition-duration: 0.01ms !important;
+                }
+                .section, .js-enabled .section, .card {
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+            }
+        @media (max-width: 700px) {
+            body { padding: 1rem 0.5rem; }
+            .container { border-radius: 16px; }
+            .nav-inner { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+            .nav-inner > a:first-child { width: 100%; text-align: center; }
+            .nav-inner > div { display: none; }
+            .nav-inner .nav-link, .nav-inner .lang-link, .nav-inner .theme-toggle { flex: 1 1 auto; min-width: 0; text-align: center; }
+            .hero h1 { font-size: 1.6rem; }
+            .hero { padding: 1.5rem 1rem; }
+            .hero .sub { font-size: 0.92rem; padding-left: 0.75rem; }
+            .contact-info { gap: 0.55rem; padding: 0.7rem; font-size: 0.78rem; }
+            .content { padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; gap: 1rem; }
+            .card { padding: 1rem; border-radius: 14px; }
+            .footer-links a { min-height: 36px; }
+        }
+        .theme-toggle { display:inline-flex; align-items:center; gap:.4rem; min-height:34px; padding:0 .8rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.8rem; font-weight:600; white-space:nowrap; }
+        .theme-toggle:hover { background:#e5f3ef; color:#145244; }
+        .versioned-github { display:inline-block; background:#eef2f5; color:#1e2a3e; padding:.4rem 1.2rem; border-radius:40px; font-size:.8rem; }
+        .versioned-github a { color:#1e6f5c; }
+        body.dark-theme { background:#081b2a; color:#dbeafe; }
+        body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045); }
+        body.dark-theme .container, body.dark-theme .content { background:#102536; }
+        body.dark-theme .card { background:#153247 !important; border-color:#28516a; color:#dbeafe; }
+        body.dark-theme .card:hover { background:#193d53; }
+        body.dark-theme .section-title, body.dark-theme .card h3 { color:#71d6a8; }
+        body.dark-theme .badge { background:#0c6870 !important; color:#d8fff0 !important; border:1px solid #49b894; }
+        body.dark-theme .versioned-github { background:#173f58 !important; color:#a8e6c4; border:1px solid #34728a; }
+        body.dark-theme .versioned-github a { color:#9ee7bf; }
+        body.dark-theme .theme-toggle { background:#12354a; color:#9ee7bf; border-color:#34728a; }
+        body.dark-theme footer { background:linear-gradient(135deg,#06131f,#0d3045); border-color:#28516a; color:#d5edf5; }
+        body.dark-theme .footer-links a { background:#1e6f5c; color:#e5fff2; border-color:#49b894; }
+        body.dark-theme input, body.dark-theme textarea, body.dark-theme select { background:#102b3d; color:#dbeafe; border-color:#38627a; }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<nav aria-label="Primary navigation">
+    <div class="nav-inner">
+        <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
+        <div style="flex:1"></div>
+        <a class="nav-link" href="projetos.en.html">Projects</a>
+        <a class="nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="lang-link" href="index.html">PT</a>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Enable dark theme" aria-pressed="false"><span data-theme-icon>☾</span><span>Theme</span></button>
+    </div>
+</nav>
+
+<main id="main-content" class="container" tabindex="-1">
+    <div id="resume">
+        <div class="hero">
+            <h1>Marco Antonio de Souza Carvalho</h1>
+            <div class="sub">Computational Engineering student · Backend, APIs and AI systems</div>
+            <p style="max-width:760px;margin:1rem 0 1.25rem;font-size:1.05rem">I build practical projects with Python, JavaScript/Node.js, REST APIs and service integrations. I am currently directing my training toward Java backend development and Spring Boot, with a focus on quality, security and continuous improvement.</p>
+            <div class="contact-info">
+                <span>📍 Brasilia, DF, Brazil</span>
+                <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+            </div>
+        </div>
+
+        <div class="content">
+            <section class="section">
+                <div class="section-title">👋 Professional profile</div>
+                <div class="card">
+                    <p>I am seeking an internship or junior role in backend, data engineering, AI or cloud. My focus is combining Computer Engineering fundamentals with published projects, documentation and hands-on integration of APIs, data and external services.</p>
+                    <ul style="padding-left:1.2rem;margin-top:0.8rem">
+                        <li>Portfolio published on GitHub Pages with open-source code.</li>
+                        <li>Projects using REST APIs, FastAPI, Node.js, Python, Java/OOP and service integrations.</li>
+                        <li>International experience and fluent English for documentation and collaboration.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🎓 Education</div>
+                <div class="grid-2col">
+                    <div class="card">
+                        <h3>📘 Computational Engineering</h3>
+                        <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>Jul/2024 – expected 2028 | Currently in the 4th semester</p>
+                        <p style="margin-top:0.7rem"><strong>Completed coursework:</strong> Introduction to Computing, Programming Logic, Computer Organization and Architecture, Software Engineering, Databases I and II, Calculus for Computing, Linear Algebra and Analytic Geometry, Digital Circuits, Computer Networks, Cybersecurity, Communication Systems and Computer-Mediated Design.</p>
+                        <p style="margin-top:0.7rem"><strong>Applied in my portfolio:</strong> programming and OOP fundamentals, data modeling, APIs and services, networking, security, and software-hardware integration.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌍 Academic exchange</h3>
+                        <p><strong>University of Aveiro, Portugal</strong><br>Jul/2022 – Sep/2023 · international academic and cultural experience.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">⚙️ Technical Skills</div>
+                <div class="card">
+                    <span class="badge">Fluent English</span>
+                    <span class="badge">Git / GitHub</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">JavaScript / Node.js</span>
+                    <span class="badge">Express · REST APIs</span>
+                    <span class="badge">FastAPI · LLM APIs</span>
+                    <span class="badge">Java / OOP</span>
+                    <span class="badge">SQL / Databases</span>
+                    <span class="badge">Software Engineering</span>
+                    <span class="badge">C++</span>
+                    <span class="badge">Basic electronics</span>
+                    <span class="badge">Networking and security</span>
+                    <span class="badge">Cisco Cybersecurity</span>
+                    <span class="badge">Linux and networking fundamentals</span>
+                    <span class="badge">AWS · currently learning</span>
+                    <span class="badge">IAM · EC2 · S3 · VPC · currently learning</span>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">☁️ AWS learning path</div>
+                <div class="card">
+                    <p>I am building a practical cloud foundation to connect backend development, security and observability with core AWS services. This is an active learning path, not a completed certification or professional experience claim.</p>
+                    <div style="margin-top:0.8rem">
+                        <span class="badge">IAM and least privilege</span>
+                        <span class="badge">EC2 and Linux</span>
+                        <span class="badge">S3 and access policies</span>
+                        <span class="badge">VPC and networking concepts</span>
+                        <span class="badge">CloudWatch and logs</span>
+                        <span class="badge">Lambda and serverless</span>
+                    </div>
+                    <p style="margin-top:0.8rem"><strong>Next lab:</strong> deploy a small API with authentication, private storage, logs and cost notes, using free-tier resources or shutting them down after testing.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🎯 Professional focus — Java backend</div>
+                <div class="card">
+                    <p>I am directing my training toward backend development, connecting my current experience with APIs, service integration, databases and Git to my studies in <strong>Java, Spring Boot, microservices and Apache Kafka</strong>.</p>
+                    <p style="margin-top:0.7rem">Spring Boot, Kafka and microservices are clearly marked as current studies rather than completed professional experience.</p>
+                    <div style="margin-top:0.8rem">
+                        <span class="badge">Spring Boot · currently studying</span>
+                        <span class="badge">Kafka · currently studying</span>
+                        <span class="badge">Microservices · currently studying</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🔧 Practical Activities</div>
+                <div class="grid-2col">
+                    <div class="card">✔ Maintenance support for electronic equipment</div>
+                    <div class="card">✔ Technical tickets and task tracking with spreadsheets, GLPI and Trello</div>
+                    <div class="card">✔ Procedure documentation using Git/GitHub</div>
+                    <div class="card">✔ Soldering and low-voltage circuit assembly</div>
+                    <div class="card">✔ Reading and translating technical documentation in English</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">📁 Selected projects</div>
+                <div class="grid-2col">
+                    <div class="card">
+                        <h3>AI Investment System</h3>
+                        <p>Decision-support system with Python, FastAPI, market data and structured LLM analysis, including risk controls, auditability and monitoring.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎫 Ticket Booking System — Java / OOP</h3>
+                        <p>Academic event-ticket reservation application demonstrating domain modeling, inheritance, polymorphism, exception handling and file persistence.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">🌎 Languages and additional information</div>
+                <div class="grid-2col">
+                    <div class="card">
+                        <h3>🗣️ Languages</h3>
+                        <p><strong>English:</strong> Fluent in reading, writing and conversation<br><strong>Spanish:</strong> Basic comprehension</p>
+                    </div>
+                    <div class="card">
+                        <h3>📄 Availability</h3>
+                        <p>✔ Monday to Friday availability<br>✔ Immediate start<br>✔ Driver's license and car</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div class="download-btn-wrapper">
+        <button id="downloadPdf" type="button" class="download-btn" aria-label="Open print dialog to save the resume as a PDF">📄 Save resume as PDF</button>
+        <p class="print-help">In the print dialog, choose “Save as PDF” as the destination.</p>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+            <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+            <a href="mailto:Marc.souz.carvalh@gmail.com">✉️ Email</a>
+            <a href="index.html">🌐 Portuguese version</a>
+        </div>
+        <div class="footer-copy">© <span id="current-year"></span> Marco Antonio de Souza Carvalho</div>
+        <div class="footer-update">Last updated: <span id="last-updated"></span></div>
+    </footer>
+</main>
+
+<script>
+    (() => {
+        document.documentElement.classList.add('js-enabled');
+        const downloadPdfButton = document.getElementById('downloadPdf');
+        if (!downloadPdfButton) return;
+
+        downloadPdfButton.addEventListener('click', () => {
+            downloadPdfButton.disabled = true;
+            downloadPdfButton.textContent = '🖨️ Opening print dialog...';
+            window.setTimeout(() => {
+                window.print();
+                downloadPdfButton.disabled = false;
+                downloadPdfButton.textContent = '📄 Save resume as PDF';
+            }, 100);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const showSection = (section) => section.classList.add('visible');
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, currentObserver) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            showSection(entry.target);
+                            currentObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+                sections.forEach((section) => observer.observe(section));
+            } else {
+                sections.forEach(showSection);
+            }
+
+            const currentYear = document.getElementById('current-year');
+            const lastUpdated = document.getElementById('last-updated');
+            const now = new Date();
+
+            if (currentYear) currentYear.textContent = String(now.getFullYear());
+            if (lastUpdated) lastUpdated.textContent = now.toLocaleDateString('en-US', {
+                month: 'long',
+                day: '2-digit',
+                year: 'numeric'
+            });
+        });
+    })();
+</script>
+<script>
+(() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Enable light theme' : 'Enable dark theme'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
+</script>
+</body>
+</html>

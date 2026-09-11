@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects · Marco Antonio</title>
+    <meta name="description" content="Marco Antonio's backend, Java, AI, Python and academic projects.">
+    <meta name="theme-color" content="#0b2b40">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:title" content="Projects · Marco Antonio">
+    <meta property="og:description" content="Selected backend, Java, AI, Python and academic projects.">
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/projetos.en.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/projetos.en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
+    <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/projetos.en.html">
+    <link rel="alternate" hreflang="x-default" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #eef2f5; color: #1e2a3e; line-height: 1.5; padding: 2rem 1rem; }
+        .container { max-width: 1100px; margin: 0 auto; background: #fff; border-radius: 28px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1); overflow: hidden; }
+        .skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 100; background: #ffd966; color: #0b2b40; padding: .65rem 1rem; border-radius: 0 0 10px 10px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { top: 0; }
+        :focus-visible { outline: 3px solid #ffd966; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+        nav { background: linear-gradient(135deg,#0b2b40,#1a4a5f); padding: 0.6rem 0; position: sticky; top: 0; z-index: 40; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; padding: 0 1rem; }
+        nav a { color: #fff; text-decoration: none; }
+        .nav-link { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:0 0.85rem; border-radius:999px; background:rgba(255,255,255,0.06); font-size:0.85rem; transition:background 0.2s, color 0.2s, transform 0.2s; }
+        .lang-link { color: #1e2a3e; background: #f4f9fc; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 12px; }
+        .nav-link.active,
+        .nav-link:hover { background: #1e6f5c; }
+        .nav-link.linkedin { color:#1e6f5c; background:#f4f9fc; border:1px solid #c9dce5; font-weight:600; }
+        .nav-link.linkedin:hover { color:#fff; background:#1e6f5c; }
+        .hero { background: linear-gradient(135deg,#0b2b40,#1a4a5f); color: #fff; padding: 2rem; text-align: center; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .hero .sub { opacity: 0.85; }
+        .content { padding: 2rem; }
+        .back-btn { display: inline-block; margin-bottom: 1.5rem; color: #1e6f5c; padding: 0.4rem 1rem; border: 1px solid #1e6f5c; border-radius: 20px; text-decoration: none; }
+        .project-card { background: #fff; border: 1px solid #e2edf2; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+        .project-card h3 { color: #1c6d62; margin-bottom: 0.5rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.7rem 0; }
+        .tech-stack span { background: #e8f0f4; color: #1e5f6e; font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 20px; }
+        .project-links a { background: #1e6f5c; color: #fff; padding: 0.4rem 1.2rem; border-radius: 20px; text-decoration: none; font-size: 0.8rem; display: inline-block; margin: 0.5rem 0.5rem 0 0; }
+        footer { background:linear-gradient(135deg,#0b2b40,#1a4a5f); text-align:center; padding:1.2rem; font-size:0.75rem; color:#d5edf5; border-top:1px solid #2b647e; width:100%; min-height:116px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.8rem; }
+        .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; margin-bottom:0.7rem; }
+        .footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #4b9b87; border-radius:999px; color:#e5fff2; background:#1e6f5c; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
+        .footer-links a:hover { background:#38a47f; color:#06251d; transform:translateY(-2px); }
+        @media (max-width: 700px) {
+            body { padding: 0.5rem; }
+            .container { border-radius: 16px; }
+            .nav-inner { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+            .nav-inner > a:first-child { width: 100%; text-align: center; }
+            .nav-inner > div { display: none; }
+            .nav-inner .nav-link, .nav-inner .lang-link, .nav-inner .theme-toggle { flex: 1 1 auto; min-width: 0; text-align: center; }
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .project-card { padding: 1rem; border-radius: 14px; }
+            .project-card h3 { font-size: 1.05rem; }
+            .footer-links a { min-height: 36px; }
+        }
+        .theme-toggle { display:inline-flex; align-items:center; gap:.4rem; min-height:34px; padding:0 .8rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.8rem; font-weight:600; white-space:nowrap; }
+        .theme-toggle:hover { background:#e5f3ef; color:#145244; }
+        body.dark-theme { background:#081b2a; color:#dbeafe; }
+        body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045); }
+        body.dark-theme .container { background:#102536; }
+        body.dark-theme .hero { background:linear-gradient(135deg,#092237,#12435a); }
+        body.dark-theme .project-card { background:#153247; border-color:#28516a; color:#dbeafe; }
+        body.dark-theme .project-card h3 { color:#71d6a8; }
+        body.dark-theme .tech-stack span { background:#173f58; color:#a8d8f0; }
+        body.dark-theme .theme-toggle { background:#12354a; color:#9ee7bf; border-color:#34728a; }
+        body.dark-theme footer { background:linear-gradient(135deg,#06131f,#0d3045); border-color:#28516a; color:#d5edf5; }
+        body.dark-theme .footer-links a { background:#1e6f5c; color:#e5fff2; border-color:#49b894; }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<nav aria-label="Primary navigation">
+    <div class="nav-inner">
+        <a href="index.en.html" style="font-weight:600">Marco Antonio</a>
+        <div style="flex:1"></div>
+        <a class="nav-link" href="projetos.en.html">Projects</a>
+        <a class="nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="lang-link" href="projetos.html">PT</a>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Enable dark theme" aria-pressed="false"><span data-theme-icon>☾</span><span>Theme</span></button>
+    </div>
+</nav>
+
+<main id="main-content" class="container" tabindex="-1">
+    <div class="hero">
+        <h1>🚀 My Projects</h1>
+        <div class="sub">Backend, APIs, Java, data and projects in progress</div>
+    </div>
+    <div class="content">
+        <a href="index.en.html" class="back-btn">⬅ Back to resume</a>
+
+        <div class="project-card">
+            <h3>🎯 Professional focus — Java backend</h3>
+            <p>I am directing my training toward backend development, connecting my current experience with APIs, service integration, databases and Git to my studies in <strong>Java, Spring Boot, microservices and Apache Kafka</strong>. Technologies marked as “currently studying” represent my learning path, not completed professional experience.</p>
+            <div class="tech-stack">
+                <span>Java</span><span>OOP</span><span>REST APIs</span><span>SQL</span><span>Git/GitHub</span>
+                <span>Spring Boot · currently studying</span><span>Kafka · currently studying</span><span>Microservices · currently studying</span>
+            </div>
+
+            <div class="project-card">
+                <h3>☁️ AWS Cloud Learning Lab — in progress</h3>
+                <p>Practical learning path to prepare backend projects for the cloud: identity and access, networking, storage, observability and API execution. The goal is to document decisions, costs and security in each lab without presenting study as completed professional experience.</p>
+                <div class="tech-stack">
+                    <span>AWS</span><span>IAM · studying</span><span>EC2 · studying</span><span>S3 · studying</span><span>VPC · studying</span><span>CloudWatch · studying</span><span>Lambda · studying</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://skillbuilder.aws/" target="_blank" rel="noopener noreferrer">Open AWS Skill Builder</a>
+                    <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener noreferrer">View free tier</a>
+                </div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">View GitHub progress</a>
+                <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>AI Investment System — Decision-support API</h3>
+            <p>Product in progress for investment intelligence: it combines market and macro data, organizes specialized signals and produces an auditable thesis with risk controls. The product direction prioritizes real use cases — research, monitoring and paper trading — before any automated execution.</p>
+            <div class="tech-stack"><span>Python</span><span>FastAPI</span><span>REST API</span><span>LLM APIs</span><span>Pandas</span><span>NumPy</span><span>pytest</span></div>
+            <div class="project-links">
+                <a href="ai-investment.en.html" rel="noopener noreferrer">🚀 Open UX demo</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system" target="_blank" rel="noopener noreferrer">View source</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>AI Job Apply — Professional matching pipeline</h3>
+            <p>Pipeline concept for comparing job requirements with candidate skills, preparing tailored materials and requiring human approval before any application is submitted.</p>
+            <div class="tech-stack"><span>Matching</span><span>Privacy</span><span>GitHub Actions</span><span>Human-in-the-loop</span></div>
+            <div class="project-links">
+                <a href="docs/demo/index.html" class="project-btn" rel="noopener noreferrer">Open safe demo</a>
+                <a href="docs/demo/dashboard.html" class="project-btn" rel="noopener noreferrer">Open dashboard</a>
+                <a href="docs/demo/applications.html" class="project-btn" rel="noopener noreferrer">View applications</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🎫 Ticket Booking System — Java / OOP</h3>
+            <p>Academic event-ticket reservation application demonstrating domain modeling, inheritance, polymorphism, exception handling and file persistence — fundamentals that support my Spring Boot studies.</p>
+            <div class="tech-stack"><span>Java</span><span>OOP</span><span>Inheritance</span><span>File persistence</span></div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/POO2324EPn/TicketBookingApp.java" target="_blank" rel="noopener noreferrer">📂 Source code</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/POO2324EPn" target="_blank" rel="noopener noreferrer">📁 Full folder</a>
+            </div>
+
+            <div class="project-card">
+                <h3>🚚 TP1 — Fleet and Vehicle Rental Management</h3>
+                <p>Console-based Java application created to demonstrate encapsulation, 1:1 association, abstract classes, inheritance, method overriding, polymorphism, collections and defensive programming. The implementation follows Option A of the individual practical assignment.</p>
+                <div class="tech-stack">
+                    <span>Java</span><span>OOP</span><span>ArrayList</span><span>Scanner</span><span>Console</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/tp1-frota" target="_blank" rel="noopener noreferrer">View TP1 source</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🗺️ Tourist Attractions Explorer — Python + APIs</h3>
+            <p>Tool that queries the Geoapify API for points of interest near a coordinate and uses Restcountries to retrieve local currency information, with data processing through pandas.</p>
+            <div class="tech-stack"><span>Python</span><span>REST APIs</span><span>Pandas</span><span>JSON</span></div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/projeto%202%20grupo/main.py" target="_blank" rel="noopener noreferrer">📂 Main code</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/projeto%202%20grupo" target="_blank" rel="noopener noreferrer">📁 Full folder</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🌐 Personal Portfolio — HTML/CSS/JS</h3>
+            <p>Responsive GitHub Pages site with a bilingual resume, project listings, interactive demos and a native print-to-PDF flow. The source is versioned and open.</p>
+            <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span></div>
+            <div class="project-links"><a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">📁 Repository</a></div>
+        </div>
+
+        <div class="project-card">
+            <h3>🎮 Hangman — Python / Terminal</h3>
+            <p>Classic Hangman game in Python with a Portuguese word bank, persistent scoring, hints and an ASCII terminal interface. A web version is also available.</p>
+            <div class="tech-stack"><span>Python</span><span>Terminal</span><span>Logic</span><span>Interactive</span></div>
+            <div class="project-links">
+                <a href="forca.html" target="_blank" rel="noopener noreferrer">Play web version</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/Forca" target="_blank" rel="noopener noreferrer">View source</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="index.en.html">Back to resume</a>
+            <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <p>👨‍💻 Projects by Marco Antonio de Souza Carvalho · updated Sep/2026</p>
+    </footer>
+</main>
+<script>
+(() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Enable light theme' : 'Enable dark theme'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
+</script>
+</body>
+</html>

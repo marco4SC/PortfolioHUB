@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos · Marco Antonio</title>
+    <meta name="description" content="Projetos de Marco Antonio em backend, Java, APIs REST, Python e cloud. Acesse demos e códigos no GitHub." >
+    <meta name="theme-color" content="#0b2b40">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:title" content="Projetos · Marco Antonio" >
+    <meta property="og:description" content="Lista de projetos em destaque: AI, automação e ferramentas acadêmicas. Abra o demo do AI Investment System." >
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/projetos.html" >
+    <meta property="og:type" content="website" >
+    <meta name="twitter:card" content="summary" >
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/projetos.html" >
+    <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/projetos.en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
+    <link rel="alternate" hreflang="x-default" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef2f5;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 100; background: #ffd966; color: #0b2b40; padding: .65rem 1rem; border-radius: 0 0 10px 10px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { top: 0; }
+        :focus-visible { outline: 3px solid #ffd966; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+        .hero {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            color: white;
+            padding: 2rem 2rem 1.8rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .hero .sub { font-size: 1rem; opacity: 0.85; }
+        .content { padding: 2rem; }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background: transparent;
+            color: #1e6f5c;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid #1e6f5c;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { background: #eef5f3; }
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2edf2;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: all 0.25s;
+        }
+        .project-card:hover {
+            border-color: #a0c4d4;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .project-card h3 { color: #1c6d62; margin-bottom: 0.5rem; }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.5rem 0;
+        }
+        .tech-stack span {
+            background: #e8f0f4;
+            color: #1e5f6e;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+        }
+        .project-links a {
+            background: #1e6f5c;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .project-links a:hover { background: #145244; }
+        .site-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 0.85rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            margin-left: 0.2rem;
+            font-size: 0.85rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .site-nav-link.active,
+        .site-nav-link:hover { background: #1e6f5c; }
+        .site-nav-link.language {
+            color: #1e2a3e;
+            background: #f4f9fc;
+            font-weight: 600;
+        }
+        .site-nav-link.linkedin {
+            color: #1e6f5c;
+            background: #f4f9fc;
+            border: 1px solid #c9dce5;
+            font-weight: 600;
+        }
+        .site-nav-link.linkedin:hover { color: #fff; background: #1e6f5c; }
+        footer {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.75rem;
+            color: #d5edf5;
+            border-top: 1px solid #2b647e;
+            width: 100%;
+            min-height: 116px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; }
+        .footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #4b9b87; border-radius:999px; color:#e5fff2; background:#1e6f5c; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
+        .footer-links a:hover { background:#38a47f; color:#06251d; transform:translateY(-2px); }
+        @media (max-width: 700px) {
+            body { padding: 0.5rem; }
+            .container { border-radius: 16px; }
+            body > nav > div { flex-wrap: wrap; gap: 0.5rem !important; justify-content: center; }
+            body > nav > div > a:first-child { width: 100%; text-align: center; }
+            body > nav > div > div { display: none; }
+            body > nav > div > .site-nav-link, body > nav > div > .theme-toggle { flex: 1 1 auto; margin-left: 0; min-width: 0; }
+            .hero h1 { font-size: 1.6rem; }
+            .hero { padding: 1.5rem 1rem; }
+            .content { padding: 1.5rem; }
+            .project-card { padding: 1rem; border-radius: 14px; }
+            .project-card h3 { font-size: 1.05rem; }
+            .project-links a { margin-right: 0.25rem; }
+            .footer-links a { min-height: 36px; }
+        }
+        .theme-toggle { display:inline-flex; align-items:center; gap:.4rem; min-height:34px; padding:0 .8rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.8rem; font-weight:600; white-space:nowrap; }
+        .theme-toggle:hover { background:#e5f3ef; color:#145244; }
+        body.dark-theme { background:#081b2a; color:#dbeafe; }
+        body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045) !important; }
+        body.dark-theme .container { background:#102536; }
+        body.dark-theme .hero { background:linear-gradient(135deg,#092237,#12435a); }
+        body.dark-theme .project-card { background:#153247; border-color:#28516a; color:#dbeafe; }
+        body.dark-theme .project-card h3 { color:#71d6a8; }
+        body.dark-theme .tech-stack span { background:#173f58; color:#a8d8f0; }
+        body.dark-theme .theme-toggle { background:#12354a; color:#9ee7bf; border-color:#34728a; }
+        body.dark-theme footer { background:linear-gradient(135deg,#06131f,#0d3045); border-color:#28516a; color:#d5edf5; }
+        body.dark-theme .footer-links a { background:#1e6f5c; color:#e5fff2; border-color:#49b894; }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+<nav aria-label="Navegação principal" style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0;position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
+    <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
+    <div style="flex:1"></div>
+    <a class="site-nav-link active" href="projetos.html">Projetos</a>
+    <a class="site-nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="site-nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="site-nav-link language" href="projetos.en.html">EN</a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro" aria-pressed="false"><span data-theme-icon>☾</span><span>Tema</span></button>
+  </div>
+</nav>
+<main id="main-content" class="container" tabindex="-1">
+    <div class="hero">
+        <h1>🚀 Meus Projetos</h1>
+        <div class="sub">Backend, APIs, Java, dados e projetos em evolução</div>
+    </div>
+    <div class="content">
+        <a href="index.html" class="back-btn">⬅ Voltar ao Currículo</a>
+
+        <div class="project-card">
+            <h3>🎯 Foco profissional — Backend Java</h3>
+            <p>
+                Estou direcionando minha formação para desenvolvimento backend, conectando a experiência atual
+                com APIs, integração de serviços, bancos de dados e Git aos estudos de
+                <strong>Java, Spring Boot, microsserviços e Apache Kafka</strong>.
+                As tecnologias abaixo marcadas como “em estudo” representam minha trilha atual, não experiência profissional já concluída.
+            </p>
+            <div class="tech-stack">
+                <span>Java</span><span>POO</span><span>APIs REST</span><span>SQL</span><span>Git/GitHub</span>
+                <span>Spring Boot · em estudo</span><span>Kafka · em estudo</span><span>Microsserviços · em estudo</span>
+            </div>
+
+            <div class="project-card">
+                <h3>☁️ AWS Cloud Learning Lab — em construção</h3>
+                <p>Trilha prática para preparar projetos backend para a nuvem: identidade e acesso, rede, armazenamento, observabilidade e execução de APIs. O objetivo é documentar decisões, custos e segurança em cada laboratório, sem apresentar estudo como experiência profissional concluída.</p>
+                <div class="tech-stack">
+                    <span>AWS</span><span>IAM · em estudo</span><span>EC2 · em estudo</span><span>S3 · em estudo</span><span>VPC · em estudo</span><span>CloudWatch · em estudo</span><span>Lambda · em estudo</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://skillbuilder.aws/" target="_blank" rel="noopener noreferrer">Acessar AWS Skill Builder</a>
+                    <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener noreferrer">Consultar camada gratuita</a>
+                </div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">Ver evolução no GitHub</a>
+                <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+
+        <!-- Projeto em destaque: IA + APIs -->
+        <div class="project-card">
+            <h3>AI Investment System — API de Apoio à Decisão</h3>
+            <p>Produto em evolução para inteligência de investimentos: reúne dados de mercado e macroeconomia, organiza sinais especializados e gera uma tese auditável com controles de risco. A visão de produto prioriza casos de uso reais — research, monitoramento e paper trading — antes de qualquer execução automática.</p>
+            <div class="tech-stack">
+                <span>Python</span><span>FastAPI</span><span>REST API</span><span>Anthropic API</span><span>Pandas</span><span>NumPy</span><span>SciPy</span><span>pytest</span>
+            </div>
+            <div class="project-links">
+                <a href="ai-investment.html" class="project-btn" rel="noopener noreferrer">🚀 Abrir demo UX</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system" target="_blank" rel="noopener noreferrer">Ver código-fonte</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>AI Job Apply — Pipeline de matching profissional</h3>
+            <p>Conceito de pipeline para comparar requisitos de vagas com competências do candidato, preparar materiais personalizados e exigir aprovação humana antes de qualquer candidatura.</p>
+            <div class="tech-stack"><span>Matching</span><span>Privacidade</span><span>GitHub Actions</span><span>Human-in-the-loop</span></div>
+            <div class="project-links">
+                <a href="docs/demo/index.html" class="project-btn" rel="noopener noreferrer">Abrir demo segura</a>
+                <a href="docs/demo/dashboard.html" class="project-btn" rel="noopener noreferrer">Abrir dashboard</a>
+                <a href="docs/demo/applications.html" class="project-btn" rel="noopener noreferrer">Ver candidaturas</a>
+            </div>
+        </div>
+
+        <!-- Projeto 1: Venda de Ingressos (Java) -->
+        <div class="project-card">
+            <h3>🎫 Sistema de Venda de Ingressos — Java / POO</h3>
+            <p>Aplicação para reserva de ingressos de eventos culturais, desenvolvida como projeto acadêmico de Programação Orientada a Objetos. Demonstra modelagem de domínio, herança, polimorfismo, tratamento de exceções e persistência em arquivo — fundamentos que estou levando para o estudo de Spring Boot.</p>
+            <div class="tech-stack">
+                <span>Java</span><span>POO</span><span>Herança</span><span>Arquivos</span>
+            </div>
+
+            <div class="project-card">
+                <h3>🚚 TP1 — Gestão de Frota e Locação</h3>
+                <p>Aplicação Java executável via console, desenvolvida para consolidar encapsulamento, associação 1:1, classe abstrata, herança, sobrescrita, polimorfismo, coleções e programação defensiva. A implementação segue a Opção A do trabalho prático individual.</p>
+                <div class="tech-stack">
+                    <span>Java</span><span>POO</span><span>ArrayList</span><span>Scanner</span><span>Console</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/tp1-frota" target="_blank" rel="noopener noreferrer">Ver código do TP1</a>
+                </div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/POO2324EPn/TicketBookingApp.java" target="_blank">📂 Código-fonte</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/POO2324EPn" target="_blank">📁 Pasta completa</a>
+            </div>
+        </div>
+
+        <!-- Projeto 2: Buscador de Atrações (Python + API) -->
+        <div class="project-card">
+            <h3>🗺️ Explorador de Atrações Turísticas — Python + APIs</h3>
+            <p>Ferramenta que consulta a API Geoapify para encontrar pontos de interesse próximos a uma coordenada e utiliza a API Restcountries para obter a moeda local. Estruturado com pandas para manipulação dos dados.</p>
+            <div class="tech-stack">
+                <span>Python</span><span>APIs REST</span><span>Pandas</span><span>JSON</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/projeto%202%20grupo/main.py" target="_blank">📂 Código principal</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/projeto%202%20grupo" target="_blank">📁 Pasta completa</a>
+            </div>
+        </div>
+
+        <!-- Projeto 3: Conversor Seguro de Tipos (Python) -->
+        <div class="project-card">
+            <h3>🛡️ Conversor de Tipos com Tratamento de Exceções</h3>
+            <p>Conjunto de funções para conversão segura de strings para tipos numéricos (int, float), com validação completa, testes unitários e laço de repetição até entrada válida.</p>
+            <div class="tech-stack">
+                <span>Python</span><span>Exceções</span><span>Validação</span><span>Testes</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/aula06/examples/ex6cnvrt.py" target="_blank">📂 Código-fonte</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/aula06/examples" target="_blank">📁 Pasta da aula</a>
+            </div>
+        </div>
+
+        <!-- Projeto 4: Este portfólio -->
+        <div class="project-card">
+            <h3>🌐 Portfólio Pessoal — HTML/CSS/JS</h3>
+            <p>Site responsivo publicado via GitHub Pages, com currículo interativo e botão de impressão para PDF. Todo o código é versionado e aberto.</p>
+            <div class="tech-stack">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank">📁 Repositório</a>
+            </div>
+        </div>
+        <div class="project-card">
+    <h3>Jogo da Forca — Python / Terminal</h3>
+    <p>Clássico jogo da forca desenvolvido em Python, com um banco de mais de 400 palavras da língua portuguesa, incluindo termos acentuados e com cedilha. Possui sistema de pontuação persistente, dicas e interface completa via terminal com arte ASCII. Versão jogável online disponível.</p>
+    <div class="tech-stack">
+        <span>Python</span><span>Terminal</span><span>Lógica</span><span>Interativo</span>
+    </div>
+    <div class="project-links">
+        <a href="forca.html" target="_blank">Jogar agora (versão web)</a>
+        <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/Forca" target="_blank">Ver código-fonte</a>
+    </div>
+</div>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Voltar ao Portfólio</a>
+            <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <p>👨‍💻 Projetos de Marco Antonio de Souza Carvalho</p>
+    </footer>
+</main>
+<script>
+(() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
+</script>
+</body>
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Marco Antonio · Portfólio Engenharia Computacional</title>
+    <meta name="description" content="Marco Antonio - Portfólio em Engenharia Computacional. Projetos de IA, automação e sistemas embarcados. Veja o AI Investment System demo.">
+    <meta name="theme-color" content="#0b2b40">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:title" content="Marco Antonio · Portfólio">
+    <meta property="og:description" content="Portfólio de Marco Antonio — projetos em AI, Python, e sistemas embarcados. Confira o demo do AI Investment System.">
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/">
+    <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/index.en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/">
+    <link rel="alternate" hreflang="x-default" href="https://marco4sc.github.io/PortfolioHUB/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Marco Antonio de Souza Carvalho",
+      "url": "https://marco4sc.github.io/PortfolioHUB/",
+      "jobTitle": "Estudante de Engenharia da Computação",
+      "email": "mailto:Marc.souz.carvalh@gmail.com",
+      "sameAs": [
+        "https://github.com/marco4SC",
+        "https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329"
+      ],
+      "knowsAbout": ["Python", "JavaScript", "Node.js", "Java", "REST APIs", "Artificial Intelligence"]
+    }
+    </script>
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef2f5;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 30px 45px -12px rgba(0,0,0,0.15);
+        }
+
+        .skip-link {
+            position: fixed;
+            top: -4rem;
+            left: 1rem;
+            z-index: 100;
+            background: #ffd966;
+            color: #0b2b40;
+            padding: 0.65rem 1rem;
+            border-radius: 0 0 10px 10px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .skip-link:focus { top: 0; }
+
+        :focus-visible {
+            outline: 3px solid #ffd966;
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            color: white;
+            padding: 2rem 2rem 1.8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #6ab0de;
+            padding-left: 1rem;
+            animation: slideDown 0.9s ease-out;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.08);
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        .contact-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-info a {
+            color: #ffd966;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #ffe08a;
+            text-decoration: underline;
+        }
+
+        /* ========== CONTEÚDO ========== */
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .js-enabled .section {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-left: 5px solid #1e6f5c;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            color: #0e3b4b;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: #f9fbfd;
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e2edf2;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardFadeIn 0.6s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes cardFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:hover {
+            border-color: #bdd4de;
+            background: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .hero-summary {
+            max-width: 760px;
+            margin: 1rem 0 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .site-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 0.85rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            margin-left: 0.2rem;
+            font-size: 0.85rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .site-nav-link.active,
+        .site-nav-link:hover {
+            background: #1e6f5c;
+        }
+
+        .site-nav-link.language {
+            color: #1e2a3e;
+            background: #f4f9fc;
+            font-weight: 600;
+        }
+
+        .site-nav-link.linkedin {
+            color: #1e6f5c;
+            background: #f4f9fc;
+            border: 1px solid #c9dce5;
+            font-weight: 600;
+        }
+
+        .site-nav-link.linkedin:hover {
+            color: #fff;
+            background: #1e6f5c;
+        }
+
+        .evidence-list {
+            padding-left: 1.2rem;
+        }
+
+        .evidence-list li {
+            margin-bottom: 0.45rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: #1c6d62;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge {
+            background: #e0eef4;
+            color: #1e5f6e;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .badge:hover {
+            background: #cde0e9;
+            transform: scale(1.05);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 1px;
+            background: #dce9ef;
+        }
+
+        /* ========== BOTÃO ========== */
+        .download-btn-wrapper {
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .download-btn {
+            background: #1e6f5c;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-btn:hover {
+            background: #145244;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .download-btn:focus-visible {
+            outline: 3px solid #ffd966;
+            outline-offset: 3px;
+        }
+
+        .print-help {
+            color: #4b6f7e;
+            font-size: 0.8rem;
+            margin-top: 0.6rem;
+        }
+
+        /* Rodapé normal */
+        footer {
+            background: linear-gradient(135deg, #0b2b40, #1a4a5f);
+            padding: 1.5rem 1rem;
+            border-top: 1px solid #2b647e;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #d5edf5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            width: 100%;
+            min-height: 116px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.85rem;
+            border: 1px solid #4b9b87;
+            border-radius: 999px;
+            color: #e5fff2;
+            background: #1e6f5c;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .footer-links a:hover {
+            background: #38a47f;
+            color: #06251d;
+            transform: translateY(-2px);
+        }
+
+        .footer-copy,
+        .footer-update {
+            font-size: 0.75rem;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            min-height: 34px;
+            padding: 0 0.8rem;
+            border: 1px solid #c9dce5;
+            border-radius: 999px;
+            background: #f4f9fc;
+            color: #1e5f6e;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .theme-toggle:hover { background: #e5f3ef; color: #145244; }
+        .versioned-github { display: inline-block; background: #eef2f5; color: #1e2a3e; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; }
+        .versioned-github a { color: #1e6f5c; }
+        body.dark-theme { background: #081b2a; color: #dbeafe; }
+        body.dark-theme nav { background: linear-gradient(135deg, #06131f, #0d3045) !important; }
+        body.dark-theme .container, body.dark-theme .content { background: #102536; }
+        body.dark-theme .card, body.dark-theme .content .card[style] { background: #153247 !important; border-color: #28516a; color: #dbeafe; }
+        body.dark-theme .section-title, body.dark-theme .card h3 { color: #71d6a8; }
+        body.dark-theme .badge { background: #0c6870 !important; color: #d8fff0 !important; border: 1px solid #49b894; }
+        body.dark-theme .versioned-github { background: #173f58 !important; color: #a8e6c4; border: 1px solid #34728a; }
+        body.dark-theme .versioned-github a { color: #9ee7bf; }
+        body.dark-theme .theme-toggle { background: #12354a; color: #9ee7bf; border-color: #34728a; }
+        body.dark-theme footer { background: linear-gradient(135deg, #06131f, #0d3045); border-color: #28516a; color: #d5edf5; }
+        body.dark-theme .footer-links a { background: #1e6f5c; color: #e5fff2; border-color: #49b894; }
+
+        /* ========== ESTILOS DE IMPRESSÃO (PDF NATIVO) ========== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+
+            /* Remove fundo da página e margens padrão */
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            /* Força cores no gradiente e evita que fique preto */
+            .hero {
+                background: linear-gradient(135deg, #0b2b40, #1a4a5f) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Esconde elementos que não devem ir para o PDF */
+            .download-btn-wrapper,
+            footer,
+            nav,
+            .content a[href*="github.com"] { /* esconde o link do GitHub na impressão, se quiser */
+                display: none !important;
+            }
+
+            /* Ajustes de fonte e espaçamento para papel */
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 1rem 1.5rem;
+            }
+
+            .section {
+                margin-bottom: 1.2rem;
+                page-break-inside: avoid;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            /* Evita quebras estranhas */
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+            }
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 700px) {
+            body { padding: 0.5rem; }
+            .container { border-radius: 16px; }
+            body > nav > div { flex-wrap: wrap; gap: 0.5rem !important; justify-content: center; }
+            body > nav > div > a:first-child { width: 100%; text-align: center; }
+            body > nav > div > div { display: none; }
+            body > nav > div > .site-nav-link, body > nav > div > .theme-toggle { flex: 1 1 auto; margin-left: 0; min-width: 0; }
+            .hero h1 { font-size: 1.6rem; }
+            .hero { padding: 1.5rem 1rem; }
+            .hero .sub { padding-left: 0.75rem; font-size: 0.92rem; }
+            .hero-summary { font-size: 0.95rem; }
+            .contact-info { gap: 0.55rem; padding: 0.7rem; font-size: 0.78rem; }
+            .content { padding: 1.5rem; }
+            .section-title { font-size: 1.3rem; }
+            .grid-2col { grid-template-columns: 1fr; gap: 1rem; }
+            .card { padding: 1rem; border-radius: 14px; }
+            .footer-links a { min-height: 36px; }
+            .footer-links { gap: 0.8rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .section, .js-enabled .section, .card {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ========== IMPRESSÃO ========== */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; max-width: 100%; margin: 0; }
+            .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .download-btn-wrapper, .footer-links, .footer-update { display: none !important; }
+            .card { box-shadow: none; border: 1px solid #ccc; }
+            .grid-2col { grid-template-columns: 1fr 1fr; }
+            .section { opacity: 1 !important; transform: none !important; }
+            .card { opacity: 1 !important; transform: none !important; animation: none !important; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+<nav aria-label="Navegação principal" style="background:linear-gradient(135deg,#0b2b40,#1a4a5f);padding:0.6rem 0;position:sticky;top:0;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:0 1rem;color:#fff">
+    <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">Marco Antonio</a>
+    <div style="flex:1"></div>
+    <a class="site-nav-link" href="projetos.html">Projetos</a>
+    <a class="site-nav-link linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="site-nav-link" href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="site-nav-link language" href="index.en.html">EN</a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro" aria-pressed="false"><span data-theme-icon>☾</span><span>Tema</span></button>
+  </div>
+</nav>
+    <main id="main-content" class="container" tabindex="-1">
+        <div id="curriculo">
+            <!-- HERO -->
+            <div class="hero">
+                <h1>Marco Antonio de Souza Carvalho</h1>
+                <div class="sub">Estudante de Engenharia da Computação · Backend, APIs e sistemas de IA</div>
+                <p class="hero-summary">Construo projetos práticos com Python, JavaScript/Node.js, APIs REST e integração de serviços. Atualmente direciono minha formação para backend Java e Spring Boot, com foco em qualidade, segurança e evolução contínua.</p>
+                <div class="contact-info">
+                    <span>📍 Brasília/DF, Brasil</span>
+                    <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
+                    <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">LinkedIn</a></span>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- FORMAÇÃO -->
+                <div class="section" data-delay="0">
+                    <div class="section-title">👋 Perfil profissional</div>
+                    <div class="card">
+                        <p>Busco estágio ou posição júnior em backend, engenharia de dados, IA ou cloud. Meu diferencial é combinar fundamentos de Engenharia da Computação com projetos publicados, documentação e prática de integração entre APIs, dados e serviços externos.</p>
+                        <ul class="evidence-list" style="margin-top:0.8rem">
+                            <li>Portfolio publicado em GitHub Pages e código aberto no GitHub.</li>
+                            <li>Projetos com APIs REST, FastAPI, Node.js, Python, Java/POO e integração de serviços.</li>
+                            <li>Experiência internacional e inglês fluente para documentação e colaboração.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section" data-delay="0">
+                    <div class="section-title">🎓 Formação Acadêmica</div>
+                    <div class="grid-2col">
+                        <div class="card">
+                            <h3>📘 Engenharia da Computação</h3>
+                            <p><strong>Centro Universitário de Brasília (UniCeub)</strong><br>jul/2024 – previsão 2028 | 4º semestre (cursando)</p>
+                            <p style="margin-top:0.7rem"><strong>Formação já cursada:</strong> Introdução à Computação, Lógica de Programação, Organização e Arquitetura de Computadores, Engenharia de Software, Banco de Dados I e II, Cálculo para Computação, Álgebra Linear e Geometria Analítica, Circuitos Digitais, Redes de Computadores, Segurança Cibernética, Sistemas de Comunicações e Design Mediado por Computador.</p>
+                            <p style="margin-top:0.7rem"><strong>Aplicação no portfólio:</strong> fundamentos de programação e POO, modelagem de dados, APIs e serviços, redes, segurança e integração entre software e hardware.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🌍 Intercâmbio acadêmico</h3>
+                            <p><strong>Universidade de Aveiro (Portugal)</strong><br>jul/2022 a set/2023 – experiência internacional e vivência acadêmica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HABILIDADES -->
+                <div class="section" data-delay="100">
+                    <div class="section-title">⚙️ Habilidades Técnicas</div>
+                    <div class="card" style="background:#f9fbfd;">
+                        <div class="skill-list">
+                            <span class="badge">Pacote Office (interm.)</span>
+                            <span class="badge">Inglês Fluente</span>
+                            <span class="badge">Git / GitHub</span>
+                            <span class="badge">Python (interm.)</span>
+                            <span class="badge">JavaScript / Node.js</span>
+                            <span class="badge">Express · REST APIs</span>
+                            <span class="badge">FastAPI · LLM APIs</span>
+                            <span class="badge">SQL / Banco de Dados</span>
+                            <span class="badge">Engenharia de Software</span>
+                            <span class="badge">C++ (básico/interm.)</span>
+                            <span class="badge">Eletrônica básica</span>
+                            <span class="badge">Redes e segurança</span>
+                            <span class="badge">Soldagem / prototipagem</span>
+                            <span class="badge">Multímetro / leitura esquemas</span>
+                            <span class="badge">Cisco Cybersecurity</span>
+                            <span class="badge">Noções de redes e Linux</span>
+                            <span class="badge">AWS · em aprendizagem</span>
+                            <span class="badge">IAM · EC2 · S3 · VPC · em aprendizagem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" data-delay="150">
+                    <div class="section-title">☁️ Trilha de aprendizagem em AWS</div>
+                    <div class="card">
+                        <p>Estou preparando uma base prática para trabalhar com cloud, conectando backend, segurança e observabilidade aos serviços fundamentais da AWS. Esta é uma trilha em aprendizagem, não uma certificação ou experiência profissional concluída.</p>
+                        <div class="skill-list" style="margin-top:0.8rem">
+                            <span class="badge">IAM e princípio do menor privilégio</span>
+                            <span class="badge">EC2 e Linux</span>
+                            <span class="badge">S3 e políticas de acesso</span>
+                            <span class="badge">VPC e conceitos de rede</span>
+                            <span class="badge">CloudWatch e logs</span>
+                            <span class="badge">Lambda e serverless</span>
+                        </div>
+                        <p style="margin-top:0.8rem"><strong>Próximo laboratório:</strong> publicar uma API pequena com autenticação, armazenamento privado, logs e documentação de custos, sempre usando recursos gratuitos ou desligando os recursos após os testes.</p>
+                    </div>
+                </div>
+
+                <!-- ATIVIDADES -->
+                <div class="section" data-delay="200">
+                    <div class="section-title">🔧 Principais Atividades</div>
+                    <div class="grid-2col">
+                        <div class="card">✔ Suporte na manutenção de equipamentos eletroeletrônicos</div>
+                        <div class="card">✔ Abertura e acompanhamento de chamados técnicos (planilhas, GLPI, Trello)</div>
+                        <div class="card">✔ Documentação de procedimentos usando Git/GitHub</div>
+                        <div class="card">✔ Soldagem e montagem de circuitos de baixa tensão</div>
+                        <div class="card">✔ Leitura de manuais em inglês e tradução técnica</div>
+                    </div>
+                </div>
+
+                <div class="section" data-delay="300">
+                    <div class="section-title">📁 Projetos selecionados</div>
+                    <div class="grid-2col">
+                        <div class="card">
+                            <h3>AI Investment System</h3>
+                            <p>Sistema de apoio à decisão com Python, FastAPI, dados de mercado e análise estruturada por LLM, incluindo risco, auditoria e monitoramento.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🎫 Sistema de Venda de Ingressos</h3>
+                            <p>Projeto Java/POO com modelagem de domínio, herança, polimorfismo, tratamento de exceções e persistência em arquivo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IDIOMAS E COMPLEMENTOS -->
+                <div class="section" data-delay="400">
+                    <div class="section-title">🌎 Idiomas &amp; Complementos</div>
+                    <div class="grid-2col">
+                        <div class="card">
+                            <h3>🗣️ Idiomas</h3>
+                            <p><strong>Inglês:</strong> Fluente (leitura, escrita e conversação – 1 ano no exterior + Brasas)<br>
+                            <strong>Espanhol:</strong> Básico (compreensão)</p>
+                        </div>
+                        <div class="card">
+                            <h3>📄 Informações adicionais</h3>
+                            <p>✔ Disponibilidade: segunda a sexta.<br>
+                            ✔ Início imediato<br>
+                            ✔ Carteira de habilitação (carro)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <!-- Botão de download (não aparece no PDF) -->
+    <div class="download-btn-wrapper">
+        <button id="downloadPdf" type="button" class="download-btn" aria-label="Abrir impressão para salvar o currículo em PDF">
+            📄 Salvar currículo em PDF
+        </button>
+        <p class="print-help">Na janela de impressão, escolha “Salvar como PDF” como destino.</p>
+    </div>
+            <!-- ========== RODAPÉ MELHORADO ========== -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/marco4SC" target="_blank">🐙 GitHub</a>
+                <a href="mailto:Marc.souz.carvalh@gmail.com">✉️ E-mail</a>
+                <a href="index.en.html">🌐 English version</a>
+            </div>
+            <div class="footer-copy">
+                &copy; <span id="ano-atual"></span> Marco Antonio de Souza Carvalho – Todos os direitos reservados.
+            </div>
+            <div class="footer-update">
+                Última atualização: <span id="data-atualizacao"></span>
+            </div>
+        </footer>
+</main>
+<script>
+    (() => {
+        document.documentElement.classList.add('js-enabled');
+        const downloadPdfButton = document.getElementById('downloadPdf');
+
+        if (!downloadPdfButton) {
+            return;
+        }
+
+        downloadPdfButton.addEventListener('click', () => {
+            downloadPdfButton.disabled = true;
+            downloadPdfButton.textContent = '🖨️ Abrindo impressão...';
+
+            window.setTimeout(() => {
+                window.print();
+                downloadPdfButton.disabled = false;
+                downloadPdfButton.textContent = '📄 Salvar currículo em PDF';
+            }, 100);
+        });
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.section');
+        const showSection = (section) => section.classList.add('visible');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        showSection(entry.target);
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+            sections.forEach((section) => observer.observe(section));
+        } else {
+            sections.forEach(showSection);
+        }
+
+        const currentYear = document.getElementById('ano-atual');
+        const lastUpdated = document.getElementById('data-atualizacao');
+
+        if (currentYear) {
+            currentYear.textContent = String(new Date().getFullYear());
+        }
+
+        if (lastUpdated) {
+            lastUpdated.textContent = new Date().toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+    });
+</script>
+<script>
+(() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
+</script>
+</body>
+</html>
