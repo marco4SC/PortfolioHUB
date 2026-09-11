@@ -4,6 +4,12 @@ Bem-vindo ao meu portf¢lio. Este reposit¢rio centraliza meus projetos acadˆmi
 
 ## Tecnologias: Java, Python, JavaScript (HTML/CSS), Git
 
+## Trilha AWS
+
+O portfólio agora apresenta uma trilha prática de aprendizagem em AWS, com foco em IAM, EC2, S3, VPC, CloudWatch e Lambda. Os serviços estão marcados como **em aprendizagem** até que existam laboratórios documentados e reproduzíveis; nenhuma certificação ou experiência profissional é presumida.
+
+Próximo laboratório planejado: publicar uma API pequena com autenticação, armazenamento privado, logs e controle de custos usando recursos gratuitos ou desligando os recursos após os testes. A referência oficial de estudos é o [AWS Skill Builder](https://skillbuilder.aws/).
+
 ## Como Navegar
 
 * [Projetos Web](projetos/projeto-inicial-web/) - Landing page inicial
