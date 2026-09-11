@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
       - name: Install html-validate
         run: npm install -g html-validate
       - name: Run HTML validation
@@ -44,3 +44,17 @@ jobs:
           publish_dir: ./
           publish_branch: gh-pages
           force_orphan: true
+
+  verify-pages:
+    name: Verify published Pages
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: deploy-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check published pages
+        run: |
+          set -euo pipefail
+          base="https://marco4sc.github.io/PortfolioHUB"
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/" | grep -q "Marco Antonio"
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/projetos.html" | grep -q "AI Job Apply"
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/sitemap.xml" | grep -q "projetos.en.html"
