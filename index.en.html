@@ -155,6 +155,7 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
         .card h3 { color: #1c6d62; margin-bottom: 0.5rem; }
+        .muted { color: #557080; font-size: 0.85rem; }
         .badge {
             background: #e0eef4;
             color: #1e5f6e;
@@ -315,6 +316,7 @@
                 <span>📍 Brasilia, DF, Brazil</span>
                 <span>✉️ <a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
                 <span>🔗 <a href="https://linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+                <span>🐙 <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">GitHub</a></span>
             </div>
         </div>
 
@@ -350,38 +352,39 @@
             <section class="section">
                 <div class="section-title">⚙️ Technical Skills</div>
                 <div class="card">
-                    <span class="badge">Fluent English</span>
-                    <span class="badge">Git / GitHub</span>
+                    <p class="muted" style="margin-bottom:0.4rem;font-weight:700;">Development &amp; data</p>
                     <span class="badge">Python</span>
                     <span class="badge">JavaScript / Node.js</span>
+                    <span class="badge">Java / OOP</span>
                     <span class="badge">Express · REST APIs</span>
                     <span class="badge">FastAPI · LLM APIs</span>
-                    <span class="badge">Java / OOP</span>
                     <span class="badge">SQL / Databases</span>
                     <span class="badge">Software Engineering</span>
+                    <span class="badge">Git / GitHub</span>
                     <span class="badge">C++</span>
-                    <span class="badge">Basic electronics</span>
+                    <span class="badge">AWS · currently learning</span>
+                    <p class="muted" style="margin:0.9rem 0 0.4rem;font-weight:700;">Networking, security &amp; hardware</p>
                     <span class="badge">Networking and security</span>
                     <span class="badge">Cisco Cybersecurity</span>
-                    <span class="badge">Linux and networking fundamentals</span>
-                    <span class="badge">AWS · currently learning</span>
-                    <span class="badge">IAM · EC2 · S3 · VPC · currently learning</span>
+                    <span class="badge">Linux fundamentals</span>
+                    <span class="badge">Basic electronics</span>
+                    <span class="badge">Soldering / prototyping</span>
+                    <span class="badge">Multimeter / schematic reading</span>
                 </div>
             </section>
 
             <section class="section">
                 <div class="section-title">☁️ AWS learning path</div>
                 <div class="card">
-                    <p>I am building a practical cloud foundation to connect backend development, security and observability with core AWS services. This is an active learning path, not a completed certification or professional experience claim.</p>
+                    <p>Practical cloud foundation, <strong>currently learning</strong> (not a certification or professional experience claim): IAM, EC2, S3, VPC, CloudWatch and Lambda. <strong>Next lab:</strong> deploy a small API with authentication, private storage and logs, using free-tier resources.</p>
                     <div style="margin-top:0.8rem">
-                        <span class="badge">IAM and least privilege</span>
-                        <span class="badge">EC2 and Linux</span>
-                        <span class="badge">S3 and access policies</span>
-                        <span class="badge">VPC and networking concepts</span>
-                        <span class="badge">CloudWatch and logs</span>
-                        <span class="badge">Lambda and serverless</span>
+                        <span class="badge">IAM · least privilege</span>
+                        <span class="badge">EC2 · Linux</span>
+                        <span class="badge">S3 · access policies</span>
+                        <span class="badge">VPC · networking</span>
+                        <span class="badge">CloudWatch · logs</span>
+                        <span class="badge">Lambda · serverless</span>
                     </div>
-                    <p style="margin-top:0.8rem"><strong>Next lab:</strong> deploy a small API with authentication, private storage, logs and cost notes, using free-tier resources or shutting them down after testing.</p>
                 </div>
             </section>
 
@@ -399,12 +402,13 @@
             </section>
 
             <section class="section">
-                <div class="section-title">🔧 Practical Activities</div>
+                <div class="section-title">🔧 Hands-on Lab Experience</div>
+                <p class="muted" style="margin:-0.5rem 0 0.8rem;">Hands-on practice from Computer Engineering coursework — not professional work experience.</p>
                 <div class="grid-2col">
-                    <div class="card">✔ Maintenance support for electronic equipment</div>
-                    <div class="card">✔ Technical tickets and task tracking with spreadsheets, GLPI and Trello</div>
-                    <div class="card">✔ Procedure documentation using Git/GitHub</div>
+                    <div class="card">✔ Electronic board prototyping: manual component assembly and functional testing</div>
                     <div class="card">✔ Soldering and low-voltage circuit assembly</div>
+                    <div class="card">✔ Lab test tracking and logging (spreadsheets, GLPI, Trello)</div>
+                    <div class="card">✔ Procedure and results documentation using Git/GitHub</div>
                     <div class="card">✔ Reading and translating technical documentation in English</div>
                 </div>
             </section>
@@ -414,7 +418,7 @@
                 <div class="grid-2col">
                     <div class="card">
                         <h3>AI Investment System</h3>
-                        <p>Decision-support system with Python, FastAPI, market data and structured LLM analysis, including risk controls, auditability and monitoring.</p>
+                        <p>Multi-agent system (in development) orchestrating specialized agents — technical, fundamental, sentiment and macro — to generate auditable investment theses. Stack: Python, FastAPI, portfolio optimization (Markowitz/Risk Parity) and Telegram Bot API alerts.</p>
                     </div>
                     <div class="card">
                         <h3>🎫 Ticket Booking System — Java / OOP</h3>
@@ -452,7 +456,8 @@
             <a href="index.html">🌐 Portuguese version</a>
         </div>
         <div class="footer-copy">© <span id="current-year"></span> Marco Antonio de Souza Carvalho</div>
-        <div class="footer-update">Last updated: <span id="last-updated"></span></div>
+        <!-- fixed date, update manually on content edits -->
+        <div class="footer-update">Last updated: <span id="last-updated">September 30, 2026</span></div>
     </footer>
 </main>
 
@@ -492,15 +497,7 @@
             }
 
             const currentYear = document.getElementById('current-year');
-            const lastUpdated = document.getElementById('last-updated');
-            const now = new Date();
-
-            if (currentYear) currentYear.textContent = String(now.getFullYear());
-            if (lastUpdated) lastUpdated.textContent = now.toLocaleDateString('en-US', {
-                month: 'long',
-                day: '2-digit',
-                year: 'numeric'
-            });
+            if (currentYear) currentYear.textContent = String(new Date().getFullYear());
         });
     })();
 </script>
