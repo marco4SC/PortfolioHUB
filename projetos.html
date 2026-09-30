@@ -11,7 +11,12 @@
     <meta property="og:description" content="Lista de projetos em destaque: AI, automação e ferramentas acadêmicas. Abra o demo do AI Investment System." >
     <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/projetos.html" >
     <meta property="og:type" content="website" >
-    <meta name="twitter:card" content="summary" >
+    <meta property="og:image" content="https://marco4sc.github.io/PortfolioHUB/assets/og-image.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://marco4sc.github.io/PortfolioHUB/assets/og-image.svg">
     <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/projetos.html" >
     <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/projetos.en.html">
     <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/projetos.html">
@@ -208,21 +213,21 @@
                 <span>Java</span><span>POO</span><span>APIs REST</span><span>SQL</span><span>Git/GitHub</span>
                 <span>Spring Boot · em estudo</span><span>Kafka · em estudo</span><span>Microsserviços · em estudo</span>
             </div>
-
-            <div class="project-card">
-                <h3>☁️ AWS Cloud Learning Lab — em construção</h3>
-                <p>Trilha prática para preparar projetos backend para a nuvem: identidade e acesso, rede, armazenamento, observabilidade e execução de APIs. O objetivo é documentar decisões, custos e segurança em cada laboratório, sem apresentar estudo como experiência profissional concluída.</p>
-                <div class="tech-stack">
-                    <span>AWS</span><span>IAM · em estudo</span><span>EC2 · em estudo</span><span>S3 · em estudo</span><span>VPC · em estudo</span><span>CloudWatch · em estudo</span><span>Lambda · em estudo</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://skillbuilder.aws/" target="_blank" rel="noopener noreferrer">Acessar AWS Skill Builder</a>
-                    <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener noreferrer">Consultar camada gratuita</a>
-                </div>
-            </div>
             <div class="project-links">
                 <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">Ver evolução no GitHub</a>
                 <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>☁️ AWS Cloud Learning Lab — em construção</h3>
+            <p>Trilha prática para preparar projetos backend para a nuvem: identidade e acesso, rede, armazenamento, observabilidade e execução de APIs. O objetivo é documentar decisões, custos e segurança em cada laboratório, sem apresentar estudo como experiência profissional concluída.</p>
+            <div class="tech-stack">
+                <span>AWS</span><span>IAM · em estudo</span><span>EC2 · em estudo</span><span>S3 · em estudo</span><span>VPC · em estudo</span><span>CloudWatch · em estudo</span><span>Lambda · em estudo</span>
+            </div>
+            <div class="project-links">
+                <a href="https://skillbuilder.aws/" target="_blank" rel="noopener noreferrer">Acessar AWS Skill Builder</a>
+                <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener noreferrer">Consultar camada gratuita</a>
             </div>
         </div>
 
@@ -240,9 +245,9 @@
         </div>
 
         <div class="project-card">
-            <h3>AI Job Apply — Pipeline de matching profissional</h3>
-            <p>Conceito de pipeline para comparar requisitos de vagas com competências do candidato, preparar materiais personalizados e exigir aprovação humana antes de qualquer candidatura.</p>
-            <div class="tech-stack"><span>Matching</span><span>Privacidade</span><span>GitHub Actions</span><span>Human-in-the-loop</span></div>
+            <h3>AI Job Apply — Pipeline de matching com aprovação humana</h3>
+            <p>Pipeline que cruza requisitos de vaga com o perfil do candidato, mas nunca age sozinho: autenticação OAuth do GitHub (validação de <code>state</code> e regeneração de sessão), consentimento revogável por endpoint dedicado (<code>/api/consents</code>) e aprovação humana obrigatória antes de qualquer candidatura — o workflow de CI só executa em modo <code>dry-run</code>, mesmo quando aprovado manualmente. Um smoke test agendado monitora a demo pública periodicamente.</p>
+            <div class="tech-stack"><span>OAuth GitHub</span><span>Consentimento revogável</span><span>Matching</span><span>GitHub Actions</span><span>Human-in-the-loop</span></div>
             <div class="project-links">
                 <a href="docs/demo/index.html" class="project-btn" rel="noopener noreferrer">Abrir demo segura</a>
                 <a href="docs/demo/dashboard.html" class="project-btn" rel="noopener noreferrer">Abrir dashboard</a>
@@ -257,20 +262,20 @@
             <div class="tech-stack">
                 <span>Java</span><span>POO</span><span>Herança</span><span>Arquivos</span>
             </div>
-
-            <div class="project-card">
-                <h3>🚚 TP1 — Gestão de Frota e Locação</h3>
-                <p>Aplicação Java executável via console, desenvolvida para consolidar encapsulamento, associação 1:1, classe abstrata, herança, sobrescrita, polimorfismo, coleções e programação defensiva. A implementação segue a Opção A do trabalho prático individual.</p>
-                <div class="tech-stack">
-                    <span>Java</span><span>POO</span><span>ArrayList</span><span>Scanner</span><span>Console</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/tp1-frota" target="_blank" rel="noopener noreferrer">Ver código do TP1</a>
-                </div>
-            </div>
             <div class="project-links">
                 <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/POO2324EPn/TicketBookingApp.java" target="_blank">📂 Código-fonte</a>
                 <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/POO2324EPn" target="_blank">📁 Pasta completa</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🚚 TP1 — Gestão de Frota e Locação</h3>
+            <p>Aplicação Java executável via console, desenvolvida para consolidar encapsulamento, associação 1:1, classe abstrata, herança, sobrescrita, polimorfismo, coleções e programação defensiva. A implementação segue a Opção A do trabalho prático individual.</p>
+            <div class="tech-stack">
+                <span>Java</span><span>POO</span><span>ArrayList</span><span>Scanner</span><span>Console</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/tp1-frota" target="_blank" rel="noopener noreferrer">Ver código do TP1</a>
             </div>
         </div>
 

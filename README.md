@@ -1,6 +1,6 @@
 # Meu Portfolio de Projetos - Marco Souza Carvalho
 
-Bem-vindo ao meu portf¢lio. Este reposit¢rio centraliza meus projetos acadˆmicos e pessoais.
+Bem-vindo ao meu portfólio. Este repositório centraliza meus projetos acadêmicos e pessoais.
 
 ## Tecnologias: Java, Python, JavaScript (HTML/CSS), Git
 
@@ -13,8 +13,8 @@ Próximo laboratório planejado: publicar uma API pequena com autenticação, ar
 ## Como Navegar
 
 * [Projetos Web](projetos/projeto-inicial-web/) - Landing page inicial
-* [Projetos Acadˆmicos](academicos/) - Trabalhos da faculdade
-* [Projetos Pessoais](pessoais/) - Estudos e desafios pr¢prios
+* [Projetos Acadêmicos](academicos/) - Trabalhos da faculdade
+* [Projetos Pessoais](pessoais/) - Estudos e desafios próprios
 
 ## AI Job Apply
 
