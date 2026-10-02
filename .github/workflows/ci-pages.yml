@@ -43,8 +43,10 @@ jobs:
           node-version: '22'
       - name: Install PDF renderer
         run: npm install --no-save puppeteer
-      - name: Render resume PDF
-        run: node scripts/render-curriculo-pdf.mjs curriculo.html Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf
+      - name: Render resume PDFs (pt-BR and en)
+        run: |
+          node scripts/render-curriculo-pdf.mjs curriculo.html Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf
+          node scripts/render-curriculo-pdf.mjs curriculo.en.html Marco-Antonio-de-Souza-Carvalho-Resume.pdf
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -67,6 +69,8 @@ jobs:
           curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/projetos.html" | grep -q "AI Job Apply"
           curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/sitemap.xml" | grep -q "projetos.en.html"
           curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/curriculo.html" | grep -q "Marco Antonio de Souza Carvalho"
-          # Confirma que o PDF publicado e um PDF valido, nao uma pagina 404
-          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 \
-            "$base/Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf" | head -c 4 | grep -q "%PDF"
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/curriculo.en.html" | grep -q "Marco Antonio de Souza Carvalho"
+          # Confirma que os PDFs publicados sao PDFs validos, nao paginas 404
+          for pdf in Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf Marco-Antonio-de-Souza-Carvalho-Resume.pdf; do
+            curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/$pdf" | head -c 4 | grep -q "%PDF"
+          done
