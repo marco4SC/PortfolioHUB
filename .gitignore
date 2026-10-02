@@ -3,5 +3,10 @@ node_modules/
 backend/data/projects.json
 backend/data/consents.json
 backend/data/job-applications.json
+backend/data/jobs.json
+backend/data/gmail-tokens.json
 .DS_Store
 /pessoais/cs.txt
+
+# PDF do curriculo: gerado na integracao continua a partir de curriculo.html
+Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf

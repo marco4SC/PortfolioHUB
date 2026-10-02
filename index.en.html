@@ -190,6 +190,9 @@
             outline-offset: 3px;
         }
         .download-btn-wrapper { text-align: center; margin: 2rem 0 1rem; }
+        .download-btn { margin: 0 0.35rem 0.5rem; }
+        .download-btn.secondary { background: #fff; color: #1e6f5c; border: 1px solid #c9dce5; }
+        .download-btn.secondary:hover { background: #eef5f3; }
         .print-help { color: #4b6f7e; font-size: 0.8rem; margin-top: 0.6rem; }
         footer {
             background: linear-gradient(135deg, #0b2b40, #1a4a5f);
@@ -327,7 +330,7 @@
 
         <div class="content">
             <section class="section">
-                <div class="section-title">👋 Professional profile</div>
+                <h2 class="section-title">👋 Professional profile</h2>
                 <div class="card">
                     <p>I am seeking an internship or junior role in backend, data engineering, AI or cloud. My focus is combining Computer Engineering fundamentals with published projects, documentation and hands-on integration of APIs, data and external services.</p>
                     <ul style="padding-left:1.2rem;margin-top:0.8rem">
@@ -339,7 +342,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">🎓 Education</div>
+                <h2 class="section-title">🎓 Education</h2>
                 <div class="grid-2col">
                     <div class="card">
                         <h3>📘 Computational Engineering</h3>
@@ -355,7 +358,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">⚙️ Technical Skills</div>
+                <h2 class="section-title">⚙️ Technical Skills</h2>
                 <div class="card">
                     <p class="muted" style="margin-bottom:0.4rem;font-weight:700;">Development &amp; data</p>
                     <span class="badge">Python</span>
@@ -379,7 +382,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">☁️ AWS learning path</div>
+                <h2 class="section-title">☁️ AWS learning path</h2>
                 <div class="card">
                     <p>Practical cloud foundation, <strong>currently learning</strong> (not a certification or professional experience claim): IAM, EC2, S3, VPC, CloudWatch and Lambda. <strong>Next lab:</strong> deploy a small API with authentication, private storage and logs, using free-tier resources.</p>
                     <div style="margin-top:0.8rem">
@@ -394,7 +397,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">🎯 Professional focus — Java backend</div>
+                <h2 class="section-title">🎯 Professional focus — Java backend</h2>
                 <div class="card">
                     <p>I am directing my training toward backend development, connecting my current experience with APIs, service integration, databases and Git to my studies in <strong>Java, Spring Boot, microservices and Apache Kafka</strong>.</p>
                     <p style="margin-top:0.7rem">Spring Boot, Kafka and microservices are clearly marked as current studies rather than completed professional experience.</p>
@@ -407,7 +410,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">🔧 Hands-on Lab Experience</div>
+                <h2 class="section-title">🔧 Hands-on Lab Experience</h2>
                 <p class="muted" style="margin:-0.5rem 0 0.8rem;">Hands-on practice from Computer Engineering coursework — not professional work experience.</p>
                 <div class="grid-2col">
                     <div class="card">✔ Electronic board prototyping: manual component assembly and functional testing</div>
@@ -418,7 +421,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">📁 Selected projects</div>
+                <h2 class="section-title">📁 Selected projects</h2>
                 <div class="grid-2col">
                     <div class="card">
                         <h3>AI Investment System</h3>
@@ -432,7 +435,7 @@
             </section>
 
             <section class="section">
-                <div class="section-title">🌎 Languages and additional information</div>
+                <h2 class="section-title">🌎 Languages and additional information</h2>
                 <div class="grid-2col">
                     <div class="card">
                         <h3>🗣️ Languages</h3>
@@ -449,8 +452,9 @@
     </div>
 
     <div class="download-btn-wrapper">
-        <button id="downloadPdf" type="button" class="download-btn" aria-label="Open print dialog to save the resume as a PDF">📄 Save resume as PDF</button>
-        <p class="print-help">In the print dialog, choose “Save as PDF” as the destination.</p>
+        <a class="download-btn" href="Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf" download>⬇ Download resume as PDF</a>
+        <a class="download-btn secondary" href="curriculo.html">📄 View single-page resume</a>
+        <p class="print-help">Two-page A4 PDF, generated automatically from the resume.</p>
     </div>
     <footer>
         <div class="footer-links">
@@ -468,18 +472,6 @@
 <script>
     (() => {
         document.documentElement.classList.add('js-enabled');
-        const downloadPdfButton = document.getElementById('downloadPdf');
-        if (!downloadPdfButton) return;
-
-        downloadPdfButton.addEventListener('click', () => {
-            downloadPdfButton.disabled = true;
-            downloadPdfButton.textContent = '🖨️ Opening print dialog...';
-            window.setTimeout(() => {
-                window.print();
-                downloadPdfButton.disabled = false;
-                downloadPdfButton.textContent = '📄 Save resume as PDF';
-            }, 100);
-        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');

@@ -37,6 +37,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install PDF renderer
+        run: npm install --no-save puppeteer
+      - name: Render resume PDF
+        run: node scripts/render-curriculo-pdf.mjs curriculo.html Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -58,3 +66,7 @@ jobs:
           curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/" | grep -q "Marco Antonio"
           curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/projetos.html" | grep -q "AI Job Apply"
           curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/sitemap.xml" | grep -q "projetos.en.html"
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/curriculo.html" | grep -q "Marco Antonio de Souza Carvalho"
+          # Confirma que o PDF publicado e um PDF valido, nao uma pagina 404
+          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 \
+            "$base/Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf" | head -c 4 | grep -q "%PDF"

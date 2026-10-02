@@ -369,6 +369,21 @@
             outline-offset: 3px;
         }
 
+        .download-btn {
+            text-decoration: none;
+            margin: 0 0.35rem 0.5rem;
+        }
+
+        .download-btn.secondary {
+            background: #fff;
+            color: #1e6f5c;
+            border: 1px solid #c9dce5;
+        }
+
+        .download-btn.secondary:hover {
+            background: #eef5f3;
+        }
+
         .print-help {
             color: #4b6f7e;
             font-size: 0.8rem;
@@ -603,7 +618,7 @@
             <div class="content">
                 <!-- FORMAÇÃO -->
                 <div class="section" data-delay="0">
-                    <div class="section-title">👋 Perfil profissional</div>
+                    <h2 class="section-title">👋 Perfil profissional</h2>
                     <div class="card">
                         <p>Busco estágio ou posição júnior em backend, engenharia de dados, IA ou cloud. Meu diferencial é combinar fundamentos de Engenharia da Computação com projetos publicados, documentação e prática de integração entre APIs, dados e serviços externos.</p>
                         <ul class="evidence-list" style="margin-top:0.8rem">
@@ -615,7 +630,7 @@
                 </div>
 
                 <div class="section" data-delay="0">
-                    <div class="section-title">🎓 Formação Acadêmica</div>
+                    <h2 class="section-title">🎓 Formação Acadêmica</h2>
                     <div class="grid-2col">
                         <div class="card">
                             <h3>📘 Engenharia da Computação</h3>
@@ -632,7 +647,7 @@
 
                 <!-- HABILIDADES -->
                 <div class="section" data-delay="100">
-                    <div class="section-title">⚙️ Habilidades Técnicas</div>
+                    <h2 class="section-title">⚙️ Habilidades Técnicas</h2>
                     <div class="card" style="background:#f9fbfd;">
                         <p class="muted" style="margin-bottom:0.4rem;font-weight:700;color:#557080;">Desenvolvimento &amp; dados</p>
                         <div class="skill-list">
@@ -660,7 +675,7 @@
                 </div>
 
                 <div class="section" data-delay="150">
-                    <div class="section-title">☁️ Trilha de aprendizagem em AWS</div>
+                    <h2 class="section-title">☁️ Trilha de aprendizagem em AWS</h2>
                     <div class="card">
                         <p>Base prática em cloud, <strong>em aprendizagem</strong> (não é certificação nem experiência profissional): IAM, EC2, S3, VPC, CloudWatch e Lambda. <strong>Próximo laboratório:</strong> publicar uma API pequena com autenticação, armazenamento privado e logs, usando recursos gratuitos.</p>
                         <div class="skill-list" style="margin-top:0.8rem">
@@ -675,7 +690,7 @@
                 </div>
 
                 <div class="section" data-delay="175">
-                    <div class="section-title">🎯 Foco profissional — Backend Java</div>
+                    <h2 class="section-title">🎯 Foco profissional — Backend Java</h2>
                     <div class="card">
                         <p>Direciono minha formação para desenvolvimento backend, conectando minha prática atual com APIs, integração de serviços, bancos de dados e Git aos meus estudos em <strong>Java, Spring Boot, microsserviços e Apache Kafka</strong>.</p>
                         <div class="skill-list" style="margin-top:0.8rem">
@@ -688,7 +703,7 @@
 
                 <!-- ATIVIDADES -->
                 <div class="section" data-delay="200">
-                    <div class="section-title">🔧 Experiência Prática em Laboratório</div>
+                    <h2 class="section-title">🔧 Experiência Prática em Laboratório</h2>
                     <p class="muted" style="margin:-0.5rem 0 0.8rem;">Vivência prática em disciplinas do curso de Engenharia da Computação — não é experiência profissional.</p>
                     <div class="grid-2col">
                         <div class="card">✔ Prototipagem de placa eletrônica: montagem manual de componentes e testes funcionais</div>
@@ -699,7 +714,7 @@
                 </div>
 
                 <div class="section" data-delay="300">
-                    <div class="section-title">📁 Projetos selecionados</div>
+                    <h2 class="section-title">📁 Projetos selecionados</h2>
                     <div class="grid-2col">
                         <div class="card">
                             <h3>AI Investment System</h3>
@@ -714,7 +729,7 @@
 
                 <!-- IDIOMAS E COMPLEMENTOS -->
                 <div class="section" data-delay="400">
-                    <div class="section-title">🌎 Idiomas &amp; Complementos</div>
+                    <h2 class="section-title">🌎 Idiomas &amp; Complementos</h2>
                     <div class="grid-2col">
                         <div class="card">
                             <h3>🗣️ Idiomas</h3>
@@ -735,10 +750,9 @@
 
     <!-- Botão de download (não aparece no PDF) -->
     <div class="download-btn-wrapper">
-        <button id="downloadPdf" type="button" class="download-btn" aria-label="Abrir impressão para salvar o currículo em PDF">
-            📄 Salvar currículo em PDF
-        </button>
-        <p class="print-help">Na janela de impressão, escolha “Salvar como PDF” como destino.</p>
+        <a class="download-btn" href="Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf" download>⬇ Baixar currículo em PDF</a>
+        <a class="download-btn secondary" href="curriculo.html">📄 Ver currículo em página única</a>
+        <p class="print-help">PDF de 2 páginas em formato A4, gerado automaticamente a partir do currículo.</p>
     </div>
             <!-- ========== RODAPÉ MELHORADO ========== -->
         <footer>
@@ -758,25 +772,7 @@
         </footer>
 </main>
 <script>
-    (() => {
-        document.documentElement.classList.add('js-enabled');
-        const downloadPdfButton = document.getElementById('downloadPdf');
-
-        if (!downloadPdfButton) {
-            return;
-        }
-
-        downloadPdfButton.addEventListener('click', () => {
-            downloadPdfButton.disabled = true;
-            downloadPdfButton.textContent = '🖨️ Abrindo impressão...';
-
-            window.setTimeout(() => {
-                window.print();
-                downloadPdfButton.disabled = false;
-                downloadPdfButton.textContent = '📄 Salvar currículo em PDF';
-            }, 100);
-        });
-    })();
+    document.documentElement.classList.add('js-enabled');
 
     document.addEventListener('DOMContentLoaded', () => {
         const sections = document.querySelectorAll('.section');
