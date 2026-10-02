@@ -8,5 +8,6 @@ backend/data/gmail-tokens.json
 .DS_Store
 /pessoais/cs.txt
 
-# PDF do curriculo: gerado na integracao continua a partir de curriculo.html
-Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf
+# Atencao: NAO ignorar Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf.
+# O deploy do Pages (peaceiris/actions-gh-pages) respeita este .gitignore,
+# entao ignorar o PDF gerado na CI faz o arquivo publicado responder 404.
