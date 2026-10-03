@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Job Apply — Dashboard de revisão</title>
+  <style>
+    :root { font-family: Inter, system-ui, sans-serif; color:#123044; background:#eef7fb; }
+    body { margin:0; padding:1rem; } main { max-width:900px; margin:auto; }
+    .top, .card { background:#fff; border:1px solid #c9e1ea; border-radius:16px; padding:1.25rem; box-shadow:0 12px 30px rgba(13,48,69,.08); }
+    .top { margin-bottom:1rem; } h1 { margin-top:0; color:#0b2b40; } h2 { color:#116b70; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; } .metric { background:#f1f8fa; border-radius:12px; padding:1rem; }
+    .metric strong { display:block; font-size:1.5rem; color:#0b6870; } .ok { color:#075b50; font-weight:700; }
+    .warning { background:#fff7df; border:1px solid #e7c967; border-radius:12px; padding:1rem; margin-top:1rem; }
+    a { color:#0b6870; font-weight:700; } @media (max-width:650px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="top">
+      <p class="ok">● Ambiente demonstrativo — revisão humana ativa</p>
+      <h1>AI Job Apply</h1>
+      <p>Este painel representa a etapa em que o candidato revisa uma oportunidade e o currículo gerado antes de qualquer entrega.</p>
+      <div class="grid">
+        <div class="metric"><strong>83%</strong>compatibilidade</div>
+        <div class="metric"><strong>5</strong>requisitos encontrados</div>
+        <div class="metric"><strong>0</strong>candidaturas enviadas</div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Vaga em revisão</h2>
+      <p><strong>Junior Backend Engineer</strong> · Example Technologies · Remoto</p>
+      <p>Competências encontradas: Python, REST APIs, SQL, Git e JavaScript.</p>
+      <p>Competência ausente: Automated testing.</p>
+      <p><a href="https://example.com/jobs/demo-backend-role" rel="noopener noreferrer">Abrir fonte da vaga</a></p>
+      <div class="warning"><strong>Aprovação:</strong> o PDF é produzido como artefato privado do GitHub Actions. Este painel não executa workflow, não recebe credenciais e não envia candidaturas.</div>
+    </section>
+    <p><a href="index.html">Voltar à demo</a> · <a href="privacy.html">Privacidade</a> · <a href="https://github.com/marco4SC/PortfolioHUB/actions" rel="noopener noreferrer">Ver execuções no GitHub Actions</a></p>
+  </main>
+</body>
+</html>

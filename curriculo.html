@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Currículo · Marco Antonio de Souza Carvalho</title>
+    <meta name="description" content="Currículo de Marco Antonio de Souza Carvalho - Engenharia da Computação, backend, APIs e sistemas de IA. Disponível para download em PDF.">
+    <meta name="theme-color" content="#0b2b40">
+    <meta property="og:title" content="Currículo · Marco Antonio de Souza Carvalho">
+    <meta property="og:description" content="Currículo em Engenharia da Computação: backend, APIs REST, Python, Java e sistemas de IA.">
+    <meta property="og:url" content="https://marco4sc.github.io/PortfolioHUB/curriculo.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:image" content="https://marco4sc.github.io/PortfolioHUB/assets/og-image.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://marco4sc.github.io/PortfolioHUB/assets/og-image.svg">
+    <link rel="canonical" href="https://marco4sc.github.io/PortfolioHUB/curriculo.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://marco4sc.github.io/PortfolioHUB/curriculo.html">
+    <link rel="alternate" hreflang="en" href="https://marco4sc.github.io/PortfolioHUB/curriculo.en.html">
+    <style>
+        /* ===== Base: documento A4, tipografia legivel em tela e no papel ===== */
+        @page { size: A4; margin: 14mm 15mm; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0b2b40;
+            --teal: #116b70;
+            --ink: #1e2a3e;
+            --muted: #55707f;
+            --rule: #c9e1ea;
+            --wash: #f4f9fb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--ink);
+            background: #e8eef2;
+            line-height: 1.45;
+            font-size: 10.5pt;
+            padding: 1.5rem 1rem 3rem;
+        }
+
+        /* Folha A4 simulada na tela */
+        .sheet {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: #fff;
+            padding: 16mm 15mm;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.25);
+        }
+
+        /* ===== Cabecalho ===== */
+        .cv-header { border-bottom: 2px solid var(--navy); padding-bottom: 0.7rem; }
+
+        h1 {
+            font-size: 19pt;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.2px;
+            line-height: 1.15;
+        }
+
+        .cv-role {
+            font-size: 11pt;
+            font-weight: 600;
+            color: var(--teal);
+            margin-top: 0.15rem;
+        }
+
+        .cv-contact {
+            margin-top: 0.5rem;
+            font-size: 9.5pt;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 1rem;
+        }
+
+        .cv-contact a { color: var(--teal); text-decoration: none; }
+        .cv-contact a:hover { text-decoration: underline; }
+
+        /* ===== Secoes ===== */
+        h2 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin: 1.1rem 0 0.45rem;
+            padding-bottom: 0.18rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        h3 {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--ink);
+            margin-top: 0.6rem;
+        }
+
+        h3:first-of-type { margin-top: 0; }
+
+        p { margin-bottom: 0.4rem; }
+
+        .entry { margin-bottom: 0.6rem; }
+        .entry:last-child { margin-bottom: 0; }
+
+        .entry-meta {
+            font-size: 9.5pt;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .entry-meta strong { color: var(--ink); }
+
+        ul { margin: 0.25rem 0 0.25rem 1.1rem; }
+        li { margin-bottom: 0.18rem; }
+
+        .note {
+            font-size: 9pt;
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Habilidades agrupadas: rotulo + lista inline, legivel por ATS */
+        .skill-group { margin-bottom: 0.35rem; }
+
+        .skill-group dt {
+            font-weight: 700;
+            font-size: 9.5pt;
+            color: var(--teal);
+            margin-bottom: 0.1rem;
+        }
+
+        .skill-group dd { margin: 0 0 0.3rem 0; }
+
+        /* ===== Barra de acoes (nao aparece no PDF) ===== */
+        .actions {
+            max-width: 210mm;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            min-height: 42px;
+            padding: 0 1.2rem;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary { background: #1e6f5c; color: #fff; }
+        .btn-primary:hover { background: #145244; }
+
+        .btn-ghost { background: #fff; color: var(--teal); border-color: var(--rule); }
+        .btn-ghost:hover { background: var(--wash); }
+
+        .btn:focus-visible { outline: 3px solid #ffd966; outline-offset: 3px; }
+
+        .actions-hint {
+            font-size: 0.8rem;
+            color: #4b6f7e;
+            flex-basis: 100%;
+        }
+
+        /* ===== Impressao / geracao de PDF ===== */
+        @media print {
+            body { background: #fff; padding: 0; font-size: 10pt; }
+            .sheet { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+            .actions { display: none !important; }
+            h2 { page-break-after: avoid; }
+            h3 { page-break-after: avoid; }
+            .entry { page-break-inside: avoid; }
+            a { color: var(--teal); }
+        }
+
+        @media (max-width: 700px) {
+            body { padding: 1rem 0.5rem 2rem; font-size: 11pt; }
+            .sheet { padding: 1.5rem 1.25rem; }
+            h1 { font-size: 17pt; }
+            .actions { padding: 0 0.25rem; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="actions">
+    <a class="btn btn-primary" href="Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf" download>⬇ Baixar currículo em PDF</a>
+    <button type="button" class="btn btn-ghost" id="printBtn">🖨 Imprimir</button>
+    <a class="btn btn-ghost" href="curriculo.en.html">English version</a>
+    <a class="btn btn-ghost" href="index.html">← Voltar ao portfólio</a>
+    <p class="actions-hint">O PDF é gerado automaticamente a partir desta página, então o arquivo baixado tem sempre o mesmo conteúdo exibido aqui.</p>
+</div>
+
+<main class="sheet">
+
+    <header class="cv-header">
+        <h1>Marco Antonio de Souza Carvalho</h1>
+        <p class="cv-role">Estudante de Engenharia da Computação — Backend, APIs e Sistemas de IA</p>
+        <div class="cv-contact">
+            <span>Brasília/DF, Brasil</span>
+            <span><a href="mailto:Marc.souz.carvalh@gmail.com">Marc.souz.carvalh@gmail.com</a></span>
+            <span><a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329">linkedin.com/in/marco-antonio-souza-carvalho</a></span>
+            <span><a href="https://github.com/marco4SC">github.com/marco4SC</a></span>
+        </div>
+    </header>
+
+    <section>
+        <h2>Resumo profissional</h2>
+        <p>Construo projetos práticos com Python, JavaScript/Node.js, APIs REST e integração de serviços. Direciono minha formação para backend Java e Spring Boot, com foco em qualidade, segurança e evolução contínua.</p>
+        <p>Busco estágio ou posição júnior em backend, engenharia de dados, IA ou cloud. Combino fundamentos de Engenharia da Computação com projetos publicados, documentados e versionados em repositório aberto.</p>
+    </section>
+
+    <section>
+        <h2>Formação acadêmica</h2>
+        <div class="entry">
+            <h3>Engenharia da Computação</h3>
+            <p class="entry-meta"><strong>Centro Universitário de Brasília (UniCeub)</strong> · jul/2024 – previsão 2028 · 4º semestre (cursando)</p>
+            <p><strong>Disciplinas concluídas:</strong> Introdução à Computação, Lógica de Programação, Organização e Arquitetura de Computadores, Engenharia de Software, Banco de Dados I e II, Cálculo para Computação, Álgebra Linear e Geometria Analítica, Circuitos Digitais, Redes de Computadores, Segurança Cibernética, Sistemas de Comunicações e Design Mediado por Computador.</p>
+        </div>
+        <div class="entry">
+            <h3>Intercâmbio acadêmico</h3>
+            <p class="entry-meta"><strong>Universidade de Aveiro, Portugal</strong> · jul/2022 – set/2023</p>
+            <p>Vivência acadêmica internacional, com uso diário de inglês para estudo e colaboração.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Habilidades técnicas</h2>
+        <dl>
+            <div class="skill-group">
+                <dt>Desenvolvimento e dados</dt>
+                <dd>Python (intermediário) · JavaScript / Node.js · Java e Programação Orientada a Objetos · Express e APIs REST · FastAPI e APIs de LLM · SQL e modelagem de banco de dados · Engenharia de Software · Git / GitHub · C++ (básico a intermediário)</dd>
+            </div>
+            <div class="skill-group">
+                <dt>Redes, segurança e hardware</dt>
+                <dd>Redes de computadores e segurança · Cisco Cybersecurity · Noções de Linux · Eletrônica básica · Soldagem e prototipagem · Multímetro e leitura de esquemas</dd>
+            </div>
+            <div class="skill-group">
+                <dt>Em aprendizagem</dt>
+                <dd>AWS (IAM, EC2, S3, VPC, CloudWatch, Lambda) · Spring Boot · Apache Kafka · Microsserviços</dd>
+            </div>
+        </dl>
+        <p class="note">Itens em "em aprendizagem" são trilhas de estudo em andamento, não certificações nem experiência profissional concluída.</p>
+    </section>
+
+    <section>
+        <h2>Projetos</h2>
+        <div class="entry">
+            <h3>AI Investment System — Python, FastAPI</h3>
+            <p>Sistema multiagente em desenvolvimento que orquestra agentes especializados (técnico, fundamentalista, sentimento e macroeconômico) para gerar teses de investimento auditáveis. Inclui otimização de portfólio (Markowitz e Risk Parity), controles de risco e alertas via Telegram Bot API.</p>
+        </div>
+        <div class="entry">
+            <h3>AI Job Apply — Node.js, OAuth, GitHub Actions</h3>
+            <p>Pipeline que cruza requisitos de vagas com o perfil do candidato sem agir sozinho: autenticação OAuth com validação de <code>state</code>, consentimento revogável por endpoint dedicado e aprovação humana obrigatória antes de qualquer envio. Integração contínua executa somente em modo <em>dry-run</em>, com smoke test agendado monitorando a demo pública.</p>
+        </div>
+        <div class="entry">
+            <h3>Sistema de Venda de Ingressos — Java</h3>
+            <p>Aplicação de reserva de ingressos com modelagem de domínio, herança, polimorfismo, tratamento de exceções e persistência em arquivo.</p>
+        </div>
+        <div class="entry">
+            <h3>Portfólio pessoal — HTML, CSS, JavaScript</h3>
+            <p>Site bilíngue e responsivo publicado via GitHub Pages, com validação automatizada de HTML e verificação pós-deploy em integração contínua.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Experiência prática em laboratório</h2>
+        <p class="note">Vivência prática em disciplinas do curso de Engenharia da Computação — não corresponde a experiência profissional.</p>
+        <ul>
+            <li>Prototipagem de placa eletrônica: montagem manual de componentes e testes funcionais.</li>
+            <li>Soldagem e montagem de circuitos de baixa tensão.</li>
+            <li>Documentação de procedimentos e resultados com Git/GitHub.</li>
+            <li>Leitura de manuais técnicos em inglês e tradução técnica.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Idiomas</h2>
+        <p><strong>Português:</strong> nativo. <strong>Inglês:</strong> fluente em leitura, escrita e conversação (1 ano no exterior e curso Brasas). <strong>Espanhol:</strong> básico (compreensão).</p>
+    </section>
+
+    <section>
+        <h2>Informações adicionais</h2>
+        <p>Disponibilidade de segunda a sexta · Início imediato · Carteira de habilitação categoria B.</p>
+    </section>
+
+</main>
+
+<script>
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+</script>
+</body>
+</html>

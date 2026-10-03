@@ -1,0 +1,14 @@
+node_modules/
+.env
+backend/data/projects.json
+backend/data/consents.json
+backend/data/job-applications.json
+backend/data/jobs.json
+backend/data/gmail-tokens.json
+.DS_Store
+/pessoais/cs.txt
+
+# Atencao: NAO ignorar os PDFs do curriculo (*-Curriculo.pdf, *-Resume.pdf).
+# Hoje o GitHub Pages serve o branch main, entao o PDF precisa estar
+# versionado para existir no site. E o job que publica no gh-pages
+# (peaceiris/actions-gh-pages) tambem respeita este .gitignore.

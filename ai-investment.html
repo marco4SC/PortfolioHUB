@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Investment System — Decision Intelligence</title>
+  <meta name="description" content="Demonstração de uma plataforma de inteligência para análise de ativos, risco e construção de portfólio.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:,"><style>
+    /* small accessibility tweaks */
+    .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0 }
+    .site-nav { background:linear-gradient(135deg,#0b2b40,#1a4a5f); padding:0.6rem 1rem; }
+    .site-nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:1rem; }
+    .site-nav a { display:inline-flex; align-items:center; justify-content:center; min-height:34px; color:#fff; text-decoration:none; padding:0 0.85rem; border-radius:999px; background:rgba(255,255,255,0.06); font-size:0.85rem; }
+    .site-nav a:first-child { background:transparent; padding-left:0; font-weight:600; }
+    .site-nav a:hover, .site-nav a.active { background:#1e6f5c; }
+    .site-nav a.linkedin { color:#1e6f5c; background:#f4f9fc; border:1px solid #c9dce5; font-weight:600; }
+    .site-nav a.linkedin:hover { color:#fff; background:#1e6f5c; }
+    .site-nav .language { color:#1e2a3e; background:#f4f9fc; font-weight:600; }
+    .site-action { display:inline-flex; align-items:center; gap:0.5rem; border-radius:0.75rem; padding:0.55rem 1rem; font-size:0.875rem; border:1px solid transparent; cursor:pointer; }
+    .site-action.primary { background:#1e6f5c; color:#fff; }
+    .site-action.primary:hover { background:#145244; }
+    .site-action.secondary { background:#fff; color:#334155; border-color:#e2e8f0; }
+    .site-action.secondary:hover { background:#f8fafc; }
+    .site-footer { background:linear-gradient(135deg,#0b2b40,#1a4a5f); border-top:1px solid #2b647e; color:#d5edf5; padding:1.2rem; text-align:center; }
+    .site-footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem; margin-bottom:0.7rem; }
+    .site-footer-links a { display:inline-flex; align-items:center; min-height:32px; padding:0 0.85rem; border:1px solid #4b9b87; border-radius:999px; color:#e5fff2; background:#1e6f5c; text-decoration:none; transition:background 0.2s, color 0.2s, transform 0.2s; }
+    .site-footer-links a:hover { background:#38a47f; color:#06251d; transform:translateY(-2px); }
+    .product-badge { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .65rem; border-radius:999px; background:#ecfdf5; color:#166534; font-size:.75rem; font-weight:600; }
+    .value-card { border:1px solid #e2e8f0; border-radius:.85rem; padding:.8rem; background:#f8fafc; }
+    .value-card strong { display:block; color:#0f766e; font-size:.9rem; margin-bottom:.2rem; }
+    .disclaimer { border-left:3px solid #f59e0b; background:#fffbeb; color:#92400e; padding:.7rem .85rem; border-radius:.5rem; }
+    .production-grid { max-width:80rem; margin:0 auto; padding:0 1.5rem 3rem; }
+    .production-card { height:100%; border:1px solid #dbe5eb; border-radius:1rem; background:#fff; padding:1.1rem; }
+    .production-card h3 { font-weight:700; color:#163d4c; }
+    .theme-toggle { display:inline-flex; align-items:center; justify-content:center; gap:.4rem; min-height:34px; padding:0 .8rem; border:1px solid #c9dce5; border-radius:999px; background:#f4f9fc; color:#1e5f6e; cursor:pointer; font:inherit; font-size:.8rem; font-weight:600; white-space:nowrap; }
+    .theme-toggle:hover { background:#e5f3ef; color:#145244; }
+    body.dark-theme, body.dark-theme.bg-slate-50 { background:#081b2a !important; color:#dbeafe !important; }
+    body.dark-theme nav { background:linear-gradient(135deg,#06131f,#0d3045) !important; }
+    body.dark-theme main h1, body.dark-theme main h2 { color:#dbeafe !important; }
+    body.dark-theme .bg-slate-50 { background:#0d2a3d !important; }
+    body.dark-theme .bg-white { background:#102536 !important; }
+    body.dark-theme .value-card, body.dark-theme .production-card, body.dark-theme section > section.w-full { background:#102536 !important; border-color:#28516a !important; color:#dbeafe; }
+    body.dark-theme .value-card strong, body.dark-theme .production-card h3 { color:#71d6a8; }
+    body.dark-theme .text-slate-600, body.dark-theme .text-slate-700, body.dark-theme .text-slate-500 { color:#a8c4d2 !important; }
+    body.dark-theme input, body.dark-theme textarea, body.dark-theme select { background:#153247 !important; color:#dbeafe !important; border-color:#38627a !important; }
+    body.dark-theme aside { background:#0d2a3d !important; border-color:#28516a !important; }
+    body.dark-theme .site-action.secondary { background:#12354a; color:#a8e6c4; border-color:#34728a; }
+    body.dark-theme .site-footer { background:linear-gradient(135deg,#06131f,#0d3045); border-color:#28516a; color:#d5edf5; }
+    body.dark-theme .site-footer-links a { background:#1e6f5c; color:#e5fff2; border-color:#49b894; }
+    @media (max-width: 700px) {
+      .site-nav { padding: .55rem .75rem; }
+      .site-nav-inner { flex-wrap: wrap; gap: .5rem; justify-content: center; }
+      .site-nav-inner > a:first-child { width: 100%; text-align: center; }
+      .site-nav-inner > .flex-1 { display: none; }
+      .site-nav-inner > a:not(:first-child), .site-nav-inner > .theme-toggle { flex: 1 1 auto; min-width: 0; }
+      main > section { padding-left: 1rem; padding-right: 1rem; }
+      main > section:first-child { padding-top: 2rem; }
+      main > section:first-child h1 { font-size: 1.8rem; line-height: 1.15; }
+      .grid.lg\:grid-cols-2 { display: block; }
+      .grid.md\:grid-cols-3 { grid-template-columns: 1fr; }
+      section > section.w-full { border-radius: 1rem; }
+      section > section.w-full > div,
+      section > section.w-full > aside { padding: 1.1rem; }
+      form .flex.gap-4, form .grid.grid-cols-2 { display: flex; flex-direction: column; gap: .75rem; }
+      form .w-28 { width: 100%; }
+      #apiUrl { width: 100%; margin-left: 0; }
+      form > .flex.items-center { flex-wrap: wrap; }
+      form > .flex.items-center > span { margin-left: 0; width: 100%; }
+      section > section.w-full > aside { border-left: 0; border-top: 1px solid #e2e8f0; }
+      #allocChart { display: block; max-width: 100%; height: auto !important; }
+      .site-action { min-height: 40px; }
+      .site-footer-links a { min-height: 36px; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html">Marco Antonio</a>
+      <span class="flex-1"></span>
+      <a href="projetos.html">Projetos</a>
+      <a class="active" href="ai-investment.html">AI Investment</a>
+      <a class="linkedin" href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="language" href="ai-investment.en.html">EN</a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar tema escuro" aria-pressed="false"><span data-theme-icon>☾</span><span>Tema</span></button>
+    </div>
+  </nav>
+  <main class="min-h-screen">
+    <section class="max-w-5xl mx-auto px-6 pt-10 pb-4">
+      <span class="product-badge">● Produto em evolução · foco em decisão auditável</span>
+      <h1 class="mt-3 text-3xl md:text-4xl font-bold text-slate-800">Do dado de mercado à decisão com contexto</h1>
+      <p class="mt-3 max-w-3xl text-slate-600">O AI Investment System organiza sinais técnicos, fundamentos, notícias e cenário macroeconômico para ajudar o investidor a comparar alternativas, entender riscos e registrar uma tese. Ele apoia a decisão; não executa ordens nem promete retorno.</p>
+      <div class="grid md:grid-cols-3 gap-3 mt-6">
+        <div class="value-card"><strong>Pesquisa estruturada</strong><span class="text-xs text-slate-600">Dados e premissas reunidos em um relatório reproduzível.</span></div>
+        <div class="value-card"><strong>Risco antes do retorno</strong><span class="text-xs text-slate-600">Limites de posição, cenários e fatores que podem invalidar a tese.</span></div>
+        <div class="value-card"><strong>Pronto para evoluir</strong><span class="text-xs text-slate-600">Base para paper trading, alertas e integrações com APIs.</span></div>
+      </div>
+    </section>
+    <section class="max-w-5xl mx-auto px-6 pb-8">
+    <section class="w-full max-w-5xl bg-white rounded-2xl shadow-lg overflow-hidden grid lg:grid-cols-2 gap-6">
+      <div class="p-8">
+        <header class="mb-4">
+          <h2 class="text-2xl font-semibold text-slate-800">Monte um cenário de análise</h2>
+          <p class="text-sm text-slate-500 mt-1">Use dados fictícios para entender o fluxo. Nenhum dado é enviado por padrão.</p>
+        </header>
+
+        <form id="demoForm" class="space-y-4">
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <label class="block text-sm text-slate-700">Nome (opcional)</label>
+              <input id="name" name="name" type="text" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300" placeholder="Como prefere ser chamado">
+            </div>
+
+            <div class="w-28">
+              <label class="block text-sm text-slate-700">Idade</label>
+              <input id="age" name="age" type="number" inputmode="numeric" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="28">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-700">Ativo para analisar</label>
+              <input id="asset" name="asset" type="text" value="PETR4" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Ex.: PETR4, BTC, IVVB11">
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-700">Perfil de risco</label>
+              <select id="risk" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2">
+                <option value="conservative">Conservador</option>
+                <option value="balanced" selected>Moderado</option>
+                <option value="aggressive">Agressivo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-700">Objetivo</label>
+              <select id="objective" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2">
+                <option value="preservacao">Preservação de capital</option>
+                <option value="crescimento" selected>Crescimento de longo prazo</option>
+                <option value="renda">Geração de renda</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-700">Horizonte</label>
+              <select id="horizon" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2">
+                <option value="curto">Até 2 anos</option>
+                <option value="medio" selected>2 a 5 anos</option>
+                <option value="longo">Mais de 5 anos</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-slate-700">Observações</label>
+            <textarea id="notes" rows="3" class="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Ex.: foco em dividendos, horizonte 2-5 anos"></textarea>
+          </div>
+
+          <fieldset class="flex items-center gap-3">
+            <legend class="sr-only">Opções</legend>
+            <input id="useLive" type="checkbox" class="h-4 w-4 text-emerald-600">
+            <label for="useLive" class="text-sm text-slate-700">Conectar uma API implantada</label>
+            <input id="apiUrl" type="url" placeholder="https://api.exemplo.com/analyze" class="ml-auto mt-0 block w-64 rounded-lg border border-slate-200 px-3 py-2 text-sm">
+          </fieldset>
+
+          <div class="flex items-center gap-3">
+            <button type="submit" class="site-action primary">Gerar análise</button>
+            <button type="button" id="openRepo" class="site-action secondary">Abrir repositório</button>
+            <span class="text-sm text-slate-500 ml-auto">Modo local por padrão.</span>
+          </div>
+        </form>
+
+        <div id="feedback" class="mt-6"></div>
+
+        <div class="mt-6 text-sm text-slate-500">
+          <div class="disclaimer"><strong>Transparência:</strong> esta experiência usa dados simulados quando a API não está conectada. Não é recomendação financeira e não envia ordens para corretoras.</div>
+        </div>
+      </div>
+
+      <aside class="p-6 bg-slate-50 border-l lg:border-l-0 lg:border-slate-100">
+        <h2 class="text-lg font-medium text-slate-800">Painel de decisão</h2>
+        <p class="text-sm text-slate-500 mt-1">Distribuição ilustrativa, nível de risco e tese para revisão humana.</p>
+
+        <div class="mt-4">
+          <canvas id="allocChart" width="400" height="300" aria-label="Alocação sugerida" role="img"></canvas>
+        </div>
+
+        <div id="reportBox" class="mt-4 bg-white border border-slate-100 rounded-lg p-3 text-sm text-slate-700 hidden"></div>
+
+        <div class="mt-4 flex gap-2">
+          <button id="downloadDemo" type="button" class="site-action secondary ml-auto">Baixar relatório (JSON)</button>
+        </div>
+      </aside>
+    </section>
+    </section>
+    <section class="production-grid">
+      <div class="grid md:grid-cols-3 gap-4">
+        <article class="production-card"><h3>Aplicação real 01 · Research</h3><p class="mt-2 text-sm text-slate-600">Reduzir o tempo de leitura de ativos e manter uma trilha de evidências para cada tese antes do comitê de investimentos.</p></article>
+        <article class="production-card"><h3>Aplicação real 02 · Risco</h3><p class="mt-2 text-sm text-slate-600">Monitorar concentração, drawdown e mudanças macroeconômicas com alertas explicáveis, sem operar automaticamente.</p></article>
+        <article class="production-card"><h3>Aplicação real 03 · Simulação</h3><p class="mt-2 text-sm text-slate-600">Validar estratégias em paper trading e backtests versionados antes de considerar qualquer integração com uma corretora.</p></article>
+      </div>
+      <p class="mt-5 text-center text-xs text-slate-500">Próximas entregas: dados históricos + backtesting · paper trading · alertas · autenticação · observabilidade · controles de conformidade.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-links">
+      <a href="index.html">Portfólio</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="https://www.linkedin.com/in/marco-antonio-souza-carvalho-614bb3329" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/marco4SC" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="ai-investment.en.html">English</a>
+    </div>
+    <div>AI Investment System · Demo</div>
+  </footer>
+
+  <!-- Chart.js CDN + DataLabels -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script>
+      const themeToggle = document.querySelector('[data-theme-toggle]');
+      const themeIcon = themeToggle.querySelector('[data-theme-icon]');
+      if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme');
+      const updateThemeToggle = () => { const dark = document.body.classList.contains('dark-theme'); themeIcon.textContent = dark ? '☀' : '☾'; themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); themeToggle.setAttribute('aria-pressed', String(dark)); };
+      updateThemeToggle();
+      themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); updateThemeToggle(); });
+      const form = document.getElementById('demoForm');
+      const feedback = document.getElementById('feedback');
+      const openRepo = document.getElementById('openRepo');
+      const downloadBtn = document.getElementById('downloadDemo');
+      const reportBox = document.getElementById('reportBox');
+      const apiUrlInput = document.getElementById('apiUrl');
+      const useLive = document.getElementById('useLive');
+
+      // Chart setup
+      const ctx = document.getElementById('allocChart').getContext('2d');
+      // Register datalabels plugin
+      Chart.register(ChartDataLabels);
+      const allocChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Cash','Bonds','Stocks','Alts'],
+          datasets: [{
+            data: [25,25,40,10],
+            backgroundColor: ['#16a34a','#0891b2','#f59e0b','#7c3aed'],
+            hoverOffset: 8,
+            borderRadius: 6,
+            spacing: 4
+          }]
+        },
+        options: {
+          cutout: '56%',
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12 } },
+            tooltip: { callbacks: { label: function(ctx){ const v = ctx.parsed; return ctx.label + ': ' + v + '%'; } } },
+            datalabels: { color: '#fff', formatter: function(value){ return value + '%'; }, font: { weight: '600', size: 12 } }
+          },
+          animation: { animateScale: true, animateRotate: true }
+        }
+      });
+
+      window.lastDemoReport = null;
+
+      openRepo.addEventListener('click', ()=>window.open('https://github.com/marco4SC/PortfolioHUB/tree/main/pessoais/ai-investment-system','_blank'));
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const name = form.name.value.trim() || 'Investidor demonstrativo';
+        const asset = form.asset.value.trim().toUpperCase() || 'PETR4';
+        const risk = document.getElementById('risk').value;
+        if(!asset){
+          feedback.innerHTML = '<div class="text-sm text-red-600">Informe um ativo para analisar.</div>';
+          return;
+        }
+
+        feedback.innerHTML = '<div class="rounded-lg bg-emerald-50 border border-emerald-100 p-3 text-sm text-emerald-700">Executando simulação…</div>';
+
+        // Prepare payload
+        const objective = document.getElementById('objective').value;
+        const horizon = document.getElementById('horizon').value;
+        const payload = { user:{name}, asset, risk, objective, horizon, notes: document.getElementById('notes').value };
+
+        // If live API requested and URL provided, attempt call
+        if(useLive.checked &amp;&amp; apiUrlInput.value.trim()){
+          try{
+            const url = apiUrlInput.value.trim();
+            feedback.innerHTML = '<div class="text-sm text-slate-500">Contactando API: '+escapeHtml(url)+'</div>';
+            const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+            if(!res.ok) throw new Error('Status '+res.status);
+            const data = await res.json();
+            handleResult(data, true);
+            return;
+          }catch(err){
+            feedback.innerHTML = '<div class="text-sm text-red-600">Falha na chamada à API: '+escapeHtml(err.message)+' — usando simulação local.</div>';
+          }
+        }
+
+        // Local simulation with small delay
+        setTimeout(()=>{
+          const allocation = simulateAllocation(risk);
+          const report = buildLocalReport({name, asset, risk, objective, horizon, allocation, notes:payload.notes});
+          handleResult(report, false);
+        }, 700);
+    });
+
+      function handleResult(report, fromApi){
+        // Update chart
+        const values = [ (report.allocation.cash||0)*100, (report.allocation.bonds||0)*100, (report.allocation.stocks||0)*100, (report.allocation.alts||0)*100 ];
+        // Ensure percentages are integers that sum to ~100
+        const rounded = values.map(v=>Math.round(v));
+        allocChart.data.datasets[0].data = rounded;
+        allocChart.update();
+
+        // Show report
+        reportBox.classList.remove('hidden');
+        reportBox.innerHTML = '<strong>Relatório '+(fromApi?'<span class="text-emerald-600">(API)</span>':'(Simulado)')+'</strong><pre class="mt-2 text-xs bg-slate-100 p-2 rounded">'+escapeHtml(JSON.stringify(report,null,2))+'</pre>';
+
+        window.lastDemoReport = report;
+        feedback.innerHTML = '<div class="text-sm text-emerald-700">Análise gerada. Revise as premissas antes de tomar qualquer decisão.</div>';
+      }
+
+      downloadBtn.addEventListener('click', ()=>{
+        if(!window.lastDemoReport){ alert('Execute o teste primeiro.'); return; }
+        const blob = new Blob([JSON.stringify(window.lastDemoReport,null,2)],{type:'application/json'});
+        const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'ai-investment-demo-'+new Date().toISOString()+'.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      });
+
+      function buildLocalReport(input){
+        const riskLabel = {conservative:'Conservador',balanced:'Moderado',aggressive:'Agressivo'}[input.risk];
+        const confidence = input.risk === 'aggressive' ? 0.61 : input.risk === 'conservative' ? 0.78 : 0.71;
+        return {
+          user:{name:input.name},
+          asset:input.asset,
+          scenario:{risk_profile:riskLabel, objective:input.objective, horizon:input.horizon},
+          allocation:input.allocation,
+          decision:{signal:'REVIEW', confidence, position_limit_pct:input.risk === 'aggressive' ? 8 : 12},
+          risk_checks:['Diversificação por classe', 'Limite de concentração', 'Revisão humana obrigatória'],
+          thesis:'Cenário ilustrativo para organizar hipóteses, riscos e próximos passos. Não representa uma recomendação personalizada.',
+          next_steps:['Validar dados e fontes', 'Executar backtest', 'Acompanhar em paper trading'],
+          timestamp:new Date().toISOString(),
+          notes:input.notes
+        };
+      }
+
+      function simulateAllocation(risk){
+        if(risk==='conservative') return { cash:0.40, bonds:0.45, stocks:0.12, alts:0.03 };
+        if(risk==='aggressive') return { cash:0.03, bonds:0.12, stocks:0.70, alts:0.15 };
+        return { cash:0.08, bonds:0.42, stocks:0.45, alts:0.05 };
+      }
+
+      function escapeHtml(str){ return String(str).replace(/[&amp;<>"']/g, m=>({'&amp;':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
+    </script>
+  </body>
+  </html>
