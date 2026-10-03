@@ -8,6 +8,7 @@ backend/data/gmail-tokens.json
 .DS_Store
 /pessoais/cs.txt
 
-# Atencao: NAO ignorar Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf.
-# O deploy do Pages (peaceiris/actions-gh-pages) respeita este .gitignore,
-# entao ignorar o PDF gerado na CI faz o arquivo publicado responder 404.
+# Atencao: NAO ignorar os PDFs do curriculo (*-Curriculo.pdf, *-Resume.pdf).
+# Hoje o GitHub Pages serve o branch main, entao o PDF precisa estar
+# versionado para existir no site. E o job que publica no gh-pages
+# (peaceiris/actions-gh-pages) tambem respeita este .gitignore.
