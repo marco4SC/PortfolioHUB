@@ -54,6 +54,10 @@ jobs:
           publish_dir: ./
           publish_branch: gh-pages
           force_orphan: true
+          # O site publica a raiz do repo; isto mantem fora do Pages o codigo do
+          # backend, scripts, testes, entregas academicas (zips/caches) e arquivos
+          # de desenvolvimento. Nenhuma pagina publicada referencia esses caminhos.
+          exclude_assets: '.github,backend,scripts,tests,templates,data,frontend,academicos,pessoais,LOCAL_SETUP.md,htmlvalidate-check.txt,htmlvalidate-output.txt,.htmlvalidate.json'
 
   verify-pages:
     name: Verify published Pages
@@ -65,12 +69,28 @@ jobs:
         run: |
           set -euo pipefail
           base="https://marco4sc.github.io/PortfolioHUB"
-          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/" | grep -q "Marco Antonio"
-          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/projetos.html" | grep -q "AI Job Apply"
-          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/sitemap.xml" | grep -q "projetos.en.html"
-          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/curriculo.html" | grep -q "Marco Antonio de Souza Carvalho"
-          curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/curriculo.en.html" | grep -q "Marco Antonio de Souza Carvalho"
+          # Baixa para arquivo antes de checar: `curl | grep -q` falhava de forma
+          # intermitente, porque o grep -q fecha o pipe ao achar o texto, o curl
+          # recebe erro 23 de escrita e o pipefail derruba o step.
+          # O laco tambem espera o build do Pages, que termina alguns minutos
+          # depois do push no gh-pages (antes disso paginas novas dao 404).
+          check() {
+            local url="$base/$1" pattern="$2"
+            for attempt in $(seq 1 20); do
+              if curl --fail --silent --location "$url" -o page.tmp && grep -aq -- "$pattern" page.tmp; then
+                echo "OK  $url"
+                return 0
+              fi
+              sleep 15
+            done
+            echo "::error::$url nao respondeu com '$pattern' apos 5 minutos"
+            return 1
+          }
+          check "" "Marco Antonio"
+          check "projetos.html" "AI Job Apply"
+          check "sitemap.xml" "projetos.en.html"
+          check "curriculo.html" "Marco Antonio de Souza Carvalho"
+          check "curriculo.en.html" "Marco Antonio de Souza Carvalho"
           # Confirma que os PDFs publicados sao PDFs validos, nao paginas 404
-          for pdf in Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf Marco-Antonio-de-Souza-Carvalho-Resume.pdf; do
-            curl --fail --silent --show-error --location --retry 8 --retry-delay 5 "$base/$pdf" | head -c 4 | grep -q "%PDF"
-          done
+          check "Marco-Antonio-de-Souza-Carvalho-Curriculo.pdf" "%PDF"
+          check "Marco-Antonio-de-Souza-Carvalho-Resume.pdf" "%PDF"

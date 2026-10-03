@@ -263,8 +263,8 @@
                 <span>Java</span><span>POO</span><span>Herança</span><span>Arquivos</span>
             </div>
             <div class="project-links">
-                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/POO2324EPn/TicketBookingApp.java" target="_blank">📂 Código-fonte</a>
-                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/POO2324EPn" target="_blank">📁 Pasta completa</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/POO2324EPn/TicketBookingApp.java" target="_blank" rel="noopener noreferrer">📂 Código-fonte</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/POO2324EPn" target="_blank" rel="noopener noreferrer">📁 Pasta completa</a>
             </div>
         </div>
 
@@ -287,8 +287,8 @@
                 <span>Python</span><span>APIs REST</span><span>Pandas</span><span>JSON</span>
             </div>
             <div class="project-links">
-                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/projeto%202%20grupo/main.py" target="_blank">📂 Código principal</a>
-                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/projeto%202%20grupo" target="_blank">📁 Pasta completa</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/projeto%202%20grupo/main.py" target="_blank" rel="noopener noreferrer">📂 Código principal</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/projeto%202%20grupo" target="_blank" rel="noopener noreferrer">📁 Pasta completa</a>
             </div>
         </div>
 
@@ -300,8 +300,8 @@
                 <span>Python</span><span>Exceções</span><span>Validação</span><span>Testes</span>
             </div>
             <div class="project-links">
-                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/aula06/examples/ex6cnvrt.py" target="_blank">📂 Código-fonte</a>
-                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/aula06/examples" target="_blank">📁 Pasta da aula</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/blob/main/academicos/aula06/examples/ex6cnvrt.py" target="_blank" rel="noopener noreferrer">📂 Código-fonte</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/aula06/examples" target="_blank" rel="noopener noreferrer">📁 Pasta da aula</a>
             </div>
         </div>
 
@@ -313,7 +313,7 @@
                 <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span>
             </div>
             <div class="project-links">
-                <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank">📁 Repositório</a>
+                <a href="https://github.com/marco4SC/PortfolioHUB" target="_blank" rel="noopener noreferrer">📁 Repositório</a>
             </div>
         </div>
         <div class="project-card">
@@ -323,8 +323,8 @@
         <span>Python</span><span>Terminal</span><span>Lógica</span><span>Interativo</span>
     </div>
     <div class="project-links">
-        <a href="forca.html" target="_blank">Jogar agora (versão web)</a>
-        <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/Forca" target="_blank">Ver código-fonte</a>
+        <a href="forca.html" target="_blank" rel="noopener noreferrer">Jogar agora (versão web)</a>
+        <a href="https://github.com/marco4SC/PortfolioHUB/tree/main/academicos/Forca" target="_blank" rel="noopener noreferrer">Ver código-fonte</a>
     </div>
 </div>
     </div>
@@ -338,7 +338,7 @@
     </footer>
 </main>
 <script>
-(() => { const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (localStorage.getItem('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
+(() => { const safeGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } }; const safeSet = (k, v) => { try { localStorage.setItem(k, v); } catch { /* armazenamento indisponivel: tema so na sessao */ } }; const toggle = document.querySelector('[data-theme-toggle]'); const icon = toggle.querySelector('[data-theme-icon]'); if (safeGet('portfolio-theme') === 'dark') document.body.classList.add('dark-theme'); const update = () => { const dark = document.body.classList.contains('dark-theme'); icon.textContent = dark ? '☀' : '☾'; toggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro'); toggle.setAttribute('aria-pressed', String(dark)); }; update(); toggle.addEventListener('click', () => { document.body.classList.toggle('dark-theme'); safeSet('portfolio-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light'); update(); }); })();
 </script>
 </body>
 </html>

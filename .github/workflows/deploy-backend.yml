@@ -34,16 +34,21 @@ jobs:
   optional-deploy-render:
     needs: build-and-push
     runs-on: ubuntu-latest
-    if: ${{ secrets.RENDER_API_KEY != '' && secrets.RENDER_SERVICE_ID != '' }}
+    # O contexto `secrets` nao e permitido em `if` de job (o workflow inteiro
+    # fica invalido). Os segredos viram env do job e a checagem vai no step.
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
     steps:
       - name: Trigger Render deploy
+        if: ${{ env.RENDER_API_KEY != '' && env.RENDER_SERVICE_ID != '' }}
         run: |
           echo "Triggering deploy on Render for service $RENDER_SERVICE_ID"
-          curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+          curl --fail -X POST \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
             -H "Content-Type: application/json" \
             -d '{}' \
-            "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys"
+            "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys"
 
 # Notes:
 # - To automatically deploy to Render, add repository secrets: RENDER_API_KEY and RENDER_SERVICE_ID
